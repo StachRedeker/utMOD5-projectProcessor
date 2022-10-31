@@ -81,7 +81,7 @@ BEGIN
         END CASE;
     END PROCESS ALU;
 
-    status_bits : PROCESS (ALU_output_with_carry, F, BusA, BusB)
+    status_bits : PROCESS (ALU_output_with_carry, F, BusA)
     BEGIN
         IF to_integer(unsigned(F)) < 4 THEN -- set CC
             set_CC <= '1';
