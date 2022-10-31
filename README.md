@@ -7,6 +7,6 @@ Table of used variables
 | b         | Memory               |           | Decides if the load/store command is per byte|
 | rd|Memory|| Decides if the memory should place data at dataOut|
 | wr|Memory|| Decides if the memory should take data from dataIn|
-| adress|Memory||Adress of the memory used in rd and wr|
+| address|Memory||Adress of the memory used in rd and wr|
 | dataIn|Memory||Input data of the memory|
 | dataOut||Memory|Output data of the memory|

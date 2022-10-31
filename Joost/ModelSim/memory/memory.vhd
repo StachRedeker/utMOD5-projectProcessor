@@ -2,43 +2,42 @@ LIBRARY IEEE;
 USE IEEE.std_logic_1164.ALL;
 use IEEE.numeric_std.ALL;
 ENTITY memory IS
-  PORT (rd      	: IN std_logic;
-        wr		: IN std_logic;
-	b		: IN std_logic;
-	adress		: IN std_logic_vector(8 DOWNTO 0); -- 7 bits for 128 blocks .
-	dataIn	        : IN std_logic_vector(31 DOWNTO 0);
-	reset		: IN std_logic;
-	clk		: IN std_logic;
-        dataOut	 	: OUT std_logic_vector(31 DOWNTO 0)
+  PORT (rd      	: IN std_logic;				-- if 1 you are reading
+        wr		: IN std_logic;				-- if 1 you are writing
+	b		: IN std_logic;				-- if 1 you are addressing bytes seperately
+	address		: IN std_logic_vector(8 DOWNTO 0);	-- 7 bits for 128 blocks + 2 bits for 4 bytes per block
+	dataIn	        : IN std_logic_vector(31 DOWNTO 0);	-- input to the memory
+	reset		: IN std_logic;				-- button 0 of FPGA
+	clk		: IN std_logic;				-- clock of FPGA
+        dataOut	 	: OUT std_logic_vector(31 DOWNTO 0)	-- output of the memory
 	);
 END memory;
 
 ARCHITECTURE structure OF memory IS
 TYPE memory_store IS ARRAY (127 DOWNTO 0, 3 DOWNTO 0) OF std_logic_vector(7 DOWNTO 0);
 SIGNAL memory_store_adr : memory_store;
-SIGNAL temp0 : std_logic_vector(7 DOWNTO 0);
-SIGNAL temp1 : std_logic_vector(7 DOWNTO 0);
-SIGNAL temp2 : std_logic_vector(7 DOWNTO 0);
-SIGNAL temp3 : std_logic_vector(7 DOWNTO 0);
 BEGIN
 	PROCESS(clk, reset)
 	BEGIN
 	IF reset = '0' THEN
 		dataOut <= (OTHERS =>'0');
-		-- change program counter to 0
+		-- memory =
 	ELSIF rising_edge(clk) THEN
-		-- Make byte adressable memory and have the rest be adress +1, +2, +3
-		-- other option is making extra instructions for byte adressing 
-		IF (rd ='1') AND (to_integer(unsigned(adress(8 DOWNTO 2)))<=100) THEN
-			temp0 <= memory_store_adr(to_integer(unsigned(adress(8 DOWNTO 2))), 0);
-			temp1 <= memory_store_adr(to_integer(unsigned(adress(8 DOWNTO 2))), 1);
-			temp2 <= memory_store_adr(to_integer(unsigned(adress(8 DOWNTO 2))), 2);
-			temp3 <= memory_store_adr(to_integer(unsigned(adress(8 DOWNTO 2))), 3);
-			dataOut <= temp3 & temp2 & temp1 & temp0;
-		ELSIF (rd ='1') AND (to_integer(unsigned(adress(8 DOWNTO 2)))> 100) THEN
-			dataOut <= memory_store_adr(to_integer(unsigned(adress(8 DOWNTO 2))), to_integer(unsigned(adress(1 DOWNTO 0))));
-		ELSIF (wr ='1') AND (to_integer(unsigned(adress(8 DOWNTO 2)))> 100) THEN
-			memory_store_adr(to_integer(unsigned(adress(8 DOWNTO 2))), to_integer(unsigned(adress(1 DOWNTO 0)))) <= dataIn;		
+		IF (b='1') AND (rd='1') THEN -- stores the selected memory adress in the 8 least significant bits of dataOut
+			dataOut(7 DOWNTO 0) <= memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), to_integer(unsigned(address(1 DOWNTO 0))));
+			dataOut(31 DOWNTO 8) <= (OTHERS => '0');
+		ELSIF (b='1') AND (wr='1') THEN -- stores the 8 least significant bits of dataIn in memory at the selected adress.
+			memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), to_integer(unsigned(address(1 DOWNTO 0)))) <= dataIn(7 DOWNTO 0);		
+		ELSIF (b='0') AND (rd='1') THEN -- stores an entire word from memory in dataOut
+			dataOut(31 DOWNTO 24) <= memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 0);
+			dataOut(23 DOWNTO 16) <= memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 1);
+			dataOut(15 DOWNTO 8) <= memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 2);
+			dataOut(7 DOWNTO 0) <= memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 3);
+		ELSIF (b='0') AND (wr='1') THEN -- stores dataIn in 4 sequential bytes in memory
+			memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 0) <= dataIn(31 DOWNTO 24);
+			memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 1) <= dataIn(23 DOWNTO 16);
+			memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 2) <= dataIn(15 DOWNTO 8);
+			memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 3) <= dataIn(7 DOWNTO 0);
 		END IF;
 	END IF;
 	END PROCESS;
