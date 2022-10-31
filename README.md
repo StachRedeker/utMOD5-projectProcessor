@@ -1,7 +1,7 @@
 # JFEGS: yet another revolutionary product that computes the Fibonacci sequence
 Table of used variables
 | Used variables        | Input         | Output    | Small description     |
-| :-:                   |:-:            |:-:        |:-:                    |
+| :--                   |:--            |:--        |:--                    |
 | clk                   |Memory         |           |clock of the FPGA      |
 | reset                 |Memory               |           |button0 of the FPGA    |
 | b         | Memory               |           | Decides if the load/store command is per byte|
