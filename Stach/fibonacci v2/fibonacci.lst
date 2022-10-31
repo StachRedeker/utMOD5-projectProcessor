@@ -1,0 +1,12 @@
+(ARCTools Version 2.1.2)
+ HexLoc     DecLoc    MachWord   Label        Instruction                Comment
+                                              .org 0                     
+00000000  0000000000  82000000                add %r0, %r0, %r1          
+00000004  0000000004  84002001                add %r0, 1, %r2            
+00000008  0000000008  86004002  fun:          add %r1, %r2, %r3          
+0000000c  0000000012  82000002                add %r0, %r2, %r1          
+00000010  0000000016  84000003                add %r0, %r3, %r2          
+00000014  0000000020  10bffffd                ba -3                      
+
+--- Symbol Table ---
+fun: 8
