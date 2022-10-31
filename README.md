@@ -1,5 +1,7 @@
 # JFEGS: yet another revolutionary product that computes the Fibonacci sequence
-Table of used variables
+
+
+## Table of used variables
 | Used variables        | Input         | Output    | Small description     |
 | :--                   |:--            |:--        |:--                    |
 | clk                   |Memory         |           |clock of the FPGA      |
@@ -10,3 +12,13 @@ Table of used variables
 | address|Memory||Adress of the memory used in rd and wr|
 | dataIn|Memory||Input data of the memory|
 | dataOut||Memory|Output data of the memory|
+
+
+
+## Instruction Format
+
+###
+
+
+| Op1 | Op2 | | Small description     |
+| :--                   |:--            |:--        |:--                    |
