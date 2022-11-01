@@ -3,6 +3,13 @@
 
 This documentation file is part of the final project of Digital Hardware in module 5 of Electrical Engineering, University of Twente.
 
+## Table of contents
+  * [Table of used variables](#table-of-used-variables)
+  * [Instruction Format](#instruction-format)
+    + [Branch instructions](#branch-instructions)
+    + [Memory instructions](#memory-instructions)
+    + [Arithmetic instructions](#arithmetic-instructions)
+
 ## Table of used variables
 | Used variables        | Input         | Output    | Small description     |
 | :--                   |:--            |:--        |:--                    |
