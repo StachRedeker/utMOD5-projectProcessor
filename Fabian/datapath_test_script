@@ -1,0 +1,10 @@
+add wave *
+force clk 0,1 5ns -r 10ns
+force dataIn "00001100001000001100000000000001"
+force A "00010"
+force AMux '0'
+force C "00100"
+force CMux '1'
+force rd '1'
+force F "0100"
+run 15ns

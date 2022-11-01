@@ -1,10 +1,9 @@
 LIBRARY IEEE;
 USE IEEE.std_logic_1164.ALL;
 USE IEEE.numeric_std.ALL;
-USE work.utilities.ALL;
 ENTITY registerfile IS
     PORT (
-        Clk : IN STD_LOGIC;
+        clk : IN STD_LOGIC;
         BusC : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
         SelC : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
         SelA : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
