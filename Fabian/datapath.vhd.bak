@@ -40,9 +40,9 @@ ARCHITECTURE structure OF datapath IS
         );
     END COMPONENT registerfile;
 
-    SIGNAL BusA : STD_LOGIC_VECTOR(31 DOWNTO 0) := (31 DOWNTO 0 => '0');
-    SIGNAL BusC, IR : STD_LOGIC_VECTOR(31 DOWNTO 0);
+    SIGNAL BusA, BusC, IR : STD_LOGIC_VECTOR(31 DOWNTO 0);
     SIGNAL SelA, SelC : STD_LOGIC_VECTOR(4 DOWNTO 0);
+
     SIGNAL ALU_output_with_carry : STD_LOGIC_VECTOR(32 DOWNTO 0); -- an additional bit for the carry
     ALIAS CC_N : STD_LOGIC IS CC(3);
     ALIAS CC_Z : STD_LOGIC IS CC(2);
@@ -61,24 +61,23 @@ BEGIN
     --     Op <= "00";
     --     Op3 <= "00000";
     -- ELSIF rising_edge(clk) THEN
-    reg_file : registerfile
-    PORT MAP(clk, BusC, SelC, SelA, BusA, IR);
+        reg_file : registerfile
+        PORT MAP(clk, BusC, SelC, SelA, BusA, IR);
 
-    SelA <= (rs1) WHEN AMux = '1' ELSE
-        A;
-    SelC <= (rd1) WHEN CMux = '1' ELSE
-        C;
+        SelA <= (rs1) WHEN AMux = '1' ELSE
+            A;
+        SelC <= (rd1) WHEN CMux = '1' ELSE
+            C;
 
-    Op <= IR(31 DOWNTO 30);
-    rd1 <= IR(31 DOWNTO 27);
-    Op3 <= IR(24 DOWNTO 19);
-    rs1 <= IR(25 DOWNTO 21);
-    -- bit13 <= IR(13);
+        Op <= IR(31 DOWNTO 30);
+        rd1 <= IR(29 DOWNTO 25);
+        Op3 <= IR(24 DOWNTO 19);
+        rs1 <= IR(18 DOWNTO 14);
+        -- bit13 <= IR(13);
 
-    --alu working
-    ALU : PROCESS (F, BusA, BusC)
-    BEGIN
-        IF rising_edge(clk) THEN
+        --alu working
+        ALU : PROCESS (F, BusA, BusC)
+        BEGIN
             ALU_output_with_carry(32) <= '0'; -- default case
             CASE F IS
                 WHEN "0000" => ALU_output_with_carry (31 DOWNTO 0) <= BusA AND BusC; --ANDCC
@@ -87,14 +86,12 @@ BEGIN
                 WHEN "0100" => ALU_output_with_carry (31 DOWNTO 0) <= STD_LOGIC_VECTOR(shift_right(unsigned(BusA), to_integer(unsigned(BusC(4 DOWNTO 0))))); --Shift right
                 WHEN OTHERS => ALU_output_with_carry (31 DOWNTO 0) <= (31 DOWNTO 0 => '0');
             END CASE;
-        END IF;
-    END PROCESS ALU;
+        END PROCESS ALU;
 
-    --assigning the status bits
-    status_bits : PROCESS (ALU_output_with_carry, F, BusA, BusC)
-    BEGIN
-        IF rising_edge(clk) THEN
-            IF to_integer(unsigned(F)) < 2 THEN -- set CC active since ANDCC and ORCC are Operations changing the CC
+        --assigning the status bits
+        status_bits : PROCESS (ALU_output_with_carry, F, BusA, BusC)
+        BEGIN
+            IF to_integer(unsigned(F)) < 4 THEN -- set CC active since ANDCC and ORCC are Operations changing the CC
                 set_CC <= '1';
                 CC_N <= ALU_output_with_carry(31);
 
@@ -115,14 +112,13 @@ BEGIN
                 set_CC <= '0';
                 CC <= (OTHERS => '-');
             END IF;
-        END IF;
-    END PROCESS status_bits;
+        END PROCESS status_bits;
 
-    
-    BusC <= ALU_output_with_carry(31 DOWNTO 0) WHEN rd = '0' ELSE
-        dataIn;
+        BusC <= ALU_output_with_carry(31 DOWNTO 0) WHEN rd = '0' ELSE
+            dataIn;
 
-    dataOut <= BusC;
-    AddressOut <= BusA;
-
+        dataOut <= BusC;
+        AddressOut <= BusA;
+  --  END IF;
+END;
 END structure;
