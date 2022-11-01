@@ -26,7 +26,7 @@ This documentation file is part of the final project of Digital Hardware in modu
 
 ## Instruction Format
 
-The minimal instruction length to cover all the wanted instructions is 15 bits. In order to be able to convert the instructions into hexadecimal, we shall use an instruction length of 16 bits.
+The minimal instruction length to cover all the wanted instructions is 17 bits. In order to be able to convert the instructions into hexadecimal, we shall use an instruction length of 20 bits.
 
 
 ### Branch instructions
