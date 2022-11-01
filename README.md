@@ -82,5 +82,5 @@ The minimal instruction length to cover all the wanted instructions is 17 bits. 
 
 ### halt: stops the program
 | Op1 | Op2 | unused 1s (16 bits) |
-| :--  |:-- |:--  |:-- |
+| :--  |:-- |:-- |
 | 11 | 11 | 1111111111111111 |
