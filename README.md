@@ -42,14 +42,14 @@ The minimal instruction length to cover all the wanted instructions is 15 bits. 
 | bneg | 11 |
 
 ### Memory instructions
-| Op1 | Op2 | Address (7 bits) | %rd (4 bits) | unused (1 bit) |
-| :--  |:-- |:--  |:-- | :-- |
-| 01 | YY | MMMMMMM | RRRR | 0 |
+| Op1 | Op2 | Address (9 bits) | %rd (4 bits) |
+| :--  |:-- |:--  |:-- |
+| 01 | Y | MMMMMMMMM | RRRR |
 
 | Instruction | Op2 |
 | --- | --- |
-| ld | 00 |
-| st | 11 |
+| ld | 0 |
+| st | 1 |
 
 ### Arithmetic instructions
 | Op1 | Op2 | %rs (4 bits) | %rd (4 bits) | unused (4 bits)
