@@ -48,8 +48,8 @@ The minimal instruction length to cover all the wanted instructions is 15 bits. 
 
 | Instruction | Op2 |
 | --- | --- |
-| rd | 00 |
-| ld | 11 |
+| ld | 00 |
+| st | 11 |
 
 ### Arithmetic instructions
 | Op1 | Op2 | %rs (4 bits) | %rd (4 bits) | unused (4 bits)
