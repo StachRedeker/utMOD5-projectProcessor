@@ -32,6 +32,7 @@ ARCHITECTURE structure OF datapath IS
     COMPONENT registerfile IS
         PORT (
             clk : IN STD_LOGIC;
+            reset : IN STD_LOGIC;
             BusC : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
             SelC : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
             SelA : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
@@ -41,9 +42,10 @@ ARCHITECTURE structure OF datapath IS
     END COMPONENT registerfile;
 
     SIGNAL BusA : STD_LOGIC_VECTOR(31 DOWNTO 0) := (31 DOWNTO 0 => '0');
-    SIGNAL BusC, IR : STD_LOGIC_VECTOR(31 DOWNTO 0);
+    SIGNAL BusC : STD_LOGIC_VECTOR(31 DOWNTO 0) := (31 DOWNTO 0 => '0');
+    SIGNAL IR : STD_LOGIC_VECTOR(31 DOWNTO 0);
     SIGNAL SelA, SelC : STD_LOGIC_VECTOR(4 DOWNTO 0);
-    SIGNAL ALU_output_with_carry : STD_LOGIC_VECTOR(32 DOWNTO 0); -- an additional bit for the carry
+    SIGNAL ALU_output_with_carry : STD_LOGIC_VECTOR(32 DOWNTO 0) := (32 DOWNTO 0 => '0'); -- an additional bit for the carry
     ALIAS CC_N : STD_LOGIC IS CC(3);
     ALIAS CC_Z : STD_LOGIC IS CC(2);
     ALIAS CC_V : STD_LOGIC IS CC(1);
@@ -52,17 +54,9 @@ ARCHITECTURE structure OF datapath IS
     SIGNAL rd1 : STD_LOGIC_VECTOR(4 DOWNTO 0);
     SIGNAL rs1 : STD_LOGIC_VECTOR(4 DOWNTO 0);
 BEGIN
-    -- IF reset = '0' THEN
-    --     dataOut <= (OTHERS => '0');
-    --     AddressOut <= (OTHERS => '0');
 
-    --     setCC <= '0';
-    --     CC <= "0000";
-    --     Op <= "00";
-    --     Op3 <= "00000";
-    -- ELSIF rising_edge(clk) THEN
     reg_file : registerfile
-    PORT MAP(clk, BusC, SelC, SelA, BusA, IR);
+    PORT MAP(clk, reset, BusC, SelC, SelA, BusA, IR);
 
     SelA <= (rs1) WHEN AMux = '1' ELSE
         A;
@@ -118,11 +112,26 @@ BEGIN
         END IF;
     END PROCESS status_bits;
 
-    
-    BusC <= ALU_output_with_carry(31 DOWNTO 0) WHEN rd = '0' ELSE
-        dataIn;
+    PROCESS (clk, dataIn, reset, A, AMux, C, CMux, rd, F)
+    BEGIN
+        IF reset = '0' THEN
+            dataOut <= (OTHERS => '0');
+            AddressOut <= (OTHERS => '0');
 
-    dataOut <= BusC;
-    AddressOut <= BusA;
+            set_CC <= '0';
+            CC <= "0000";
+            Op <= "00";
+            Op3 <= "000000";
+        ELSIF rising_edge(clk) THEN
+            IF rd = '0' THEN
+                BusC <= ALU_output_with_carry(31 DOWNTO 0);
+            ELSE
+                BusC <= dataIn;
+            END IF;
+
+            dataOut <= BusC;
+            AddressOut <= BusA;
+        END IF;
+    END PROCESS;
 
 END structure;

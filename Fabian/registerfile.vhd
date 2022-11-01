@@ -4,6 +4,7 @@ USE IEEE.numeric_std.ALL;
 ENTITY registerfile IS
     PORT (
         clk : IN STD_LOGIC;
+        reset : IN STD_LOGIC; -- button 0 of FPGA
         BusC : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
         SelC : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
         SelA : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
@@ -43,8 +44,16 @@ BEGIN
         END IF;
     END PROCESS registers;
 
-    BusA <= reg_file(to_integer(unsigned(SelA)));
+    PROCESS (clk, BusC, SelC, SelA)
+    BEGIN
+        IF reset = '0' THEN
+            BusA <= (31 DOWNTO 0 => '0');
+            IR <= (31 DOWNTO 0 => '0');
 
-    IR <= reg_file(23); --Register 23 is instruction register
+        ELSIF rising_edge(clk) THEN
+            BusA <= reg_file(to_integer(unsigned(SelA)));
 
+            IR <= reg_file(23); --Register 23 is instruction register
+        END IF;
+    END PROCESS;
 END ARCHITECTURE bhv;

@@ -7,5 +7,5 @@ force AMux '0'
 force C "00100"
 force CMux '0'
 force rd '0'
-force F "0001"
+force F "0000"
 run 35ns
