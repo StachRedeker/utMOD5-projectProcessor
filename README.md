@@ -39,6 +39,7 @@ The minimal instruction length to cover all the wanted instructions is 15 bits. 
 | ba | 00 |
 | beq | 01 |
 | bne | 10 |
+| bneg | 11 |
 
 ### Memory instructions
 | Op1 | Op2 | Address (7 bits) | %rd (4 bits) | unused (1 bit) |
