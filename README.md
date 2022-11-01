@@ -17,10 +17,11 @@
 
 ## Instruction Format
 
+
 ### Branch instructions
-| Op1 | Op2 | Address (7 bits) | unused (4 bits) |
+| Op1 | Op2 | Address (7 bits) | unused (5 bits) |
 | :--  |:-- |:--  |:-- |
-| 00 | XX | MMMMMMM | 0000 |
+| 00 | XX | MMMMMMM | 00000 |
 
 | Instruction | Op2 |
 | --- | --- |
@@ -29,9 +30,9 @@
 | bne | 10 |
 
 ### Memory instructions
-| Op1 | Op2 | Address (7 bits) | %rd (4 bits) |
-| :--  |:-- |:--  |:-- |
-| 01 | YY | MMMMMMM | RRRR |
+| Op1 | Op2 | Address (7 bits) | %rd (4 bits) | unused (1 bit) |
+| :--  |:-- |:--  |:-- | :-- |
+| 01 | YY | MMMMMMM | RRRR | 0 |
 
 | Instruction | Op2 |
 | --- | --- |
@@ -39,9 +40,9 @@
 | ld | 11 |
 
 ### Arithmetic instructions
-| Op1 | Op2 | %rs (4 bits) | %rd (4 bits) | unused (3 bits)
+| Op1 | Op2 | %rs (4 bits) | %rd (4 bits) | unused (4 bits)
 | :--  |:-- |:--  |:-- | :-- |
-| WW | ZZ | RRRR | RRRR | 000 |
+| WW | ZZ | RRRR | RRRR | 0000 |
 
 | Instruction | Op1 | Op2 |
 | --- | --- | --- |
