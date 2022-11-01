@@ -1,5 +1,7 @@
-# JFEGS: yet another revolutionary product that computes the Fibonacci sequence
+# JFEGS: a virtual processor for the DE1-SoC board
+> Yet another revolutionary product that computes the Fibonacci sequence, designed by Joost Buursink, Fabian Widlund, Emil Imhagen, Guus Branderhorst, and Stach Redeker
 
+This documentation file is part of the final project of Digital Hardware in module 5 of Electrical Engineering, University of Twente.
 
 ## Table of used variables
 | Used variables        | Input         | Output    | Small description     |
