@@ -17,6 +17,8 @@
 
 ## Instruction Format
 
+Our instructions are 16 bits, following the syntax set below.
+
 
 ### Branch instructions
 | Op1 | Op2 | Address (7 bits) | unused (5 bits) |
