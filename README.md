@@ -70,12 +70,12 @@ The minimal instruction length to cover all the wanted instructions is 17 bits. 
 
 ### Miscellaneous instructions
 
-### Display
+#### Display: displays a register value on the seven segement displays
 | Op1 | Op2 | %rs (4 bits) | unused (12 bits) |
 | :--  |:-- |:--  |:-- |
 | 11 | 0- | RRRR | 00000000 |
 
-### readIO
+#### readIO: reads the current state of the switches and stores it in a register
 | Op1 | Op2 | %rd (4 bits) | unused (12 bits) |
 | :--  |:-- |:--  |:-- |
 | 11 | 1- | RRRR | 00000000 |
