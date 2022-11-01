@@ -17,7 +17,7 @@
 
 ## Instruction Format
 
-Our instructions are 16 bits, following the syntax set below.
+Our instructions are 16 bits, following the syntax below.
 
 
 ### Branch instructions
