@@ -1,0 +1,51 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/guusb/Documents/Mod 5/ModelSim/Directory/Project/Control
+Econtroller
+Z0 w1667316074
+Z1 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z3 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+Z4 dC:/Users/guusb/Documents/GitHub/utMOD5-projectProcessor/Guus/controller
+Z5 8C:/Users/guusb/Documents/GitHub/utMOD5-projectProcessor/Guus/controller/controller.vhd
+Z6 FC:/Users/guusb/Documents/GitHub/utMOD5-projectProcessor/Guus/controller/controller.vhd
+l0
+L5
+V1m5RiLPJ]j3YW`@203Ykn3
+!s100 <;9:k;;`QBCT0VO6D5A]o1
+Z7 OV;C;10.5b;63
+32
+Z8 !s110 1667316103
+!i10b 1
+Z9 !s108 1667316103.000000
+Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/guusb/Documents/GitHub/utMOD5-projectProcessor/Guus/controller/controller.vhd|
+Z11 !s107 C:/Users/guusb/Documents/GitHub/utMOD5-projectProcessor/Guus/controller/controller.vhd|
+!i113 1
+Z12 o-work work -2002 -explicit
+Z13 tExplicit 1 CvgOpt 0
+Abhv
+R1
+R2
+R3
+Z14 DEx4 work 10 controller 0 22 1m5RiLPJ]j3YW`@203Ykn3
+l22
+L14
+Z15 VKhThG7P7>15CbCU6Oo3X81
+Z16 !s100 8TjDXN?g327Tn9l99KQ;n3
+R7
+32
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13
