@@ -68,7 +68,14 @@ The minimal instruction length to cover all the wanted instructions is 17 bits. 
 | orcc | 01 | 1 |
 | addcc | 10 | 1 |
 
-### Display instruction
+### Miscellaneous instructions
+
+### Display
 | Op1 | Op2 | %rs (4 bits) | unused (12 bits) |
 | :--  |:-- |:--  |:-- |
-| 11 | -- | RRRR | 00000000 |
+| 11 | 0- | RRRR | 00000000 |
+
+### readIO
+| Op1 | Op2 | %rd (4 bits) | unused (12 bits) |
+| :--  |:-- |:--  |:-- |
+| 11 | 1- | RRRR | 00000000 |
