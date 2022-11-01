@@ -1,7 +1,6 @@
 LIBRARY IEEE;
 USE IEEE.std_logic_1164.ALL;
 USE IEEE.numeric_std.ALL;
-USE work.utilities.ALL;
 ENTITY datapath IS
     PORT (
         clk : IN STD_LOGIC;
@@ -55,7 +54,7 @@ ARCHITECTURE structure OF datapath IS
 BEGIN
 
     reg_file : registerfile
-    PORT MAP(clk, BusA, SelA, BusC, SelC, IR);
+    PORT MAP(clk, BusC, SelC, SelA, BusA, IR);
 
     SelA <= (rs1) WHEN AMux = '1' ELSE
         A;
@@ -68,7 +67,7 @@ BEGIN
     rs1 <= IR(18 DOWNTO 14);
     -- bit13 <= IR(13);
 
-    -- functional description of ALU; not written for optimal synthesis result
+    --alu working
     ALU : PROCESS (F, BusA, BusC)
     BEGIN
         ALU_output_with_carry(32) <= '0'; -- default case
@@ -77,11 +76,12 @@ BEGIN
             WHEN "0001" => ALU_output_with_carry (31 DOWNTO 0) <= BusA OR BusC; --ORCC
             WHEN "0011" => ALU_output_with_carry <= STD_LOGIC_VECTOR(resize(signed(BusA), 33) + signed(BusC)); --ADD
             WHEN "0100" => ALU_output_with_carry (31 DOWNTO 0) <= STD_LOGIC_VECTOR(shift_right(unsigned(BusA), to_integer(unsigned(BusC(4 DOWNTO 0))))); --Shift right
-            WHEN OTHERS => ALU_output_with_carry (31 DOWNTO 0) <= '0';
+            WHEN OTHERS => ALU_output_with_carry (31 DOWNTO 0) <= (31 DOWNTO 0 => '0');
         END CASE;
     END PROCESS ALU;
 
-    status_bits : PROCESS (ALU_output_with_carry, F, BusA)
+    --assigning the status bits
+    status_bits : PROCESS (ALU_output_with_carry, F, BusA, BusC)
     BEGIN
         IF to_integer(unsigned(F)) < 4 THEN -- set CC
             set_CC <= '1';
@@ -106,11 +106,8 @@ BEGIN
         END IF;
     END PROCESS status_bits;
 
-    IF rd = '0' THEN
-        BusC <= ALU_output_with_carry(31 DOWNTO 0);
-    ELSE
-        BusC <= dataIn;
-    END IF;
+    BusC <= ALU_output_with_carry(31 DOWNTO 0) WHEN rd = '0' ELSE
+        dataIn;
 
     dataOut <= BusC;
     AddressOut <= BusA;
