@@ -41,11 +41,11 @@ ARCHITECTURE structure OF datapath IS
         );
     END COMPONENT registerfile;
 
-    SIGNAL BusA : STD_LOGIC_VECTOR(31 DOWNTO 0) := (31 DOWNTO 0 => '0');
-    SIGNAL BusC : STD_LOGIC_VECTOR(31 DOWNTO 0) := (31 DOWNTO 0 => '0');
+    SIGNAL BusA : STD_LOGIC_VECTOR(31 DOWNTO 0);
+    SIGNAL BusC : STD_LOGIC_VECTOR(31 DOWNTO 0);
     SIGNAL IR : STD_LOGIC_VECTOR(31 DOWNTO 0);
     SIGNAL SelA, SelC : STD_LOGIC_VECTOR(4 DOWNTO 0);
-    SIGNAL ALU_output_with_carry : STD_LOGIC_VECTOR(32 DOWNTO 0) := (32 DOWNTO 0 => '0'); -- an additional bit for the carry
+    SIGNAL ALU_output_with_carry : STD_LOGIC_VECTOR(32 DOWNTO 0); -- an additional bit for the carry
     ALIAS CC_N : STD_LOGIC IS CC(3);
     ALIAS CC_Z : STD_LOGIC IS CC(2);
     ALIAS CC_V : STD_LOGIC IS CC(1);
@@ -57,16 +57,6 @@ BEGIN
 
     reg_file : registerfile
     PORT MAP(clk, reset, BusC, SelC, SelA, BusA, IR);
-
-    SelA <= (rs1) WHEN AMux = '1' ELSE
-        A;
-    SelC <= (rd1) WHEN CMux = '1' ELSE
-        C;
-
-    Op <= IR(31 DOWNTO 30);
-    rd1 <= IR(31 DOWNTO 27);
-    Op3 <= IR(24 DOWNTO 19);
-    rs1 <= IR(25 DOWNTO 21);
     -- bit13 <= IR(13);
 
     --alu working
@@ -112,7 +102,7 @@ BEGIN
         END IF;
     END PROCESS status_bits;
 
-    PROCESS (clk, dataIn, reset, A, AMux, C, CMux, rd, F)
+    datapath : PROCESS (clk, dataIn, reset, A, AMux, C, CMux, rd, BusA, BusC, SelA, SelC, rd1, rs1, IR, ALU_output_with_carry)
     BEGIN
         IF reset = '0' THEN
             dataOut <= (OTHERS => '0');
@@ -123,6 +113,24 @@ BEGIN
             Op <= "00";
             Op3 <= "000000";
         ELSIF rising_edge(clk) THEN
+
+            IF AMux = '1' THEN
+                SelA <= (rs1);
+            ELSE
+                SelA <= A;
+            END IF;
+
+            IF CMux = '1' THEN
+                SelC <= (rd1);
+            ELSE
+                Selc <= C;
+            END IF;
+
+            Op <= IR(31 DOWNTO 30);
+            rd1 <= IR(31 DOWNTO 27);
+            Op3 <= IR(24 DOWNTO 19);
+            rs1 <= IR(25 DOWNTO 21);
+
             IF rd = '0' THEN
                 BusC <= ALU_output_with_carry(31 DOWNTO 0);
             ELSE
@@ -132,6 +140,6 @@ BEGIN
             dataOut <= BusC;
             AddressOut <= BusA;
         END IF;
-    END PROCESS;
+    END PROCESS datapath;
 
 END structure;
