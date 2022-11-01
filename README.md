@@ -30,9 +30,9 @@ The minimal instruction length to cover all the wanted instructions is 17 bits. 
 
 
 ### Branch instructions
-| Op1 | Op2 | Address (7 bits) | unused (9 bits) |
+| Op1 | Op2 | Address (9 bits) | unused (7 bits) |
 | :--  |:-- |:--  |:-- |
-| 00 | XX | MMMMMMM | 000000000 |
+| 00 | XX | MMMMMMMMM | 0000000 |
 
 | Instruction | Op2 |
 | --- | --- |
