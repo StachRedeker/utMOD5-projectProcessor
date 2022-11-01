@@ -30,9 +30,9 @@ The minimal instruction length to cover all the wanted instructions is 15 bits. 
 
 
 ### Branch instructions
-| Op1 | Op2 | Address (7 bits) | unused (5 bits) |
+| Op1 | Op2 | Address (7 bits) | unused (9 bits) |
 | :--  |:-- |:--  |:-- |
-| 00 | XX | MMMMMMM | 00000 |
+| 00 | XX | MMMMMMM | 000000000 |
 
 | Instruction | Op2 |
 | --- | --- |
@@ -42,31 +42,33 @@ The minimal instruction length to cover all the wanted instructions is 15 bits. 
 | bneg | 11 |
 
 ### Memory instructions
-| Op1 | Op2 | Address (9 bits) | %rd (4 bits) |
-| :--  |:-- |:--  |:-- |
-| 01 | Y | MMMMMMMMM | RRRR |
+| Op1 | Op2 | Address (9 bits) | %rd (4 bits) | unused (3 bits)
+| :--  |:-- |:--  |:-- |:-- |
+| 01 | YY | MMMMMMMMM | RRRR | 000 |
 
 | Instruction | Op2 |
 | --- | --- |
-| ld | 0 |
-| st | 1 |
+| ld | 00 |
+| st | 01 |
+| ldb | 10 |
+| stb | 11 |
 
 ### Arithmetic instructions
-| Op1 | Op2 | %rs (4 bits) | %rd (4 bits) | unused (4 bits)
-| :--  |:-- |:--  |:-- | :-- |
-| WW | ZZ | RRRR | RRRR | 0000 |
+| Op1 | Op2 | cc | %rs (4 bits) | %rd (4 bits) | unused (7 bits)
+| :--  |:-- |:--  |:-- | :-- | :-- |
+| 10 | ZZ | C | RRRR | RRRR | 0000000 |
 
-| Instruction | Op1 | Op2 |
+| Instruction | Op2 | cc |
 | --- | --- | --- |
-| and | 10 | 00 |
-| or | 10 | 01 |
-| add | 10 | 10 |
-| shift | 10 | 11 |
-| andcc | 11 | 00 |
-| orcc | 11 | 01 |
-| addcc | 11 | 10 |
+| and | 00 | 0 |
+| or | 01 | 0 |
+| add | 10 | 0 |
+| shift | 11 | - |
+| andcc | 00 | 1 |
+| orcc | 01 | 1 |
+| addcc | 10 | 1 |
 
 ### Display instruction
-| Op1 | Op2 | %rs (4 bits) | unused (8 bits) |
+| Op1 | Op2 | %rs (4 bits) | unused (12 bits) |
 | :--  |:-- |:--  |:-- |
 | 11 | 11 | RRRR | 00000000 |
