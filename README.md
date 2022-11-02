@@ -9,6 +9,7 @@ This documentation file is part of the final project of Digital Hardware in modu
     + [Branch instructions](#branch-instructions)
     + [Memory instructions](#memory-instructions)
     + [Arithmetic instructions](#arithmetic-instructions)
+  * [Registerfile structure](#register-file-structure)
 
 ## Table of used variables
 | Used variables        | Input         | Output    | Small description     |
@@ -85,7 +86,7 @@ The minimal instruction length to cover all the wanted instructions is 17 bits. 
 | :--  |:-- |:-- |
 | 11 | 11 | 1111111111111111 |
 
-## Register file structure
+## Registerfile structure
 |Register 0-15 are general purpose registers|
 |Register 16 is Program counter|
 |Register 17-20 are temporary registers|

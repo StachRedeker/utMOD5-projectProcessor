@@ -121,9 +121,9 @@ BEGIN
 
         --Instruction register
         Op <= IR(31 DOWNTO 30);
-        rd1 <= IR(31 DOWNTO 27);
+        rs1 <= IR(31 DOWNTO 27);
         Op3 <= IR(24 DOWNTO 19);
-        rs1 <= IR(25 DOWNTO 21);
+        rd1 <= IR(25 DOWNTO 21);
         --
         IF rd = '0' THEN
             BusC <= ALU_output_with_carry(31 DOWNTO 0);
