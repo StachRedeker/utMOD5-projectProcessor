@@ -1,26 +1,27 @@
 add wave *
 force clk 0,1 5ns -r 10ns
 force reset '1'
-force dataIn "00010110111000001000000000000001"
-force A "00010"
-force AMux '1'
-force C "10111"
-force CMux '0'
-force rd '1'
-force ALU "100"
-run 1ns 
+force dataIn "00000000000011010000011111000000"
+force rd "0001"
+force AMux '0'
+force rs "1111"
 force CMux '1'
-force C "00100"
+force rr '1'
+force io "01"
+force ALU "100"
+run 20ns 
+force rs "0010"
+run 50ns
+force AMux '1'
+force CMux '0'
 run 75ns
-force A "00100"
+force rd "0010"
 run 75ns
-force dataIn "00010100100000000100000111000001"
-force A "00100"
-
-force rd '1'
+force dataIn "00001110000011010000011111000000"
+run 75ns
 force ALU "101"
 run 150ns
-force A "00010"
+force rd "0010"
 run 50ns
-force A "00100"
+force rd "0001"
 run 50ns

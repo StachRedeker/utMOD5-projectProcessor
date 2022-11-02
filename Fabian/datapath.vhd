@@ -17,7 +17,6 @@ ENTITY datapath IS
         ALU : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
 
         -- to the control unit
-        set_CC : OUT STD_LOGIC;
         PCR : OUT STD_LOGIC_VECTOR(3 DOWNTO 0); -- N, Z, V, C resp. 3 downto 0
         Op1 : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
         Op2 : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
@@ -39,7 +38,8 @@ ARCHITECTURE structure OF datapath IS
             Current_C : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
             Current_A : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
             BusA : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-            IR : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+            IR : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+            PC : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
         );
     END COMPONENT registerfile;
 
@@ -58,12 +58,11 @@ BEGIN
     reg_file : registerfile
     PORT MAP(clk, reset, BusC, Current_C, Current_A, BusA, IR);
 
-    PROCESS (clk, dataIn, reset, rd, AMux, rs, CMux)
+    PROCESS (clk, dataIn, reset, rd, AMux, rs, CMux, rr, io, ALU)
     BEGIN
         IF reset = '0' THEN
             dataMemoryOut <= (OTHERS => '0');
 
-            set_CC <= '0';
             PCR <= "0000";
             Op1 <= "00";
             Op2 <= "00";
@@ -86,7 +85,6 @@ BEGIN
 
         --status bits
         IF to_integer(unsigned(ALU)) > 3 THEN -- set CC active since ANDCC and ORCC are Operations changing the CC
-            set_CC <= '1';
             CC_N <= ALU_output_with_carry(31);
 
             IF ALU_output_with_carry(31 DOWNTO 0) = (31 DOWNTO 0 => '0') THEN
@@ -103,22 +101,21 @@ BEGIN
 
             CC_C <= ALU_output_with_carry(32);
         ELSE
-            set_CC <= '0';
             PCR <= (OTHERS => '-');
         END IF;
         --
 
         --Multiplexers
         IF AMux = '1' THEN
-            Current_A <= rs;
+            Current_A <= rd;
         ELSE
-            Current_A <= rs1;
+            Current_A <= "0000";
         END IF;
 
         IF CMux = '1' THEN
-            Current_C <= rd;
+            Current_C <= rs;
         ELSE
-            Current_C <= rd1;
+            Current_C <= "0000";
         END IF;
         --
 
@@ -141,12 +138,10 @@ BEGIN
             rd1 <= IR(9 DOWNTO 6);
         END IF;
         --
-
-        
-        IF rd = '0' THEN
-            BusC <= ALU_output_with_carry(31 DOWNTO 0);
-        ELSE
+        IF dataIn /= BusC THEN
             BusC <= dataIn;
+        ELSE
+            BusC <= ALU_output_with_carry(31 DOWNTO 0);
         END IF;
 
         dataMemoryOut <= BusA;

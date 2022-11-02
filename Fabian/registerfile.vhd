@@ -9,7 +9,8 @@ ENTITY registerfile IS
         Current_C : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
         Current_A : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
         BusA : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-        IR : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+        IR : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+        PC : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
     );
 END ENTITY registerfile;
 
@@ -49,12 +50,13 @@ BEGIN
         IF reset = '0' THEN
             BusA <= (31 DOWNTO 0 => '0');
             IR <= (31 DOWNTO 0 => '0');
-            --reg_file <= (OTHERS => (OTHERS => '0'));
+          --  reg_file <= (OTHERS => (OTHERS => '0'));
         END IF;
         --ELSIF rising_edge(clk) THEN
         BusA <= reg_file(to_integer(unsigned(Current_A)));
 
-        IR <= reg_file(15); --Register 23 is instruction register
+        PC <= reg_file(14); --Register 14 is program counter
+        IR <= reg_file(15); --Register 15 is instruction register
         --  END IF;
     END PROCESS;
 END ARCHITECTURE bhv;
