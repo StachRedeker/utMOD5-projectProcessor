@@ -10,11 +10,12 @@ addcc %r5, -1, %r5
 st %r5, [C]
 bneg ending
 
-add %r2, %r3, %r3			! %r10 we use to make a backup of the value
-add %r1, %r3, %r3
+and %r0, %r3, %r3			! clear reg3
+add %r2, %r3, %r3			! adds %r1 to %r2 and stores in %r3
+add %r1, %r3, %r3			! ^^^^
 
 and %r0, %r1, %r1			! clear reg1
-add %r2, %r1, %r1
+add %r2, %r1, %r1			! stores %r2 in %r1
 
 and %r0, %r2, %r2			! clear reg2
 add %r3, %r2, %r2       		! %r2 will contain the result
@@ -32,7 +33,7 @@ ba display
 
 display: halt             	! display the result
 
-C: 15                     		! how many times we should run the function
+C: 15                     	! how many times we should run the function
 H: 0                     		! H = 0, not halve; H = 1, halve 
 
 .end

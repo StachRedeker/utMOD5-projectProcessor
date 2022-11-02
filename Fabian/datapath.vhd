@@ -14,7 +14,7 @@ ENTITY datapath IS
         CMux : IN STD_LOGIC;
         rd : IN STD_LOGIC;
         -- wr : IN STD_LOGIC;
-        F : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+        ALU : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
 
         -- to the control unit
         set_CC : OUT STD_LOGIC;
@@ -24,7 +24,8 @@ ENTITY datapath IS
         --  bit13 : OUT STD_LOGIC;
 
         dataOut : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-        AddressOut : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+        AddressOut : OUT STD_LOGIC_VECTOR(31 DOWNTO 0) -- to memory
+        b : OUT STD_LOGIC_VECTOR;
     );
 END ENTITY datapath;
 
@@ -72,7 +73,7 @@ BEGIN
 
         --ALU WORKING
         ALU_output_with_carry(32) <= '0'; -- default case
-        CASE F IS
+        CASE ALU IS
             WHEN "0000" => ALU_output_with_carry (31 DOWNTO 0) <= BusA AND BusC; --ANDCC
             WHEN "0001" => ALU_output_with_carry (31 DOWNTO 0) <= BusA OR BusC; --ORCC
             WHEN "0011" => ALU_output_with_carry <= STD_LOGIC_VECTOR(resize(signed(BusA), 33) + signed(BusC)); --ADD

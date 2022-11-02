@@ -1,0 +1,90 @@
+{C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory_entity/memory.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Joost\ModelSim\memory_entity\memory.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package utilities
+-- Compiling entity memory
+-- Compiling architecture structure of memory
+
+} {} {}} {C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory/memory.vhd} {0 {vcom -work work -2002 -explicit -stats=none {C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory_entity/memory.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity memory
+-- Compiling architecture structure of memory
+** Error: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory_entity/memory.vhd(22): (vcom-1192) Array length is 128; aggregate length is 1.
+** Error: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory_entity/memory.vhd(49): VHDL Compiler exiting
+** Warning: (vcom-6) -- Waiting for lock by "Joost Buursink@LAPTOP-1EO2FFIG, pid = 12620
+". Lockfile is "C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory/work/_lock".
+** Warning: (vcom-6) -- Waiting for lock by "Joost Buursink@LAPTOP-1EO2FFIG, pid = 12620
+". Lockfile is "C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory/work/_lock".
+** Warning: (vcom-6) -- Waiting for lock by "Joost Buursink@LAPTOP-1EO2FFIG, pid = 12620
+". Lockfile is "C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory/work/_lock".
+** Warning: (vcom-6) -- Waiting for lock by "Joost Buursink@LAPTOP-1EO2FFIG, pid = 12620
+". Lockfile is "C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory/work/_lock".
+** Warning: (vcom-6) -- Waiting for lock by "Joost Buursink@LAPTOP-1EO2FFIG, pid = 12620
+". Lockfile is "C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory/work/_lock".
+** Warning: (vcom-6) -- Waiting for lock by "Joost Buursink@LAPTOP-1EO2FFIG, pid = 12620
+". Lockfile is "C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory/work/_lock".
+** Warning: (vcom-6) -- Waiting for lock by "Joost Buursink@LAPTOP-1EO2FFIG, pid = 12620
+". Lockfile is "C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory/work/_lock".
+** Warning: (vcom-6) -- Waiting for lock by "Joost Buursink@LAPTOP-1EO2FFIG, pid = 12620
+". Lockfile is "C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory/work/_lock".
+** Warning: (vcom-6) -- Waiting for lock by "Joost Buursink@LAPTOP-1EO2FFIG, pid = 12620
+". Lockfile is "C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory/work/_lock".
+** Warning: (vcom-6) -- Waiting for lock by "Joost Buursink@LAPTOP-1EO2FFIG, pid = 12620
+". Lockfile is "C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory/work/_lock".
+** Warning: (vcom-6) -- Waiting for lock by "Joost Buursink@LAPTOP-1EO2FFIG, pid = 12620
+". Lockfile is "C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory/work/_lock".
+** Warning: (vcom-6) -- Waiting for lock by "Joost Buursink@LAPTOP-1EO2FFIG, pid = 12620
+". Lockfile is "C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory/work/_lock".
+** Warning: (vcom-6) -- Waiting for lock by "Joost Buursink@LAPTOP-1EO2FFIG, pid = 12620
+". Lockfile is "C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory/work/_lock".
+** Warning: (vcom-6) -- Waiting for lock by "Joost Buursink@LAPTOP-1EO2FFIG, pid = 12620
+". Lockfile is "C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory/work/_lock".
+** Warning: (vcom-6) -- Waiting for lock by "Joost Buursink@LAPTOP-1EO2FFIG, pid = 12620
+". Lockfile is "C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory/work/_lock".
+** Warning: (vcom-6) -- Waiting for lock by "Joost Buursink@LAPTOP-1EO2FFIG, pid = 12620
+". Lockfile is "C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory/work/_lock".
+** Warning: (vcom-6) -- Waiting for lock by "Joost Buursink@LAPTOP-1EO2FFIG, pid = 12620
+". Lockfile is "C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory/work/_lock".
+** Warning: (vcom-6) -- Waiting for lock by "Joost Buursink@LAPTOP-1EO2FFIG, pid = 12620
+". Lockfile is "C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory/work/_lock".
+** Warning: (vcom-6) -- Waiting for lock by "Joost Buursink@LAPTOP-1EO2FFIG, pid = 12620
+". Lockfile is "C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory/work/_lock".
+** Warning: (vcom-6) -- Waiting for lock by "Joost Buursink@LAPTOP-1EO2FFIG, pid = 12620
+". Lockfile is "C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory/work/_lock".
+** Warning: (vcom-6) -- Waiting for lock by "Joost Buursink@LAPTOP-1EO2FFIG, pid = 12620
+". Lockfile is "C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory/work/_lock".
+** Warning: (vcom-6) -- Waiting for lock by "Joost Buursink@LAPTOP-1EO2FFIG, pid = 12620
+". Lockfile is "C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory/work/_lock".
+** Warning: (vcom-6) -- Waiting for lock by "Joost Buursink@LAPTOP-1EO2FFIG, pid = 12620
+". Lockfile is "C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory/work/_lock".
+** Warning: (vcom-6) -- Waiting for lock by "Joost Buursink@LAPTOP-1EO2FFIG, pid = 12620
+". Lockfile is "C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory/work/_lock".
+** Warning: (vcom-6) -- Waiting for lock by "Joost Buursink@LAPTOP-1EO2FFIG, pid = 12620
+". Lockfile is "C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory/work/_lock".
+** Warning: (vcom-6) -- Waiting for lock by "Joost Buursink@LAPTOP-1EO2FFIG, pid = 12620
+". Lockfile is "C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory/work/_lock".
+** Warning: (vcom-6) -- Waiting for lock by "Joost Buursink@LAPTOP-1EO2FFIG, pid = 12620
+". Lockfile is "C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory/work/_lock".
+** Warning: (vcom-6) -- Waiting for lock by "Joost Buursink@LAPTOP-1EO2FFIG, pid = 12620
+". Lockfile is "C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory/work/_lock".
+-- Giving up waiting on lock. Lockfile is "C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/ModelSim/memory/work/_lock".
+** Error: VHDL Compiler exiting
+
+} {9.0 11.0 68.0 69.0} {}} {C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Emil/utilities.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Emil/utilities.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling package utilities
+-- Compiling package body utilities
+-- Loading package utilities
+
+} {} {}}

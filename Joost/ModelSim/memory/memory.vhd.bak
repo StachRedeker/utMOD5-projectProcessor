@@ -14,6 +14,7 @@ ENTITY memory IS
 END memory;
 
 ARCHITECTURE structure OF memory IS
+TYPE code_store IS ARRAY (127 DOWNTO 0, 3 DOWNTO 0) OF std_logic_vector(7 DOWNTO 0);
 TYPE memory_store IS ARRAY (127 DOWNTO 0, 3 DOWNTO 0) OF std_logic_vector(7 DOWNTO 0);
 SIGNAL memory_store_adr : memory_store;
 BEGIN
@@ -21,20 +22,19 @@ BEGIN
 	BEGIN
 	IF reset = '0' THEN
 		dataOut <= (OTHERS =>'0');
-		-- set memory to only the program
-		-- change program counter to 0
+		-- memory =
 	ELSIF rising_edge(clk) THEN
 		IF (b='1') AND (rd='1') THEN -- stores the selected memory adress in the 8 least significant bits of dataOut
 			dataOut(7 DOWNTO 0) <= memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), to_integer(unsigned(address(1 DOWNTO 0))));
 			dataOut(31 DOWNTO 8) <= (OTHERS => '0');
-		ELSIF (b='1') AND (wr='1') THEN -- stores the 8 least significant bits of dataIn in the selected adress.
+		ELSIF (b='1') AND (wr='1') THEN -- stores the 8 least significant bits of dataIn in memory at the selected adress.
 			memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), to_integer(unsigned(address(1 DOWNTO 0)))) <= dataIn(7 DOWNTO 0);		
-		ELSIF (b='0') AND (rd='1') THEN
+		ELSIF (b='0') AND (rd='1') THEN -- stores an entire word from memory in dataOut
 			dataOut(31 DOWNTO 24) <= memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 0);
 			dataOut(23 DOWNTO 16) <= memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 1);
 			dataOut(15 DOWNTO 8) <= memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 2);
 			dataOut(7 DOWNTO 0) <= memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 3);
-		ELSIF (b='0') AND (wr='1') THEN
+		ELSIF (b='0') AND (wr='1') THEN -- stores dataIn in 4 sequential bytes in memory
 			memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 0) <= dataIn(31 DOWNTO 24);
 			memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 1) <= dataIn(23 DOWNTO 16);
 			memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 2) <= dataIn(15 DOWNTO 8);
