@@ -84,3 +84,11 @@ The minimal instruction length to cover all the wanted instructions is 17 bits. 
 | Op1 | Op2 | unused 1s (16 bits) |
 | :--  |:-- |:-- |
 | 11 | 11 | 1111111111111111 |
+
+## Register file structure
+|Register 0-15 are general purpose registers|
+|Register 16 is Program counter|
+|Register 17-20 are temporary registers|
+|Register 21 is Memory Address Register|
+|Register 22 is Memory Data Register|
+|Register 23 is Instruction Register| 

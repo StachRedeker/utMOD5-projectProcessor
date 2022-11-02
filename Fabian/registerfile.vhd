@@ -49,7 +49,7 @@ BEGIN
         IF reset = '0' THEN
             BusA <= (31 DOWNTO 0 => '0');
             IR <= (31 DOWNTO 0 => '0');
-            reg_file <= (OTHERS => (OTHERS => '0'));
+            --reg_file <= (OTHERS => (OTHERS => '0'));
         END IF;
         --ELSIF rising_edge(clk) THEN
         BusA <= reg_file(to_integer(unsigned(SelA)));
