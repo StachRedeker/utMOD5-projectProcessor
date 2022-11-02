@@ -144,6 +144,10 @@ H: 0                     		! H = 0, not halve; H = 1, halve
 .end
 ```
 
+## FSM controller
+
+![FSM](Stach/FSM.png)
+
 ## Table of used 'global' signals
 The following signals are used between multiple processes. To avoid confusion, we try to give the signals the same name in every process.
 | Used variables        | Input         | Output    | Small description     |
