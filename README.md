@@ -51,7 +51,7 @@ The minimal instruction length to cover all the wanted instructions is 17 bits. 
 | stb | 11 |
 
 ### Arithmetic instructions
-| Op1 | Op2 | cc | rr | %rd (4 bits) | sim10 (10 bits)
+| Op1 | Op2 | cc | rr | %rd (4 bits) | simm10 (10 bits)
 | :--  |:-- |:--  |:-- | :-- | :-- |
 | 10 | ZZ | C | 0 | RRRR | ssssssssss |
 
