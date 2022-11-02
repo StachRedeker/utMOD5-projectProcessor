@@ -7,7 +7,7 @@ force AMux '1'
 force C "10111"
 force CMux '0'
 force rd '1'
-force F "0000"
+force ALU "100"
 run 1ns 
 force CMux '1'
 force C "00100"
@@ -18,7 +18,7 @@ force dataIn "00010100100000000100000111000001"
 force A "00100"
 
 force rd '1'
-force F "0001"
+force ALU "101"
 run 150ns
 force A "00010"
 run 50ns

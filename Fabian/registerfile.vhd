@@ -6,8 +6,8 @@ ENTITY registerfile IS
         clk : IN STD_LOGIC;
         reset : IN STD_LOGIC; -- button 0 of FPGA
         BusC : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-        SelC : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
-        SelA : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
+        Current_C : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+        Current_A : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
         BusA : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
         IR : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
     );
@@ -15,7 +15,7 @@ END ENTITY registerfile;
 
 ARCHITECTURE bhv OF registerfile IS
 
-    TYPE registerfile_type IS ARRAY (23 DOWNTO 0) OF STD_LOGIC_VECTOR(31 DOWNTO 0);
+    TYPE registerfile_type IS ARRAY (15 DOWNTO 0) OF STD_LOGIC_VECTOR(31 DOWNTO 0);
     SIGNAL reg_file : registerfile_type := (OTHERS => (OTHERS => '0'));
 
     FUNCTION decoder(s : STD_LOGIC_VECTOR) RETURN NATURAL IS
@@ -37,14 +37,14 @@ BEGIN
     BEGIN
         --  IF rising_edge(clk) THEN
         reg_file(0) <= (OTHERS => '0'); --%r0 is constant zero
-        index := decoder(SelC);
+        index := decoder(Current_C);
         IF index > 0 THEN
             reg_file(index) <= BusC;
         END IF;
         -- END IF;
     END PROCESS registers;
 
-    PROCESS (clk, BusC, SelC, SelA)
+    PROCESS (clk, BusC, Current_C, Current_A)
     BEGIN
         IF reset = '0' THEN
             BusA <= (31 DOWNTO 0 => '0');
@@ -52,9 +52,9 @@ BEGIN
             --reg_file <= (OTHERS => (OTHERS => '0'));
         END IF;
         --ELSIF rising_edge(clk) THEN
-        BusA <= reg_file(to_integer(unsigned(SelA)));
+        BusA <= reg_file(to_integer(unsigned(Current_A)));
 
-        IR <= reg_file(23); --Register 23 is instruction register
+        IR <= reg_file(15); --Register 23 is instruction register
         --  END IF;
     END PROCESS;
 END ARCHITECTURE bhv;
