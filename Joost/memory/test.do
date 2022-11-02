@@ -33,3 +33,9 @@ force rd 1
 force wr 0
 run 200 ns
 
+#read word at adress 0 should show 00ABCDEF
+force address 000000010
+force b 0
+force rd 1
+force wr 0
+run 200 ns
