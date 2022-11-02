@@ -12,19 +12,6 @@ This documentation file is part of the final project of Digital Hardware in modu
     
 ## Introduction
 
-## Table of used 'global' signals
-The following signals are used between multiple processes. To avoid confusion, we try to give the signals the same name in every process.
-| Used variables        | Input         | Output    | Small description     |
-| :--                   |:--            |:--        |:--                    |
-| clk                   |Memory         |           |clock of the FPGA      |
-| reset                 |Memory               |           |button0 of the FPGA    |
-| b         | Memory               |           | Decides if the load/store command is per byte|
-| rd|Memory|| Decides if the memory should place data at dataOut|
-| wr|Memory|| Decides if the memory should take data from dataIn|
-| address|Memory||Adress of the memory used in rd and wr|
-| dataIn|Memory||Input data of the memory|
-| dataOut||Memory|Output data of the memory|
-
 
 
 ## Instruction Format
@@ -145,3 +132,16 @@ H: 0                     		! H = 0, not halve; H = 1, halve
 
 .end
 ```
+
+## Table of used 'global' signals
+The following signals are used between multiple processes. To avoid confusion, we try to give the signals the same name in every process.
+| Used variables        | Input         | Output    | Small description     |
+| :--                   |:--            |:--        |:--                    |
+| clk                   |Memory         |           |clock of the FPGA      |
+| reset                 |Memory               |           |button0 of the FPGA    |
+| b         | Memory               |           | Decides if the load/store command is per byte|
+| rd|Memory|| Decides if the memory should place data at dataOut|
+| wr|Memory|| Decides if the memory should take data from dataIn|
+| address|Memory||Adress of the memory used in rd and wr|
+| dataIn|Memory||Input data of the memory|
+| dataOut||Memory|Output data of the memory|
