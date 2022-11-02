@@ -54,7 +54,7 @@ The minimal instruction length to cover all the wanted instructions is 17 bits. 
 | stb | 11 |
 
 ### Arithmetic instructions
-| Op1 | Op2 | cc | rr | %rd (4 bits) | sim11 (10 bits)
+| Op1 | Op2 | cc | rr | %rd (4 bits) | sim10 (10 bits)
 | :--  |:-- |:--  |:-- | :-- | :-- |
 | 10 | ZZ | C | 0 | RRRR | ssssssssss |
 
@@ -77,12 +77,12 @@ The minimal instruction length to cover all the wanted instructions is 17 bits. 
 #### Display: displays a register value on the seven segement displays
 | Op1 | Op2 | %rs (4 bits) | unused (12 bits) |
 | :--  |:-- |:--  |:-- |
-| 11 | 00 | RRRR | 00000000 |
+| 11 | 00 | RRRR | 000000000000 |
 
 #### readIO: reads the current state of the switches and stores it in a register
 | Op1 | Op2 | %rd (4 bits) | unused (12 bits) |
 | :--  |:-- |:--  |:-- |
-| 11 | 01 | RRRR | 00000000 |
+| 11 | 01 | RRRR | 000000000000 |
 
 #### halt: stops the program
 | Op1 | Op2 | unused 1s (16 bits) |
