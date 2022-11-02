@@ -4,11 +4,17 @@
 This documentation file is part of the final project of Digital Hardware in module 5 of Electrical Engineering, University of Twente.
 
 ## Table of contents
-  * [Table of used variables](#table-of-used-variables)
+  * [Introduction](#introduction)
   * [Instruction Format](#instruction-format)
     + [Branch instructions](#branch-instructions)
     + [Memory instructions](#memory-instructions)
     + [Arithmetic instructions](#arithmetic-instructions)
+    + [Miscellaneous instructions](#miscellaneous-instructions)
+      - [Display: displays a register value on the seven segement displays](#display--displays-a-register-value-on-the-seven-segement-displays)
+      - [readIO: reads the current state of the switches and stores it in a register](#readio--reads-the-current-state-of-the-switches-and-stores-it-in-a-register)
+      - [halt: stops the program](#halt--stops-the-program)
+  * [Example application](#example-application)
+  * [Table of used 'global' signals](#table-of-used--global--signals)
     
 ## Introduction
 
