@@ -67,72 +67,73 @@ BEGIN
             CC <= "0000";
             Op <= "00";
             Op3 <= "000000";
-        ELSIF rising_edge(clk) THEN
-
-            --ALU WORKING
-            ALU_output_with_carry(32) <= '0'; -- default case
-            CASE F IS
-                WHEN "0000" => ALU_output_with_carry (31 DOWNTO 0) <= BusA AND BusC; --ANDCC
-                WHEN "0001" => ALU_output_with_carry (31 DOWNTO 0) <= BusA OR BusC; --ORCC
-                WHEN "0011" => ALU_output_with_carry <= STD_LOGIC_VECTOR(resize(signed(BusA), 33) + signed(BusC)); --ADD
-                WHEN "0100" => ALU_output_with_carry (31 DOWNTO 0) <= STD_LOGIC_VECTOR(shift_right(unsigned(BusA), to_integer(unsigned(BusC(4 DOWNTO 0))))); --Shift right
-                WHEN OTHERS => ALU_output_with_carry (31 DOWNTO 0) <= (31 DOWNTO 0 => '0');
-            END CASE;
-            --
-
-            --status bits
-            IF to_integer(unsigned(F)) < 2 THEN -- set CC active since ANDCC and ORCC are Operations changing the CC
-                set_CC <= '1';
-                CC_N <= ALU_output_with_carry(31);
-
-                IF ALU_output_with_carry(31 DOWNTO 0) = (31 DOWNTO 0 => '0') THEN
-                    CC_Z <= '1';
-                ELSE
-                    CC_Z <= '0';
-                END IF;
-
-                IF (BusA(31) = BusC(31)) AND (BusA(31) /= ALU_output_with_carry(31)) THEN
-                    CC_V <= '1';
-                ELSE
-                    CC_V <= '0';
-                END IF;
-
-                CC_C <= ALU_output_with_carry(32);
-            ELSE
-                set_CC <= '0';
-                CC <= (OTHERS => '-');
-            END IF;
-            --
-
-            --Multiplexers
-            IF AMux = '1' THEN
-                SelA <= (rs1);
-            ELSE
-                SelA <= A;
-            END IF;
-
-            IF CMux = '1' THEN
-                SelC <= (rd1);
-            ELSE
-                Selc <= C;
-            END IF;
-            --
-
-            --Instruction register
-            Op <= IR(31 DOWNTO 30);
-            rd1 <= IR(31 DOWNTO 27);
-            Op3 <= IR(24 DOWNTO 19);
-            rs1 <= IR(25 DOWNTO 21);
-            --
-            IF rd = '0' THEN
-                BusC <= ALU_output_with_carry(31 DOWNTO 0);
-            ELSE
-                BusC <= dataIn;
-            END IF;
-
-            dataOut <= BusC;
-            AddressOut <= BusA;
         END IF;
+        --ELSIF rising_edge(clk) THEN
+
+        --ALU WORKING
+        ALU_output_with_carry(32) <= '0'; -- default case
+        CASE F IS
+            WHEN "0000" => ALU_output_with_carry (31 DOWNTO 0) <= BusA AND BusC; --ANDCC
+            WHEN "0001" => ALU_output_with_carry (31 DOWNTO 0) <= BusA OR BusC; --ORCC
+            WHEN "0011" => ALU_output_with_carry <= STD_LOGIC_VECTOR(resize(signed(BusA), 33) + signed(BusC)); --ADD
+            WHEN "0100" => ALU_output_with_carry (31 DOWNTO 0) <= STD_LOGIC_VECTOR(shift_right(unsigned(BusA), to_integer(unsigned(BusC(4 DOWNTO 0))))); --Shift right
+            WHEN OTHERS => ALU_output_with_carry (31 DOWNTO 0) <= (31 DOWNTO 0 => '0');
+        END CASE;
+        --
+
+        --status bits
+        IF to_integer(unsigned(F)) < 2 THEN -- set CC active since ANDCC and ORCC are Operations changing the CC
+            set_CC <= '1';
+            CC_N <= ALU_output_with_carry(31);
+
+            IF ALU_output_with_carry(31 DOWNTO 0) = (31 DOWNTO 0 => '0') THEN
+                CC_Z <= '1';
+            ELSE
+                CC_Z <= '0';
+            END IF;
+
+            IF (BusA(31) = BusC(31)) AND (BusA(31) /= ALU_output_with_carry(31)) THEN
+                CC_V <= '1';
+            ELSE
+                CC_V <= '0';
+            END IF;
+
+            CC_C <= ALU_output_with_carry(32);
+        ELSE
+            set_CC <= '0';
+            CC <= (OTHERS => '-');
+        END IF;
+        --
+
+        --Multiplexers
+        IF AMux = '1' THEN
+            SelA <= (rs1);
+        ELSE
+            SelA <= A;
+        END IF;
+
+        IF CMux = '1' THEN
+            SelC <= (rd1);
+        ELSE
+            Selc <= C;
+        END IF;
+        --
+
+        --Instruction register
+        Op <= IR(31 DOWNTO 30);
+        rd1 <= IR(31 DOWNTO 27);
+        Op3 <= IR(24 DOWNTO 19);
+        rs1 <= IR(25 DOWNTO 21);
+        --
+        IF rd = '0' THEN
+            BusC <= ALU_output_with_carry(31 DOWNTO 0);
+        ELSE
+            BusC <= dataIn;
+        END IF;
+
+        dataOut <= BusC;
+        AddressOut <= BusA;
+        --END IF;
     END PROCESS;
 
 END structure;

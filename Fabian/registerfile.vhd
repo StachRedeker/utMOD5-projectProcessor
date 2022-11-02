@@ -35,13 +35,13 @@ BEGIN
     registers : PROCESS (clk)
         VARIABLE index : NATURAL;
     BEGIN
-        IF rising_edge(clk) THEN
-            reg_file(0) <= (OTHERS => '0'); --%r0 is constant zero
-            index := decoder(SelC);
-            IF index > 0 THEN
-                reg_file(index) <= BusC;
-            END IF;
+        --  IF rising_edge(clk) THEN
+        reg_file(0) <= (OTHERS => '0'); --%r0 is constant zero
+        index := decoder(SelC);
+        IF index > 0 THEN
+            reg_file(index) <= BusC;
         END IF;
+        -- END IF;
     END PROCESS registers;
 
     PROCESS (clk, BusC, SelC, SelA)
@@ -49,11 +49,12 @@ BEGIN
         IF reset = '0' THEN
             BusA <= (31 DOWNTO 0 => '0');
             IR <= (31 DOWNTO 0 => '0');
-
-        ELSIF rising_edge(clk) THEN
-            BusA <= reg_file(to_integer(unsigned(SelA)));
-
-            IR <= reg_file(23); --Register 23 is instruction register
+            reg_file <= (OTHERS => (OTHERS => '0'));
         END IF;
+        --ELSIF rising_edge(clk) THEN
+        BusA <= reg_file(to_integer(unsigned(SelA)));
+
+        IR <= reg_file(23); --Register 23 is instruction register
+        --  END IF;
     END PROCESS;
 END ARCHITECTURE bhv;
