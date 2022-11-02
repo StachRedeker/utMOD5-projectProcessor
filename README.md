@@ -38,9 +38,13 @@ The minimal instruction length to cover all the wanted instructions is 17 bits. 
 | bneg | 11 |
 
 ### Memory instructions
-| Op1 | Op2 | Address (9 bits) | %rd (4 bits) | unused (3 bits)
-| :--  |:-- |:--  |:-- |:-- |
-| 01 | YY | MMMMMMMMM | RRRR | 000 |
+| Op1 | Op2 | rr | Address (9 bits) | sim6 (6 bits)
+| :--  |:-- |:--  |:-- |:-- | 
+| 01 | YY | 0 | MMMMMMMMM | RRRR | ssssss |
+
+| Op1 | Op2 | rr | Address (9 bits) | %rd/%rs (4 bits) | unused (2 bits)
+| :--  |:-- |:--  |:-- |:-- | :-- |
+| 01 | YY | 1 | MMMMMMMMM | RRRR | 00 |
 
 | Instruction | Op2 |
 | --- | --- |
@@ -50,9 +54,13 @@ The minimal instruction length to cover all the wanted instructions is 17 bits. 
 | stb | 11 |
 
 ### Arithmetic instructions
-| Op1 | Op2 | cc | %rs (4 bits) | %rd (4 bits) | unused (7 bits)
+| Op1 | Op2 | cc | rr | %rd (4 bits) | sim11 (10 bits)
 | :--  |:-- |:--  |:-- | :-- | :-- |
-| 10 | ZZ | C | RRRR | RRRR | 0000000 |
+| 10 | ZZ | C | 0 | RRRR | ssssssssss |
+
+| Op1 | Op2 | cc | rr | %rs (4 bits) | %rd (4 bits) | unused (6 bits)
+| :--  |:-- |:--  |:-- | :-- | :-- | :-- |
+| 10 | ZZ | C | 1 | RRRR | RRRR | 000000 |
 
 | Instruction | Op2 | cc |
 | --- | --- | --- |
