@@ -9,7 +9,7 @@ z2
 cModel Technology
 dC:/Users/joost/OneDrive - University of Twente/Bureaublad/test
 Ememory
-Z0 w1667379739
+Z0 w1667382976
 Z1 DPx4 work 9 utilities 0 22 YlG77eeE:zM8]OFdD9Slb1
 Z2 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
 Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
@@ -23,9 +23,9 @@ VMmVIAH=0>2Qa91];GUA5D1
 !s100 oZX01557=VIjN]ZHgXZJ81
 Z8 OV;C;10.5b;63
 32
-Z9 !s110 1667379742
+Z9 !s110 1667382984
 !i10b 1
-Z10 !s108 1667379742.000000
+Z10 !s108 1667382984.000000
 Z11 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Joost\ModelSim\memory_entity\memory.vhd|
 Z12 !s107 C:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Joost\ModelSim\memory_entity\memory.vhd|
 !i113 1
@@ -37,10 +37,10 @@ R2
 R3
 R4
 DEx4 work 6 memory 0 22 MmVIAH=0>2Qa91];GUA5D1
-l25
+l26
 L21
-VIL2ePJd15McKPKeNCHezj0
-!s100 kSX3Uj3`[Glco=H`DiML23
+V]f]KVem0hKFeOde@_>:PK1
+!s100 >d`jUYTHz[Y9P_W>RIhL@3
 R8
 32
 R9
@@ -66,11 +66,11 @@ VYlG77eeE:zM8]OFdD9Slb1
 R8
 32
 b1
-R9
+Z18 !s110 1667382985
 !i10b 1
 R10
-Z18 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Emil/utilities.vhd|
-Z19 !s107 C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Emil/utilities.vhd|
+Z19 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Emil/utilities.vhd|
+Z20 !s107 C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Emil/utilities.vhd|
 !i113 1
 R13
 R14
@@ -81,15 +81,15 @@ R3
 R4
 l0
 L21
-Z20 V_YWmlZaDJR?]dF4aYo=l10
-Z21 !s100 [T2BcC_on4]BZZczoLU^O3
+Z21 V_YWmlZaDJR?]dF4aYo=l10
+Z22 !s100 [T2BcC_on4]BZZczoLU^O3
 R8
 32
-R9
+R18
 !i10b 1
 R10
-R18
 R19
+R20
 !i113 1
 R13
 R14

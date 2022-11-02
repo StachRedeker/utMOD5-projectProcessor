@@ -8,3 +8,7 @@ force b 0, 1 100 ns
 force rd 0, 1 100 ns
 force wr 1, 0 100 ns
 run 200 ns
+force reset 1
+run 20 ns
+force reset 0
+run 20 ns

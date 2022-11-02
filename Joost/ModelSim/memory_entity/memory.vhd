@@ -22,51 +22,52 @@ ARCHITECTURE structure OF memory IS
 TYPE memory_store IS ARRAY (0 TO 127, 3 DOWNTO 0) OF std_logic_vector(7 DOWNTO 0);
 SIGNAL i,j : integer := 0;
 SIGNAL memory_store_adr : memory_store;
+
 BEGIN
 PROCESS(clk, reset)
-variable temp_line : line;
-variable str : string(8 DOWNTO 1);
-file read_file : text;
+	variable temp_line : line;
+	variable str : string(8 DOWNTO 1);
+	file read_file : text;
+
 	BEGIN
-
 	IF reset = '0' THEN
-
 		dataOut <= (OTHERS =>'0');
-		file_open(read_file, "programs\program.txt", read_mode);
-forloop1:	FOR i IN 0 TO 127 LOOP -- stores the program from the defined file in main memory on reset (this would overwrite any changes thus reseting)
-		IF not endfile(read_file) THEN
-		readline(read_file, temp_line);
-		READ(temp_line, str);
-		testdataOut <= str;
-		ELSE
-		str := "00000000";
+		file_open(read_file, "programs\test.txt", read_mode);
+forloop1: 		FOR i IN 0 TO 127 LOOP -- stores the program from the defined file in main memory on reset (this would overwrite any changes thus reseting)
+				IF not endfile(read_file) THEN
+					readline(read_file, temp_line);
+					READ(temp_line, str);
+					testdataOut <= str;
+				ELSE
+				str := "00000000";
+				END IF;
+forloop2:			FOR j IN 0 TO 3 LOOP
+    					CASE j IS   
+						WHEN 3 => memory_store_adr(i,j) <= hex2bin(str(8 DOWNTO 7));
+						WHEN 2 => memory_store_adr(i,j) <= hex2bin(str(6 DOWNTO 5));
+						WHEN 1 => memory_store_adr(i,j) <= hex2bin(str(4 DOWNTO 3));
+						WHEN 0 => memory_store_adr(i,j) <= hex2bin(str(2 DOWNTO 1));		
+					END CASE;
+				END LOOP forloop2;
+			END LOOP forloop1;
+			file_close(read_file);
+ 		ELSIF rising_edge(clk) THEN
+			IF (b='1') AND (rd='1') THEN -- stores the selected memory adress in the 8 least significant bits of dataOut
+				dataOut(7 DOWNTO 0) <= memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), to_integer(unsigned(address(1 DOWNTO 0))));
+				dataOut(31 DOWNTO 8) <= (OTHERS => '0');
+			ELSIF (b='1') AND (wr='1') THEN -- stores the 8 least significant bits of dataIn in memory at the selected adress.
+				memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), to_integer(unsigned(address(1 DOWNTO 0)))) <= dataIn(7 DOWNTO 0);		
+			ELSIF (b='0') AND (rd='1') THEN -- stores an entire word from memory in dataOut
+				dataOut(31 DOWNTO 24) <= memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 3);
+				dataOut(23 DOWNTO 16) <= memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 2);
+				dataOut(15 DOWNTO 8) <= memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 1);
+				dataOut(7 DOWNTO 0) <= memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 0);
+			ELSIF (b='0') AND (wr='1') THEN -- stores dataIn in 4 sequential bytes in memory
+				memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 3) <= dataIn(31 DOWNTO 24);
+				memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 2) <= dataIn(23 DOWNTO 16);
+				memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 1) <= dataIn(15 DOWNTO 8);
+				memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 0) <= dataIn(7 DOWNTO 0);
+			END IF;
 		END IF;
-forloop2:		FOR j IN 0 TO 3 LOOP
-    			CASE j IS   
-				WHEN 3 => memory_store_adr(i,j) <= hex2bin(str(8 DOWNTO 7));
-				WHEN 2 => memory_store_adr(i,j) <= hex2bin(str(6 DOWNTO 5));
-				WHEN 1 => memory_store_adr(i,j) <= hex2bin(str(4 DOWNTO 3));
-				WHEN 0 => memory_store_adr(i,j) <= hex2bin(str(2 DOWNTO 1));		
-			END CASE;
-			END LOOP forloop2;
-		END LOOP forloop1;
- 	ELSIF rising_edge(clk) THEN
-		IF (b='1') AND (rd='1') THEN -- stores the selected memory adress in the 8 least significant bits of dataOut
-			dataOut(7 DOWNTO 0) <= memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), to_integer(unsigned(address(1 DOWNTO 0))));
-			dataOut(31 DOWNTO 8) <= (OTHERS => '0');
-		ELSIF (b='1') AND (wr='1') THEN -- stores the 8 least significant bits of dataIn in memory at the selected adress.
-			memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), to_integer(unsigned(address(1 DOWNTO 0)))) <= dataIn(7 DOWNTO 0);		
-		ELSIF (b='0') AND (rd='1') THEN -- stores an entire word from memory in dataOut
-			dataOut(31 DOWNTO 24) <= memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 3);
-			dataOut(23 DOWNTO 16) <= memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 2);
-			dataOut(15 DOWNTO 8) <= memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 1);
-			dataOut(7 DOWNTO 0) <= memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 0);
-		ELSIF (b='0') AND (wr='1') THEN -- stores dataIn in 4 sequential bytes in memory
-			memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 3) <= dataIn(31 DOWNTO 24);
-			memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 2) <= dataIn(23 DOWNTO 16);
-			memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 1) <= dataIn(15 DOWNTO 8);
-			memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 0) <= dataIn(7 DOWNTO 0);
-		END IF;
-	END IF;
 	END PROCESS;
 END structure;
