@@ -2,7 +2,7 @@ add wave *
 force clk 0,1 5ns -r 10ns
 force reset '1'
 force dataIn "00001100001000001100000000000001"
-force A "00100"
+force A "00010"
 force AMux '0'
 force C "00100"
 force CMux '0'

@@ -5,7 +5,7 @@ ENTITY datapath IS
     PORT (
         clk : IN STD_LOGIC;
         dataIn : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-        reset : IN STD_LOGIC; -- button 0 of FPGA
+
         -- from the control unit
         A : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
         AMux : IN STD_LOGIC;
@@ -18,8 +18,8 @@ ENTITY datapath IS
         -- to the control unit
         set_CC : OUT STD_LOGIC;
         CC : OUT STD_LOGIC_VECTOR(3 DOWNTO 0); -- N, Z, V, C resp. 3 downto 0
-        Op : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
-        Op3 : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
+        op : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
+        op3 : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
         --  bit13 : OUT STD_LOGIC;
 
         dataOut : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -41,11 +41,10 @@ ARCHITECTURE structure OF datapath IS
         );
     END COMPONENT registerfile;
 
-    SIGNAL BusA : STD_LOGIC_VECTOR(31 DOWNTO 0) := (31 DOWNTO 0 => '0');
-    SIGNAL BusC : STD_LOGIC_VECTOR(31 DOWNTO 0) := (31 DOWNTO 0 => '0');
-    SIGNAL IR : STD_LOGIC_VECTOR(31 DOWNTO 0) := (31 DOWNTO 0 => '0');
-    SIGNAL SelA, SelC : STD_LOGIC_VECTOR(4 DOWNTO 0) := (4 DOWNTO 0 => '0');
-    SIGNAL ALU_output_with_carry : STD_LOGIC_VECTOR(32 DOWNTO 0) := (32 DOWNTO 0 => '0'); -- an additional bit for the carry
+    SIGNAL BusA, BusC, IR : STD_LOGIC_VECTOR(31 DOWNTO 0);
+    SIGNAL SelA, SelC : STD_LOGIC_VECTOR(4 DOWNTO 0);
+
+    SIGNAL ALU_output_with_carry : STD_LOGIC_VECTOR(32 DOWNTO 0); -- an additional bit for the carry
     ALIAS CC_N : STD_LOGIC IS CC(3);
     ALIAS CC_Z : STD_LOGIC IS CC(2);
     ALIAS CC_V : STD_LOGIC IS CC(1);
@@ -136,4 +135,4 @@ BEGIN
         --END IF;
     END PROCESS;
 
-END structure;
+END ARCHITECTURE structure;
