@@ -44,6 +44,7 @@ ARCHITECTURE structure OF datapath IS
     END COMPONENT registerfile;
 
     SIGNAL BusA, BusC, IR : STD_LOGIC_VECTOR(31 DOWNTO 0);
+    -- SIGNAL lastDataIn : STD_LOGIC_VECTOR(31 DOWNTO 0);
     SIGNAL Current_A, Current_C : STD_LOGIC_VECTOR(3 DOWNTO 0);
 
     SIGNAL ALU_output_with_carry : STD_LOGIC_VECTOR(32 DOWNTO 0); -- an additional bit for the carry
@@ -138,12 +139,12 @@ BEGIN
             rd1 <= IR(9 DOWNTO 6);
         END IF;
         --
-        IF dataIn /= BusC THEN
-            BusC <= dataIn;
-        ELSE
-            BusC <= ALU_output_with_carry(31 DOWNTO 0);
-        END IF;
-
+        -- IF dataIn /= lastDataIn THEN
+        BusC <= dataIn;
+        -- ELSE
+        --      BusC <= ALU_output_with_carry(31 DOWNTO 0);
+        -- END IF;
+        -- lastDataIn <= DataIn;
         dataMemoryOut <= BusA;
         --END IF;
     END PROCESS;
