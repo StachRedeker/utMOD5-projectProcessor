@@ -9,8 +9,11 @@ This documentation file is part of the final project of Digital Hardware in modu
     + [Branch instructions](#branch-instructions)
     + [Memory instructions](#memory-instructions)
     + [Arithmetic instructions](#arithmetic-instructions)
+    
+## Introduction
 
-## Table of used variables
+## Table of used 'global' signals
+The following signals are used between multiple processes. To avoid confusion, we try to give the signals the same name in every process.
 | Used variables        | Input         | Output    | Small description     |
 | :--                   |:--            |:--        |:--                    |
 | clk                   |Memory         |           |clock of the FPGA      |
@@ -84,3 +87,61 @@ The minimal instruction length to cover all the wanted instructions is 17 bits. 
 | Op1 | Op2 | unused 1s (16 bits) |
 | :--  |:-- |:-- |
 | 11 | 11 | 1111111111111111 |
+
+## Example application
+The processor is able to compute the Fibonacci sequence. The Fibonacci sequence can be defined in assembly as:
+```assembly
+.begin
+.org 0
+add %r0, %r0, %r1
+add %r0, 1, %r2
+fun: add %r1, %r2, %r3
+add %r0, %r2, %r1
+add %r0, %r3, %r2
+ba fun
+.end
+```
+However, to showcase the full potential of our product, we designed an extended Fibonacci application that makes use of the large majority of the functionaility of our instruction set. Also, observe that a two address machine is not able to handle instructions that use three registers. Hence, our application is rewritten such that it only uses at maximum two registers per instruction.
+
+The example program is able to compute the nth Fibonacci number, where n is inputted by the user using the onboard switches. The application can also halve the result, if the user requires so.
+```assembly
+.begin					
+.org 0						
+							
+ld [H], %r4               	! loads whether or not we want half of the result
+add %r2, 1, %r2
+add %r6, 1, %r6 			! %r6 will contain a permanent 1
+
+start: ld [C], %r5		! keeps track of the iterations
+addcc %r5, -1, %r5
+st %r5, [C]
+bneg ending
+
+and %r0, %r3, %r3			! clear reg3
+add %r2, %r3, %r3			! adds %r1 to %r2 and stores in %r3
+add %r1, %r3, %r3			! ^^^^
+
+and %r0, %r1, %r1			! clear reg1
+add %r2, %r1, %r1			! stores %r2 in %r1
+
+and %r0, %r2, %r2			! clear reg2
+add %r3, %r2, %r2       		! %r2 will contain the result
+ba start
+
+ending: orcc %r4, %r0, %r0	! check if we want the full result
+be display
+andcc %r4, %r6, %r6	 	! check if we want half of the result
+bne halving
+             
+
+halving: srl %r2, 1, %r2		! divide the result by 2 using a shift right
+ba display
+
+
+display: halt             	! display the result
+
+C: 15                     	! how many times we should run the function
+H: 0                     		! H = 0, not halve; H = 1, halve 
+
+.end
+```
