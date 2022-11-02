@@ -4,30 +4,23 @@
 This documentation file is part of the final project of Digital Hardware in module 5 of Electrical Engineering, University of Twente.
 
 ## Table of contents
-  * [Table of used variables](#table-of-used-variables)
-  * [Instruction Format](#instruction-format)
+  * [Introduction](#introduction)
+  * [Instruction format](#instruction-format)
     + [Branch instructions](#branch-instructions)
     + [Memory instructions](#memory-instructions)
     + [Arithmetic instructions](#arithmetic-instructions)
+    + [Miscellaneous instructions](#miscellaneous-instructions)
+      - [Display: displays a register value on the seven segement displays](#display--displays-a-register-value-on-the-seven-segement-displays)
+      - [readIO: reads the current state of the switches and stores it in a register](#readio--reads-the-current-state-of-the-switches-and-stores-it-in-a-register)
+      - [halt: stops the program](#halt--stops-the-program)
+  * [Example application](#example-application)
+  * [Table of used 'global' signals](#table-of-used--global--signals)
     
 ## Introduction
 
-## Table of used 'global' signals
-The following signals are used between multiple processes. To avoid confusion, we try to give the signals the same name in every process.
-| Used variables        | Input         | Output    | Small description     |
-| :--                   |:--            |:--        |:--                    |
-| clk                   |Memory         |           |clock of the FPGA      |
-| reset                 |Memory               |           |button0 of the FPGA    |
-| b         | Memory               |           | Decides if the load/store command is per byte|
-| rd|Memory|| Decides if the memory should place data at dataOut|
-| wr|Memory|| Decides if the memory should take data from dataIn|
-| address|Memory||Adress of the memory used in rd and wr|
-| dataIn|Memory||Input data of the memory|
-| dataOut||Memory|Output data of the memory|
 
 
-
-## Instruction Format
+## Instruction format
 
 The minimal instruction length to cover all the wanted instructions is 17 bits. In order to be able to convert the instructions into hexadecimal, we shall use an instruction length of 20 bits.
 
@@ -45,7 +38,7 @@ The minimal instruction length to cover all the wanted instructions is 17 bits. 
 | bneg | 11 |
 
 ### Memory instructions
-| Op1 | Op2 | Address (9 bits) | %rd (4 bits) | unused (3 bits)
+| Op1 | Op2 | Address (9 bits) | %rd/%rs (4 bits) | unused (3 bits)
 | :--  |:-- |:--  |:-- |:-- |
 | 01 | YY | MMMMMMMMM | RRRR | 000 |
 
@@ -57,9 +50,13 @@ The minimal instruction length to cover all the wanted instructions is 17 bits. 
 | stb | 11 |
 
 ### Arithmetic instructions
-| Op1 | Op2 | cc | %rs (4 bits) | %rd (4 bits) | unused (7 bits)
+| Op1 | Op2 | cc | rr | %rd (4 bits) | sim10 (10 bits)
 | :--  |:-- |:--  |:-- | :-- | :-- |
-| 10 | ZZ | C | RRRR | RRRR | 0000000 |
+| 10 | ZZ | C | 0 | RRRR | ssssssssss |
+
+| Op1 | Op2 | cc | rr | %rs (4 bits) | %rd (4 bits) | unused (6 bits)
+| :--  |:-- |:--  |:-- | :-- | :-- | :-- |
+| 10 | ZZ | C | 1 | RRRR | RRRR | 000000 |
 
 | Instruction | Op2 | cc |
 | --- | --- | --- |
@@ -76,12 +73,12 @@ The minimal instruction length to cover all the wanted instructions is 17 bits. 
 #### Display: displays a register value on the seven segement displays
 | Op1 | Op2 | %rs (4 bits) | unused (12 bits) |
 | :--  |:-- |:--  |:-- |
-| 11 | 00 | RRRR | 00000000 |
+| 11 | 00 | RRRR | 000000000000 |
 
 #### readIO: reads the current state of the switches and stores it in a register
 | Op1 | Op2 | %rd (4 bits) | unused (12 bits) |
 | :--  |:-- |:--  |:-- |
-| 11 | 01 | RRRR | 00000000 |
+| 11 | 01 | RRRR | 000000000000 |
 
 #### halt: stops the program
 | Op1 | Op2 | unused 1s (16 bits) |
@@ -145,3 +142,16 @@ H: 0                     		! H = 0, not halve; H = 1, halve
 
 .end
 ```
+
+## Table of used 'global' signals
+The following signals are used between multiple processes. To avoid confusion, we try to give the signals the same name in every process.
+| Used variables        | Input         | Output    | Small description     |
+| :--                   |:--            |:--        |:--                    |
+| clk                   |Memory         |           |clock of the FPGA      |
+| reset                 |Memory               |           |button0 of the FPGA    |
+| b         | Memory               |           | Decides if the load/store command is per byte|
+| rd|Memory|| Decides if the memory should place data at dataOut|
+| wr|Memory|| Decides if the memory should take data from dataIn|
+| address|Memory||Adress of the memory used in rd and wr|
+| dataIn|Memory||Input data of the memory|
+| dataOut||Memory|Output data of the memory|
