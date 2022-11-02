@@ -40,7 +40,7 @@ The minimal instruction length to cover all the wanted instructions is 17 bits. 
 ### Memory instructions
 | Op1 | Op2 | rr | Address (9 bits) | sim6 (6 bits)
 | :--  |:-- |:--  |:-- |:-- | 
-| 01 | YY | 0 | MMMMMMMMM | RRRR | ssssss |
+| 01 | YY | 0 | MMMMMMMMM | ssssss |
 
 | Op1 | Op2 | rr | Address (9 bits) | %rd/%rs (4 bits) | unused (2 bits)
 | :--  |:-- |:--  |:-- |:-- | :-- |
