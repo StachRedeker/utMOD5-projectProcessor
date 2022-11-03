@@ -204,6 +204,11 @@ ELSIF (rising_edge(clk)) AND (halt = '0') AND (ACK_data = '1') AND ((DEBUG /= '1
 ```
 It can be seen that we added two new signals. `DEBUG` is 1 if the debug switch is turned on. `DEBUG_NEXT` is 1 for exactly 1 clock cycle when a user presses the 'next line' button.
 
+#### Debugging_facilitators
+One might wonder how we set `DEBUG_NEXT` to 1 for exactly 1 clock cycle when the user presses the button.
+
+#### Debugging_display
+
 ## Installation and usage
 
 ## Contributions overview
