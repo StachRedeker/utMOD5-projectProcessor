@@ -24,10 +24,10 @@ ARCHITECTURE bhv OF controller IS
 SIGNAL PC : natural := 0;
 SIGNAL address : natural;
 SIGNAL halt : std_logic := '0'; 
---SIGNAL set_CC : std_logic;
---SIGNAL rr : std_logic;
---SIGNAL Op1 : std_logic_vector (1 DOWNTO 0);
---SIGNAL Op2 : std_logic_vector (1 DOWNTO 0);
+--SIGNAL set_CC : std_logic; --can be discarded if this script works
+--SIGNAL rr : std_logic; --can be discarded if this script works
+--SIGNAL Op1 : std_logic_vector (1 DOWNTO 0); --can be discarded if this script works
+--SIGNAL Op2 : std_logic_vector (1 DOWNTO 0); --can be discarded if this script works
 SIGNAL addressfield : std_logic_vector (8 DOWNTO 0);
 BEGIN
 
@@ -39,6 +39,7 @@ VARIABLE set_CC : std_logic;
 VARIABLE rr : std_logic;
 VARIABLE Op1: std_logic_vector (1 DOWNTO 0);
 VARIABLE Op2: std_logic_vector (1 DOWNTO 0);
+VARIABLE cntstop : std_logic;
   BEGIN
 
 IF (reset = '0') THEN
@@ -48,16 +49,18 @@ IF (reset = '0') THEN
 	PC<= 0;
 	address <= 0;
 	halt <= '0'; 
+	cntstop := '0';
 ELSIF (rising_edge(clk)) AND (halt = '0') THEN 
 ------------------------------------------------------------------------Fetch
--- 	IF(NewInstruction = '0') THEN
--- 		address <= PC;--(address of the fetchable instruction)
--- 		MEM <= "001"; --(b = 0; wr = 0; rd = 1)
--- 		rd <= "1111"; --(where to store the address)
--- 		Cmux <= '1';  
--- 		Amux <= '0'; 
+	IF(NewInstruction = '0') THEN
+		address <= PC;--(address of the fetchable instruction)
+		MEM <= "001"; --(b = 0; wr = 0; rd = 1)
+		rd <= "1111"; --(where to store the address)
+		Cmux <= '1';  
+		Amux <= '0'; 
+		cntstop := '0';
 -- ------------------------------------------------------------------------Decode/Execute
--- 	ELSIF (NewInstruction = '1')THEN 
+	ELSIF (NewInstruction = '1') and (cntstop = '0') THEN 
 		Op1 := MemString(19 DOWNTO 18);
 		Op2 := MemString(17 DOWNTO 16);
 		IF (Op1 = "00") THEN --Branch Instructions
@@ -181,19 +184,23 @@ ELSIF (rising_edge(clk)) AND (halt = '0') THEN
 				WHEN "00" => --Display
 						rs <= MemString(15 DOWNTO 12); --output datapath
 						IO <= "01"; --output datapath
+						tempPC := tempPC + 4;
+						PCupdate := tempPCjump + tempPC; 	
+						PC <= PCupdate; --output datapath 
 				WHEN "01" => --ReadI/O
 						rd <= MemString(15 DOWNTO 12); --output datapath
 						IO <= "10"; --output datapath
+						tempPC := tempPC + 4;
+						PCupdate := tempPCjump + tempPC; 	
+						PC <= PCupdate; --output datapath 
 				WHEN "11" => --HALT
 						halt <= '1';
 				WHEN OTHERS => 
 						REPORT "Warning unknown condition" SEVERITY warning;
 			END CASE;	
-			tempPC := tempPC + 4;
-			PCupdate := tempPCjump + tempPC; 	
-			PC <= PCupdate; --output datapath 
 		END IF;
-	-- END IF;	
+		cntstop := '1';
+	END IF;	
 END IF;
 -----------------------------------------------------------------------------
   END PROCESS decode;
