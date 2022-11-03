@@ -196,11 +196,11 @@ In the requirements we stated that we shall implement a debug mode. If the debug
 
 Observe that we are able to pauze a program by stopping the controller in its fetch-decode-execute cycle. In order to accomplish this, we replaced
 ```VHDL
-ELSIF (rising_edge(clk)) AND (halt = '0') THEN 
+ELSIF (rising_edge(clk)) AND (halt = '0') AND (ACK_data = '1') THEN 
 ```
 with
 ```VHDL
-ELSIF (rising_edge(clk)) AND (halt = '0') AND ((DEBUG /= '1') OR (DEBUG_NEXT = '1')) THEN 
+ELSIF (rising_edge(clk)) AND (halt = '0') AND (ACK_data = '1') AND ((DEBUG /= '1') OR (DEBUG_NEXT = '1')) THEN 
 ```
 It can be seen that we added two new signals. `DEBUG` is 1 if the debug switch is turned on. `DEBUG_NEXT` is 1 for exactly 1 clock cycle when a user presses the 'next line' button.
 
