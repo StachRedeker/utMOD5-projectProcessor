@@ -12,11 +12,11 @@ ENTITY datapath IS
         AMux : IN STD_LOGIC;
         rs : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
         CMux : IN STD_LOGIC;
-        rr : IN STD_LOGIC;
         io : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
         ALU : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
 
         -- to the control unit
+	rr : OUT STD_LOGIC;
         PCR : OUT STD_LOGIC_VECTOR(3 DOWNTO 0); -- N, Z, V, C resp. 3 downto 0
         Op1 : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
         Op2 : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
@@ -53,23 +53,30 @@ ARCHITECTURE structure OF datapath IS
     ALIAS CC_V : STD_LOGIC IS PCR(1);
     ALIAS CC_C : STD_LOGIC IS PCR(0);
 
-    SIGNAL rd1, rs1 : STD_LOGIC_VECTOR(3 DOWNTO 0) := (3 DOWNTO 0 => '0');
 BEGIN
 
     reg_file : registerfile
     PORT MAP(clk, reset, BusC, Current_C, Current_A, BusA, IR);
 
-    PROCESS (clk, dataIn, reset, rd, AMux, rs, CMux, rr, io, ALU)
+    PROCESS (clk, reset, dataIn, rd, AMux, rs, CMux, io, ALU)
     BEGIN
         IF reset = '0' THEN
             dataMemoryOut <= (OTHERS => '0');
-
+	    rr <= '0';
             PCR <= "0000";
             Op1 <= "00";
             Op2 <= "00";
-        END IF;
-        --ELSIF rising_edge(clk) THEN
+	ELSIF rising_edge(clk) THEN
 
+        IF Cmux = '1' THEN
+	BusC <= dataIn;
+	ELSE
+	BusC <= ALU_output_with_carry(31 DOWNTO 0);
+	END IF;
+
+	IF Amux = '1' THEN
+	dataMemoryOut <= BusA;
+	END IF;
         --ALU WORKING
         ALU_output_with_carry(32) <= '0'; -- default case
         CASE ALU IS
@@ -107,46 +114,40 @@ BEGIN
         --
 
         --Multiplexers
-        IF AMux = '1' THEN
-            Current_A <= rd;
-        ELSE
-            Current_A <= "0000";
-        END IF;
-
-        IF CMux = '1' THEN
-            Current_C <= rs;
-        ELSE
-            Current_C <= "0000";
-        END IF;
+            Current_A <= rs;
+            Current_C <= rd;
         --
 
-        --Instruction register
+	--Instruction register
         Op1 <= IR(19 DOWNTO 18);
         Op2 <= IR(17 DOWNTO 16);
 
         --Source register
-        IF rr = '1' THEN
-            rs1 <= IR(9 DOWNTO 6);
-        ELSE
-            rs1 <= "0000";
-        END IF;
+      --  IF rr = '1' THEN
+  --          rs1 <= IR(9 DOWNTO 6);
+   --     ELSE
+   --         rs1 <= "0000";
+   --     END IF;
         --
 
         --Destination register
-        IF rr = '1' THEN
-            rd1 <= IR(13 DOWNTO 10);
-        ELSE
-            rd1 <= IR(9 DOWNTO 6);
-        END IF;
+   --     IF rr = '1' THEN
+   --         rd1 <= IR(13 DOWNTO 10);
+   --     ELSE
+   --         rd1 <= IR(9 DOWNTO 6);
+   --     END IF;
         --
         -- IF dataIn /= lastDataIn THEN
-        BusC <= dataIn;
-        -- ELSE
-        --      BusC <= ALU_output_with_carry(31 DOWNTO 0);
-        -- END IF;
-        -- lastDataIn <= DataIn;
-        dataMemoryOut <= BusA;
-        --END IF;
+	IF (Cmux = '1') OR (Amux = '1') OR (Cmux = 'U') OR (Amux = 'U') THEN
+	rr <= '0';
+	ELSE
+	rr <= '1';
+	END IF;
+
+
+
+        END IF;
+        
     END PROCESS;
 
 END ARCHITECTURE structure;

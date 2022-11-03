@@ -1,0 +1,51 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA_lite/18.1
+Econtroller
+Z0 w1667480509
+Z1 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z3 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+Z4 dD:/MOD5/Project/utMOD5-projectProcessor/Stach/controllerWithDebugging
+Z5 8D:/MOD5/Project/utMOD5-projectProcessor/Stach/controllerWithDebugging/controllerWithDebugging.vhd
+Z6 FD:/MOD5/Project/utMOD5-projectProcessor/Stach/controllerWithDebugging/controllerWithDebugging.vhd
+l0
+L5
+V_8]mN>dRN=k8O=lzDB]MZ3
+!s100 <_YV=[m]OhNZh?jc]F@213
+Z7 OV;C;10.5b;63
+32
+Z8 !s110 1667480511
+!i10b 1
+Z9 !s108 1667480511.000000
+Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/MOD5/Project/utMOD5-projectProcessor/Stach/controllerWithDebugging/controllerWithDebugging.vhd|
+Z11 !s107 D:/MOD5/Project/utMOD5-projectProcessor/Stach/controllerWithDebugging/controllerWithDebugging.vhd|
+!i113 1
+Z12 o-work work -2002 -explicit
+Z13 tExplicit 1 CvgOpt 0
+Abhv
+R1
+R2
+R3
+Z14 DEx4 work 10 controller 0 22 _8]mN>dRN=k8O=lzDB]MZ3
+l31
+L25
+V9b[8:P1dSlMFo]4Fn[9X13
+!s100 <IX=6O^1QNn8^W[EM5U9K0
+R7
+32
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13
