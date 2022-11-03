@@ -22,19 +22,6 @@ PACKAGE io IS
     FUNCTION char2sevensegment (inp : CHARACTER) RETURN STD_LOGIC_VECTOR; -- used by to7segdisplay
     FUNCTION disp_overflow(inp : sevensegmentdisptype) RETURN sevensegmentdisptype; -- used by to7segdisplay if content is too large
 
-    FUNCTION switches_value(
-        sw0 : STD_LOGIC;
-        sw1 : STD_LOGIC;
-        sw2 : STD_LOGIC;
-        sw3 : STD_LOGIC;
-        sw4 : STD_LOGIC;
-        sw5 : STD_LOGIC;
-        sw6 : STD_LOGIC;
-        sw7 : STD_LOGIC;
-        sw8 : STD_LOGIC;
-        sw9 : STD_LOGIC
-    ) RETURN INTEGER;
-
 END PACKAGE io;
 
 PACKAGE BODY io IS
@@ -121,34 +108,6 @@ PACKAGE BODY io IS
 
     END displaycontent;
 
-    FUNCTION switches_value(
-        sw0 : STD_LOGIC;
-        sw1 : STD_LOGIC;
-        sw2 : STD_LOGIC;
-        sw3 : STD_LOGIC;
-        sw4 : STD_LOGIC;
-        sw5 : STD_LOGIC;
-        sw6 : STD_LOGIC;
-        sw7 : STD_LOGIC;
-        sw8 : STD_LOGIC;
-        sw9 : STD_LOGIC
-    ) RETURN INTEGER IS
-
-        VARIABLE switches : STD_LOGIC_VECTOR(9 DOWNTO 0); -- try making signal?
-    BEGIN
-
-        switches(0) := sw0;
-        switches(1) := sw1;
-        switches(2) := sw2;
-        switches(3) := sw3;
-        switches(4) := sw4;
-        switches(5) := sw5;
-        switches(6) := sw6;
-        switches(7) := sw7;
-        switches(8) := sw8;
-        switches(9) := sw9;
-
-        RETURN bin2dec(switches);
-
-    END switches_value;
+    
+       
 END PACKAGE BODY io;
