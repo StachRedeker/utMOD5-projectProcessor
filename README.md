@@ -142,13 +142,20 @@ H: 0                     		! H = 0, not halve; H = 1, halve
 ```
 
 ## Parts of the processor
+This chapter gives a brief summary of different processor parts.
 
 ### Controller
+The controller is the brain of our processor. It is able to perform the fetch-decode-excecute cycle. It fetches the instructions from the memory, stores them in the instruction register, and from there, interprets them (decode). After that, the controller sends signals to the other systems in the processor to make sure that the operation gets correctly excecuted.
+
+We opted for a finite state machine (FSM) over microstore because a FSM is easier and more elegant to implement for smaller instruction sets. Although mircostore allows for a more generalizable instruction set, a FSM should suffice in our case.
 
 ![FSM](Stach/FSM.png)
 
 ### Datapath and dataflow
 The following signals are used between multiple processes. To avoid confusion, we try to give the signals the same name in every process.
+
+[THIS TABLE WILL BE REPLACED BY A LINK TO THE EXCEL FILE]
+
 | Used variables        | Input         | Output    | Small description     |
 | :--                   |:--            |:--        |:--                    |
 | clk                   |Memory         |           |clock of the FPGA      |
@@ -174,6 +181,9 @@ The following signals are used between multiple processes. To avoid confusion, w
 ### IO
 
 ### Debugging
+```VHDL
+ELSIF (rising_edge(clk)) AND (halt = '0') AND ((DEBUG /= '1') OR (DEBUG_NEXT = '1')) THEN 
+```
 
 ## Installation and usage
 
