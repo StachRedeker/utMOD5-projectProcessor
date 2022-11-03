@@ -195,6 +195,8 @@ It can be seen that we added two new signals. `DEBUG` is 1 if the debug switch i
 
 ## Installation and usage
 
+## Group members' contributions
+
 ## Future improvements
 
 ## Final words
