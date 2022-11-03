@@ -103,11 +103,11 @@ The example program is able to compute the nth Fibonacci number, where n is inpu
 .begin					
 .org 0						
 							
-ld [H], %r4               	! loads whether or not we want half of the result
+ld [H], %r4               		! loads whether or not we want half of the result
 add %r2, 1, %r2
 add %r6, 1, %r6 			! %r6 will contain a permanent 1
 
-start: ld [C], %r5		! keeps track of the iterations
+start: ld [C], %r5			! keeps track of the iterations
 addcc %r5, -1, %r5
 st %r5, [C]
 bneg ending
@@ -123,9 +123,9 @@ and %r0, %r2, %r2			! clear reg2
 add %r3, %r2, %r2       		! %r2 will contain the result
 ba start
 
-ending: orcc %r4, %r0, %r0	! check if we want the full result
+ending: orcc %r4, %r0, %r0		! check if we want the full result
 be display
-andcc %r4, %r6, %r6	 	! check if we want half of the result
+andcc %r4, %r6, %r6	 		! check if we want half of the result
 bne halving
              
 
@@ -133,9 +133,9 @@ halving: srl %r2, 1, %r2		! divide the result by 2 using a shift right
 ba display
 
 
-display: halt             	! display the result
+display: halt             		! display the result
 
-C: 15                     	! how many times we should run the function
+C: 15                     		! how many times we should run the function
 H: 0                     		! H = 0, not halve; H = 1, halve 
 
 .end
@@ -157,11 +157,11 @@ The following signals are used between multiple processes. To avoid confusion, w
 [LINK TO EXCEL FILE WITH ALL SIGNALS]
 
 #### Registers
-| Registers |
-| :-- |
-| Register 0-13 are general purpose registers |
-| Register 14 is Program counter |
-| Register 15 is Instruction Register | 
+| Register | Function |
+| :-- | :-- |
+| Register 0-13 | general purpose |
+| Register 14 | program counter |
+| Register 15 | instruction register | 
 
 #### ALU and status bits
 
@@ -177,7 +177,6 @@ The DE1-SoC board has 10 switches, 10 LEDs, 4 momentary push buttons, and 6 seve
 | Button 3 | unused |
 | Switch 0-8 | input variables for the program (during normal operation), input memory address (during debugging) |
 | Switch 9 | activate debugging mode |
-
 
 ### Debugging
 
