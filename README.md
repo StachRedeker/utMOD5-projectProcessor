@@ -205,7 +205,7 @@ ELSIF (rising_edge(clk)) AND (halt = '0') AND (ACK_data = '1') AND ((DEBUG /= '1
 It can be seen that we added two new signals. `DEBUG` is 1 if the debug switch is turned on. `DEBUG_NEXT` is 1 for exactly 1 clock cycle when a user presses the 'next line' button.
 
 #### Debugging_facilitators
-One might wonder how we set `DEBUG_NEXT` to 1 for exactly 1 clock cycle when the user presses the button.
+One might wonder how we set `DEBUG_NEXT` to 1 for exactly 1 clock cycle when the user presses the button. The `DEBUG_NEXT` signal shall be an asynchronous input to the controller. Hence, we opted for a dedicated process `debugging_faciliators` that handles this input. 
 
 #### Debugging_display
 
@@ -222,4 +222,5 @@ One might wonder how we set `DEBUG_NEXT` to 1 for exactly 1 clock cycle when the
 
 ## Future improvements
 
-## Final words
+## Conclusion
+During this project, we developed a virtual processor that can be synthesized on the DE1-SoC board. The virtual processor is designed using VHDL and ships with an application that is able to compute the Fibonaaci sequence.
