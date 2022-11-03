@@ -58,7 +58,7 @@ BEGIN
     reg_file : registerfile
     PORT MAP(clk, reset, BusC, Current_C, Current_A, BusA, IR);
 
-    PROCESS (clk, dataIn, reset, rd, AMux, rs, CMux, io, ALU)
+    PROCESS (clk, reset, dataIn, rd, AMux, rs, CMux, io, ALU)
     BEGIN
         IF reset = '0' THEN
             dataMemoryOut <= (OTHERS => '0');
@@ -66,9 +66,17 @@ BEGIN
             PCR <= "0000";
             Op1 <= "00";
             Op2 <= "00";
-        END IF;
-        --ELSIF rising_edge(clk) THEN
+	ELSIF rising_edge(clk) THEN
 
+        IF Cmux = '1' THEN
+	BusC <= dataIn;
+	ELSE
+	BusC <= ALU_output_with_carry(31 DOWNTO 0);
+	END IF;
+
+	IF Amux = '1' THEN
+	dataMemoryOut <= BusA;
+	END IF;
         --ALU WORKING
         ALU_output_with_carry(32) <= '0'; -- default case
         CASE ALU IS
@@ -136,16 +144,10 @@ BEGIN
 	rr <= '1';
 	END IF;
 
-        IF Cmux = '1' THEN
-	BusC <= dataIn;
-	ELSE
-	BusC <= ALU_output_with_carry(31 DOWNTO 0);
-	END IF;
 
-	IF Amux = '1' THEN
-	dataMemoryOut <= BusA;
-	END IF;
-	
+
+        END IF;
+        
     END PROCESS;
 
 END ARCHITECTURE structure;
