@@ -181,9 +181,17 @@ The following signals are used between multiple processes. To avoid confusion, w
 ### IO
 
 ### Debugging
+In the requirements we stated that we shall implement a debug mode. If the debug mode is active, the user should be able to step through the program one line at a time. Also, the user shall be able to load the contents of a memory adress and display it using the seven segment displays on the FPGA.
+
+Observe that we are able to pauze a program by stopping the controller in its fetch-decode-execute cycle. In order to accomplish this, we replaced
+```VHDL
+ELSIF (rising_edge(clk)) AND (halt = '0') THEN 
+```
+with
 ```VHDL
 ELSIF (rising_edge(clk)) AND (halt = '0') AND ((DEBUG /= '1') OR (DEBUG_NEXT = '1')) THEN 
 ```
+It can be seen that we added two new signals. `DEBUG` is 1 if the debug switch is turned on. `DEBUG_NEXT` is 1 for exactly 1 clock cycle when a user presses the 'next line' button.
 
 ## Installation and usage
 
