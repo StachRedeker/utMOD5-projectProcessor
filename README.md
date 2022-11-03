@@ -144,11 +144,13 @@ H: 0                     		! H = 0, not halve; H = 1, halve
 .end
 ```
 
-## FSM controller
+## Parts of the processor
+
+### Controller
 
 ![FSM](Stach/FSM.png)
 
-## Table of used 'global' signals
+### Datapath and dataflow
 The following signals are used between multiple processes. To avoid confusion, we try to give the signals the same name in every process.
 | Used variables        | Input         | Output    | Small description     |
 | :--                   |:--            |:--        |:--                    |
@@ -161,9 +163,23 @@ The following signals are used between multiple processes. To avoid confusion, w
 | dataIn|Memory||Input data of the memory|
 | dataOut||Memory|Output data of the memory|
 
-## Registerfile structure
+#### Registers
 | Registers |
 | :-- |
 | Register 0-13 are general purpose registers |
 | Register 14 is Program counter |
 | Register 15 is Instruction Register | 
+
+#### ALU and status bits
+
+### Memory
+
+### IO
+
+### Debugging
+
+## Installation and usage
+
+## Future improvements
+
+## Final words
