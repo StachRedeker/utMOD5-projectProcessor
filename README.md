@@ -181,6 +181,9 @@ The following signals are used between multiple processes. To avoid confusion, w
 ### IO
 
 ### Debugging
+```VHDL
+ELSIF (rising_edge(clk)) AND (halt = '0') AND ((DEBUG /= '1') OR (DEBUG_NEXT = '1')) THEN 
+```
 
 ## Installation and usage
 
