@@ -27,13 +27,20 @@ SIGNAL Op2 : std_logic_vector (1 DOWNTO 0);
 SIGNAL set_CC : std_logic;
 SIGNAL rr : std_logic;
 SIGNAL address : std_logic_vector (8 DOWNTO 0);
+--SIGNAL tempPCjump : natural := 0;
 BEGIN
 
 decode: PROCESS(clk,reset)
-VARIABLE tempPC: natural := 0; 
+VARIABLE tempPCjump: natural := 0; 
+VARIABLE tempPC: natural := 0;
+VARIABLE PCupdate: natural :=0;
+--VARIABLE PC : natural := 0;
   BEGIN
 
 IF (reset = '0') THEN 
+	tempPC :=0;
+	PCupdate := 0;
+	tempPCjump := 0;
 	PC<= 0;
 	halt <= '0'; 
 ELSIF (rising_edge(clk)) AND (halt = '0') THEN 
@@ -41,18 +48,19 @@ Op1 <= MemString(19 DOWNTO 18);
 Op2 <= MemString(17 DOWNTO 16);
 	IF (Op1 = "00") THEN --Branch Instructions
 		CASE Op2 IS 
-			WHEN "00" => tempPC := to_integer(unsigned(MemString(15 DOWNTO 7))) -4 ; --Ba
+			WHEN "00" => tempPCjump := to_integer(unsigned(MemString(15 DOWNTO 7))); --Ba
 			WHEN "01" => IF (PSR(2) = '1') THEN --Be if z = 1
-					tempPC := to_integer(unsigned(MemString(15 DOWNTO 7))) -4 ;
+					tempPCjump := to_integer(unsigned(MemString(15 DOWNTO 7)));
 				     END IF;
 			WHEN "10" => IF (PSR(2) = '0') THEN --Bne if z = 0
-					tempPC := to_integer(unsigned(MemString(15 DOWNTO 7))) -4 ;
+					tempPCjump := to_integer(unsigned(MemString(15 DOWNTO 7)));
 				     END IF;
 			WHEN "11" => IF (PSR(3) = '1') THEN --Bneg if n = 1
-					tempPC := to_integer(unsigned(MemString(15 DOWNTO 7))) -4 ;
+					tempPCjump := to_integer(unsigned(MemString(15 DOWNTO 7)));
 				     END IF;
 			WHEN OTHERS => REPORT "Warning, current instruction is unknown" SEVERITY warning;
 		END CASE;
+	PC <= tempPCjump;
 	ELSIF (Op1 = "01") THEN --Memory Instructions
 		address <= MemString(15 DOWNTO 7); --output memory (contains the address)
 		CASE Op2 IS 
@@ -121,7 +129,9 @@ Op2 <= MemString(17 DOWNTO 16);
 						END CASE;
 					END IF;		
 			WHEN OTHERS => REPORT "Warning unknown condition" SEVERITY warning;
-			END CASE;		 
+			END CASE;	
+			PCupdate := tempPCjump + tempPC + 4; 	
+			PC <= PCupdate; 
 	ELSIF (Op1 = "11") THEN --Miscellaneous Instructions
 		CASE Op2 IS 
 			WHEN "00" => --Display
@@ -129,13 +139,21 @@ Op2 <= MemString(17 DOWNTO 16);
 				IO <= "01"; --output datapath
 			WHEN "01" => --ReadI/O
 				rd <= MemString(15 DOWNTO 12); --output datapath
-				IO <= "10"; --output datapath 
+				IO <= "10"; --output datapath
 			WHEN "11" => --HALT
 				halt <= '1';
 			WHEN OTHERS => REPORT "Warning unknown condition" SEVERITY warning;
 		END CASE;	
 	END IF;
-	PC <= tempPC + 4;
+	tempPC:= 0;
+	--CASE Op1 IS
+		--WHEN "00" => 
+			--PC <= tempPCjump;
+			--tempPC := 0;
+		--WHEN OTHERS => 
+			--PCupdate := tempPCjump + tempPC + 4;
+			--PC <= PCupdate;
+	--END CASE;
 END IF;
   END PROCESS decode;
 END ARCHITECTURE bhv;
