@@ -237,4 +237,4 @@ File n
 ## Future improvements
 
 ## Conclusion
-During this project, we developed a virtual processor that can be synthesized on the DE1-SoC board. The virtual processor is designed using VHDL and ships with an application that is able to compute the Fibonaaci sequence.
+During this project, we developed a virtual processor that can be synthesized on the DE1-SoC board. The virtual processor is designed using VHDL and ships with an application that is able to compute the Fibonacci sequence.
