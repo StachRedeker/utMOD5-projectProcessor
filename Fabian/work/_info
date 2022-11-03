@@ -1,0 +1,92 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA_lite/18.1
+Edatapath
+Z0 w1667462504
+Z1 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z3 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+Z4 dC:/Users/fabia/OneDrive/Documents/GitHub/utMOD5-projectProcessor/Fabian
+Z5 8C:/Users/fabia/OneDrive/Documents/GitHub/utMOD5-projectProcessor/Fabian/datapath.vhd
+Z6 FC:/Users/fabia/OneDrive/Documents/GitHub/utMOD5-projectProcessor/Fabian/datapath.vhd
+l0
+L4
+V8:IHc:a2Kl?zo`hhcK^zP3
+!s100 _7S^5R7IE15DZBWfT?So43
+Z7 OV;C;10.5b;63
+32
+Z8 !s110 1667463044
+!i10b 1
+Z9 !s108 1667463044.000000
+Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/fabia/OneDrive/Documents/GitHub/utMOD5-projectProcessor/Fabian/datapath.vhd|
+Z11 !s107 C:/Users/fabia/OneDrive/Documents/GitHub/utMOD5-projectProcessor/Fabian/datapath.vhd|
+!i113 1
+Z12 o-work work -2002 -explicit
+Z13 tExplicit 1 CvgOpt 0
+Astructure
+R1
+R2
+R3
+DEx4 work 8 datapath 0 22 8:IHc:a2Kl?zo`hhcK^zP3
+l57
+L31
+V_JL_gXI_f;7[gEcBo_Vab1
+!s100 CQ06@JaedWL<8PZbk`[Ma0
+R7
+32
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13
+Eregisterfile
+Z14 w1667402391
+R1
+R2
+R3
+R4
+Z15 8C:/Users/fabia/OneDrive/Documents/GitHub/utMOD5-projectProcessor/Fabian/registerfile.vhd
+Z16 FC:/Users/fabia/OneDrive/Documents/GitHub/utMOD5-projectProcessor/Fabian/registerfile.vhd
+l0
+L4
+VH^cKEHalaoQ@AR1zQjJO10
+!s100 5jHeQ>_Sd;jQbON_SOhg61
+R7
+32
+R8
+!i10b 1
+R9
+Z17 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/fabia/OneDrive/Documents/GitHub/utMOD5-projectProcessor/Fabian/registerfile.vhd|
+Z18 !s107 C:/Users/fabia/OneDrive/Documents/GitHub/utMOD5-projectProcessor/Fabian/registerfile.vhd|
+!i113 1
+R12
+R13
+Abhv
+R1
+R2
+R3
+DEx4 work 12 registerfile 0 22 H^cKEHalaoQ@AR1zQjJO10
+l34
+L17
+V=K=H`GKRgBkPQA4jna=<F0
+!s100 5FBRRNXd<F^?h`cJ``=<=0
+R7
+32
+R8
+!i10b 1
+R9
+R17
+R18
+!i113 1
+R12
+R13
