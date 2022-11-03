@@ -6,16 +6,11 @@ This documentation file is part of the final project of Digital Hardware in modu
 ## Table of contents
   * [Introduction](#introduction)
   * [Instruction format](#instruction-format)
-    + [Branch instructions](#branch-instructions)
-    + [Memory instructions](#memory-instructions)
-    + [Arithmetic instructions](#arithmetic-instructions)
-    + [Miscellaneous instructions](#miscellaneous-instructions)
-      - [Display: displays a register value on the seven segement displays](#display--displays-a-register-value-on-the-seven-segement-displays)
-      - [readIO: reads the current state of the switches and stores it in a register](#readio--reads-the-current-state-of-the-switches-and-stores-it-in-a-register)
-      - [halt: stops the program](#halt--stops-the-program)
   * [Example application](#example-application)
-  * [Table of used 'global' signals](#table-of-used--global--signals)
-  * [Registerfile structure](registerfile-structure)
+  * [Parts of the processor](#parts-of-the-processor)
+  * [Installation and usage](#installation-and-usage)
+  * [Future improvements](#future-improvements)
+  * [Final words](#final-words)
     
 ## Introduction
 
@@ -144,11 +139,13 @@ H: 0                     		! H = 0, not halve; H = 1, halve
 .end
 ```
 
-## FSM controller
+## Parts of the processor
+
+### Controller
 
 ![FSM](Stach/FSM.png)
 
-## Table of used 'global' signals
+### Datapath and dataflow
 The following signals are used between multiple processes. To avoid confusion, we try to give the signals the same name in every process.
 | Used variables        | Input         | Output    | Small description     |
 | :--                   |:--            |:--        |:--                    |
@@ -161,9 +158,23 @@ The following signals are used between multiple processes. To avoid confusion, w
 | dataIn|Memory||Input data of the memory|
 | dataOut||Memory|Output data of the memory|
 
-## Registerfile structure
+#### Registers
 | Registers |
 | :-- |
 | Register 0-13 are general purpose registers |
 | Register 14 is Program counter |
 | Register 15 is Instruction Register | 
+
+#### ALU and status bits
+
+### Memory
+
+### IO
+
+### Debugging
+
+## Installation and usage
+
+## Future improvements
+
+## Final words
