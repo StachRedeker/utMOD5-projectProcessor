@@ -68,7 +68,7 @@ The minimal instruction length to cover all the wanted instructions is 17 bits. 
 
 ### Miscellaneous instructions
 
-#### Display: displays a register value on the seven segement displays
+#### Display: displays a register value on the seven segments displays
 | Op1 | Op2 | %rs (4 bits) | unused (12 bits) |
 | :--  |:-- |:--  |:-- |
 | 11 | 00 | RRRR | 000000000000 |
@@ -171,6 +171,12 @@ The following signals are used between multiple processes. To avoid confusion, w
 The DE1-SoC board has 10 switches, 10 LEDs, 4 momentary push buttons, and 6 seven segments displays. We connected the following functions to the onboard inputs:
 | Input | Function |
 | :-- | :-- |
+| Button 0 | reset |
+| Button 1 | next instruction (used during debugging) |
+| Button 2 | load an address (used during debugging) |
+| Button 3 | unused |
+| Switch 0-8 | input variables for the program (during normal operation), input memory address (during debugging) |
+| Switch 9 | activate debugging mode |
 
 
 ### Debugging
