@@ -20,8 +20,6 @@ add wave -noupdate -radix hexadecimal /datapath/IR
 add wave -noupdate /datapath/Current_A
 add wave -noupdate /datapath/Current_C
 add wave -noupdate -radix hexadecimal /datapath/ALU_output_with_carry
-add wave -noupdate /datapath/rd1
-add wave -noupdate /datapath/rs1
 add wave -noupdate /datapath/CC_C
 add wave -noupdate /datapath/CC_V
 add wave -noupdate /datapath/CC_Z

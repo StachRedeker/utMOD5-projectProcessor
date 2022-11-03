@@ -2,7 +2,7 @@ restart -f -nowave
 do wave.do
 force clk 0,1 10ns -r 20ns
 force reset '0'
-run 20 ns
+run 10 ns
 force reset '1'
 
 # store hex:1234abcd in register 1

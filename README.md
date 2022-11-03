@@ -195,6 +195,15 @@ It can be seen that we added two new signals. `DEBUG` is 1 if the debug switch i
 
 ## Installation and usage
 
+## Contributions overview
+| Member | Work |
+| :-- | :-- |
+| Joost Buursink | |
+| Fabian Widlund | | 
+| Emil Imhagen | |
+| Guus Branderhorst | |
+| Stach Redeker| |
+
 ## Future improvements
 
 ## Final words
