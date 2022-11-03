@@ -20,10 +20,8 @@ ENTITY controller IS
 END ENTITY controller;
 
 ARCHITECTURE bhv OF controller IS
-SIGNAL PC : integer := 0;
-SIGNAL halt : std_logic := '0';
-SIGNAL Op1 : std_logic_vector (1 DOWNTO 0); 
-SIGNAL Op2 : std_logic_vector (1 DOWNTO 0); 
+SIGNAL PC : natural := 0;
+SIGNAL halt : std_logic := '0'; 
 SIGNAL set_CC : std_logic;
 SIGNAL rr : std_logic;
 SIGNAL address : std_logic_vector (8 DOWNTO 0);
@@ -149,7 +147,7 @@ Op2 := MemString(17 DOWNTO 16);
 		PCupdate := tempPCjump + tempPC + 4; 	
 		PC <= PCupdate; 
 	END IF;
-	tempPC:= 0;
+	--tempPC:= 0;
 END IF;
   END PROCESS decode;
 END ARCHITECTURE bhv;
