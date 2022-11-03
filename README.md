@@ -1,5 +1,5 @@
 # JFEGS: a virtual processor for the DE1-SoC board
-> Yet another revolutionary product that computes the Fibonacci sequence, designed by Joost Buursink, Fabian Widlund, Emil Imhagen, Guus Branderhorst, and Stach Redeker.
+> Yet another revolutionary product that computes the Fibonacci sequence, designed by **J**oost Buursink, **F**abian Widlund, **E**mil Imhagen, **G**uus Branderhorst, and **S**tach Redeker.
 
 This documentation file is part of the final project of Digital Hardware in module 5 of Electrical Engineering, University of Twente.
 
@@ -68,7 +68,7 @@ The minimal instruction length to cover all the wanted instructions is 17 bits. 
 
 ### Miscellaneous instructions
 
-#### Display: displays a register value on the seven segement displays
+#### Display: displays a register value on the seven segments displays
 | Op1 | Op2 | %rs (4 bits) | unused (12 bits) |
 | :--  |:-- |:--  |:-- |
 | 11 | 00 | RRRR | 000000000000 |
@@ -103,11 +103,11 @@ The example program is able to compute the nth Fibonacci number, where n is inpu
 .begin					
 .org 0						
 							
-ld [H], %r4               	! loads whether or not we want half of the result
+ld [H], %r4               		! loads whether or not we want half of the result
 add %r2, 1, %r2
 add %r6, 1, %r6 			! %r6 will contain a permanent 1
 
-start: ld [C], %r5		! keeps track of the iterations
+start: ld [C], %r5			! keeps track of the iterations
 addcc %r5, -1, %r5
 st %r5, [C]
 bneg ending
@@ -123,9 +123,9 @@ and %r0, %r2, %r2			! clear reg2
 add %r3, %r2, %r2       		! %r2 will contain the result
 ba start
 
-ending: orcc %r4, %r0, %r0	! check if we want the full result
+ending: orcc %r4, %r0, %r0		! check if we want the full result
 be display
-andcc %r4, %r6, %r6	 	! check if we want half of the result
+andcc %r4, %r6, %r6	 		! check if we want half of the result
 bne halving
              
 
@@ -133,9 +133,9 @@ halving: srl %r2, 1, %r2		! divide the result by 2 using a shift right
 ba display
 
 
-display: halt             	! display the result
+display: halt             		! display the result
 
-C: 15                     	! how many times we should run the function
+C: 15                     		! how many times we should run the function
 H: 0                     		! H = 0, not halve; H = 1, halve 
 
 .end
@@ -154,42 +154,53 @@ We opted for a finite state machine (FSM) over microstore because a FSM is easie
 ### Datapath and dataflow
 The following signals are used between multiple processes. To avoid confusion, we try to give the signals the same name in every process.
 
-[THIS TABLE WILL BE REPLACED BY A LINK TO THE EXCEL FILE]
-
-| Used variables        | Input         | Output    | Small description     |
-| :--                   |:--            |:--        |:--                    |
-| clk                   |Memory         |           |clock of the FPGA      |
-| reset                 |Memory               |           |button0 of the FPGA    |
-| b         | Memory               |           | Decides if the load/store command is per byte|
-| rd|Memory|| Decides if the memory should place data at dataOut|
-| wr|Memory|| Decides if the memory should take data from dataIn|
-| address|Memory||Adress of the memory used in rd and wr|
-| dataIn|Memory||Input data of the memory|
-| dataOut||Memory|Output data of the memory|
+[LINK TO EXCEL FILE WITH ALL SIGNALS]
 
 #### Registers
-| Registers |
-| :-- |
-| Register 0-13 are general purpose registers |
-| Register 14 is Program counter |
-| Register 15 is Instruction Register | 
+| Register | Function |
+| :-- | :-- |
+| Register 0-13 | general purpose |
+| Register 14 | program counter |
+| Register 15 | instruction register | 
 
 #### ALU and status bits
 
 ### Memory
 
 ### IO
+The DE1-SoC board has 10 switches, 10 LEDs, 4 momentary push buttons, and 6 seven segments displays. We connected the following functions to the onboard inputs:
+| Input | Function |
+| :-- | :-- |
+| Button 0 | reset |
+| Button 1 | next instruction (used during debugging) |
+| Button 2 | load an address (used during debugging) |
+| Button 3 | unused |
+| Switch 0-8 | input variables for the program (during normal operation), input memory address (during debugging) |
+| Switch 9 | activate debugging mode |
+
+And we connected the following functions to the onboard outputs:
+| Output | Function |
+| :-- | :-- | 
+| LED 0 | c |
+| LED 1 | v |
+| LED 2 | z |
+| LED 3 | n |
+| LED 4 | rd |
+| LED 5 | wr |
+| LED 6-9 | unused |
+| seven segment displays | output of the application (during operation), memory contents (during debugging) |
+
 
 ### Debugging
 In the requirements we stated that we shall implement a debug mode. If the debug mode is active, the user should be able to step through the program one line at a time. Also, the user shall be able to load the contents of a memory adress and display it using the seven segment displays on the FPGA.
 
 Observe that we are able to pauze a program by stopping the controller in its fetch-decode-execute cycle. In order to accomplish this, we replaced
 ```VHDL
-ELSIF (rising_edge(clk)) AND (halt = '0') THEN 
+ELSIF (rising_edge(clk)) AND (halt = '0') AND (ACK_data = '1') THEN 
 ```
 with
 ```VHDL
-ELSIF (rising_edge(clk)) AND (halt = '0') AND ((DEBUG /= '1') OR (DEBUG_NEXT = '1')) THEN 
+ELSIF (rising_edge(clk)) AND (halt = '0') AND (ACK_data = '1') AND ((DEBUG /= '1') OR (DEBUG_NEXT = '1')) THEN 
 ```
 It can be seen that we added two new signals. `DEBUG` is 1 if the debug switch is turned on. `DEBUG_NEXT` is 1 for exactly 1 clock cycle when a user presses the 'next line' button.
 
