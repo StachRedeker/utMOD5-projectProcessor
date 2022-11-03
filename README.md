@@ -154,18 +154,7 @@ We opted for a finite state machine (FSM) over microstore because a FSM is easie
 ### Datapath and dataflow
 The following signals are used between multiple processes. To avoid confusion, we try to give the signals the same name in every process.
 
-[THIS TABLE WILL BE REPLACED BY A LINK TO THE EXCEL FILE]
-
-| Used variables        | Input         | Output    | Small description     |
-| :--                   |:--            |:--        |:--                    |
-| clk                   |Memory         |           |clock of the FPGA      |
-| reset                 |Memory               |           |button0 of the FPGA    |
-| b         | Memory               |           | Decides if the load/store command is per byte|
-| rd|Memory|| Decides if the memory should place data at dataOut|
-| wr|Memory|| Decides if the memory should take data from dataIn|
-| address|Memory||Adress of the memory used in rd and wr|
-| dataIn|Memory||Input data of the memory|
-| dataOut||Memory|Output data of the memory|
+[LINK TO EXCEL FILE WITH ALL SIGNALS]
 
 #### Registers
 | Registers |
@@ -179,30 +168,14 @@ The following signals are used between multiple processes. To avoid confusion, w
 ### Memory
 
 ### IO
+The DE1-SoC board has 10 switches, 10 LEDs, 4 momentary push buttons, and 6 seven segments displays. We connected the following functions to the onboard inputs:
+| Input | Function |
+| :-- | :-- |
+
 
 ### Debugging
-In the requirements we stated that we shall implement a debug mode. If the debug mode is active, the user should be able to step through the program one line at a time. Also, the user shall be able to load the contents of a memory adress and display it using the seven segment displays on the FPGA.
-
-Observe that we are able to pauze a program by stopping the controller in its fetch-decode-execute cycle. In order to accomplish this, we replaced
-```VHDL
-ELSIF (rising_edge(clk)) AND (halt = '0') THEN 
-```
-with
-```VHDL
-ELSIF (rising_edge(clk)) AND (halt = '0') AND ((DEBUG /= '1') OR (DEBUG_NEXT = '1')) THEN 
-```
-It can be seen that we added two new signals. `DEBUG` is 1 if the debug switch is turned on. `DEBUG_NEXT` is 1 for exactly 1 clock cycle when a user presses the 'next line' button.
 
 ## Installation and usage
-
-## Contributions overview
-| Member | Work |
-| :-- | :-- |
-| Joost Buursink | |
-| Fabian Widlund | | 
-| Emil Imhagen | |
-| Guus Branderhorst | |
-| Stach Redeker| |
 
 ## Future improvements
 
