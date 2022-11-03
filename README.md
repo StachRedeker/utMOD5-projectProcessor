@@ -187,6 +187,8 @@ And we connected the following functions to the onboard outputs:
 | LED 3 | n |
 | LED 4 | rd |
 | LED 5 | wr |
+| LED 6-9 | unused |
+| seven segment displays | output of the application (during operation), memory contents (during debugging) |
 
 
 ### Debugging
