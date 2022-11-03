@@ -162,6 +162,8 @@ The following signals are used between multiple processes. To avoid confusion, w
 | dataOut||Memory|Output data of the memory|
 
 ## Registerfile structure
-|Register 0-13 are general purpose registers|
-|Register 14 is Program counter|
-|Register 15 is Instruction Register| 
+| Registers |
+| :-- |
+| Register 0-13 are general purpose registers |
+| Register 14 is Program counter |
+| Register 15 is Instruction Register | 
