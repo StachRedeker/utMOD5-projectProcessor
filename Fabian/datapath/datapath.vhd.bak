@@ -106,8 +106,8 @@ BEGIN
         --
 
         --Multiplexers
-            Current_A <= rs;
-            Current_C <= rd;
+            Current_A <= rd;
+            Current_C <= rs;
         --
 
 	--Instruction register

@@ -16,7 +16,7 @@ END ENTITY registerfile;
 
 ARCHITECTURE bhv OF registerfile IS
 
-    TYPE registerfile_type IS ARRAY (0 TO 15) OF STD_LOGIC_VECTOR(31 DOWNTO 0);
+    TYPE registerfile_type IS ARRAY (15 DOWNTO 0) OF STD_LOGIC_VECTOR(31 DOWNTO 0);
     SIGNAL reg_file : registerfile_type := (OTHERS => (OTHERS => '0'));
 
     FUNCTION decoder(s : STD_LOGIC_VECTOR) RETURN NATURAL IS

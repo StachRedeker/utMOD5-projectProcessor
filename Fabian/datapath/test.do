@@ -1,28 +1,31 @@
 restart -f -nowave
-add wave *
-force clk 0,1 5ns -r 10ns
+do wave.do
+force clk 0,1 10ns -r 20ns
+force reset '0'
+run 20 ns
 force reset '1'
-force dataIn "00000000000011010000011111000000"
-force rd "0001"
+
+# store hex:1234abcd in register 1
+force dataIn "00010010001101001010101111001101"
+force CMux '1' 
 force AMux '0'
-force rs "1111"
-force CMux '1'
-force rr '1'
-force io "01"
-force ALU "100"
-run 20ns 
-force rs "0010"
-run 50ns
-force AMux '1'
-force CMux '0'
-run 75ns
-force rd "0010"
-run 75ns
-force dataIn "00001110000011010000011111000000"
-run 75ns
-force ALU "101"
-run 150ns
-force rd "0010"
-run 50ns
 force rd "0001"
-run 50ns
+force rs "0000"
+run 20 ns
+
+# store hex:11111111 in register 2
+force dataIn "00010001000100010001000100010001"
+force CMux '1'
+force AMux '0'
+force rd "0010"
+force rs "0000"
+run 20 ns
+
+# add register 1 to register 3
+force dataIn "00000000000000000000000000000000"
+force CMux '0'
+force AMux '0'
+force rd "0011"
+force rs "0001"
+force ALU "110"
+run 20 ns
