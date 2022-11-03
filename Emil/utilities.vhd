@@ -5,7 +5,7 @@ USE std.textio.ALL;
 PACKAGE utilities IS
 
     -- converts binary to decimal
-    FUNCTION bin2dec (inp : STD_LOGIC_VECTOR) RETURN NATURAL;
+    FUNCTION bin2dec (inp : STD_LOGIC_VECTOR) RETURN INTEGER;
 
     -- converts binary to hexadecimal
     FUNCTION bin2hex (inp : STD_LOGIC_VECTOR) RETURN STRING;
@@ -14,13 +14,15 @@ PACKAGE utilities IS
 
     -- converts hexadecimal to binary
     FUNCTION hex2bin (inp : STRING) RETURN STD_LOGIC_VECTOR;
-    FUNCTION char2bin(inp : character) RETURN std_logic_vector; -- used by hex2bin 
+    FUNCTION char2bin(inp : CHARACTER) RETURN STD_LOGIC_VECTOR; -- used by hex2bin 
+
+   
 
 END PACKAGE utilities;
 
 PACKAGE BODY utilities IS
-    FUNCTION bin2dec (inp : STD_LOGIC_VECTOR) RETURN NATURAL IS
-        VARIABLE sum : NATURAL := 0;
+    FUNCTION bin2dec (inp : STD_LOGIC_VECTOR) RETURN INTEGER IS
+        VARIABLE sum : INTEGER := 0;
         VARIABLE inp_align : STD_LOGIC_VECTOR((inp'length - 1) DOWNTO 0) := inp;
     BEGIN
         FOR i IN 0 TO (inp'length - 1) LOOP
@@ -81,32 +83,28 @@ PACKAGE BODY utilities IS
             WHEN OTHERS => RETURN '0';
         END CASE;
     END fourbits2hex;
-
-
-    FUNCTION char2bin(inp : character) RETURN std_logic_vector IS
+    FUNCTION char2bin(inp : CHARACTER) RETURN STD_LOGIC_VECTOR IS
     BEGIN
-      CASE inp IS
-        WHEN '0'    => RETURN "0000";
-        WHEN '1'    => RETURN "0001";        
-        WHEN '2'    => RETURN "0010";
-        WHEN '3'    => RETURN "0011";
-        WHEN '4'    => RETURN "0100";
-        WHEN '5'    => RETURN "0101";        
-        WHEN '6'    => RETURN "0110";
-        WHEN '7'    => RETURN "0111";
-        WHEN '8'    => RETURN "1000";
-        WHEN '9'    => RETURN "1001";        
-        WHEN 'A'|'a'=> RETURN "1010";
-        WHEN 'B'|'b'=> RETURN "1011";
-        WHEN 'C'|'c'=> RETURN "1100";
-        WHEN 'D'|'d'=> RETURN "1101";        
-        WHEN 'E'|'e'=> RETURN "1110";
-        WHEN 'F'|'f'=> RETURN "1111";                        
-        WHEN OTHERS => RETURN "XXXX";
-      END CASE;    
+        CASE inp IS
+            WHEN '0' => RETURN "0000";
+            WHEN '1' => RETURN "0001";
+            WHEN '2' => RETURN "0010";
+            WHEN '3' => RETURN "0011";
+            WHEN '4' => RETURN "0100";
+            WHEN '5' => RETURN "0101";
+            WHEN '6' => RETURN "0110";
+            WHEN '7' => RETURN "0111";
+            WHEN '8' => RETURN "1000";
+            WHEN '9' => RETURN "1001";
+            WHEN 'A' | 'a' => RETURN "1010";
+            WHEN 'B' | 'b' => RETURN "1011";
+            WHEN 'C' | 'c' => RETURN "1100";
+            WHEN 'D' | 'd' => RETURN "1101";
+            WHEN 'E' | 'e' => RETURN "1110";
+            WHEN 'F' | 'f' => RETURN "1111";
+            WHEN OTHERS => RETURN "XXXX";
+        END CASE;
     END char2bin;
-
-
     FUNCTION hex2bin (inp : STRING) RETURN STD_LOGIC_VECTOR IS
         VARIABLE inp_align : STRING(inp'LENGTH DOWNTO 1) := inp;
         VARIABLE res : STD_LOGIC_VECTOR(inp'LENGTH * 4 DOWNTO 1);
@@ -117,6 +115,5 @@ PACKAGE BODY utilities IS
         RETURN res;
 
     END hex2bin;
-
-
+    
 END PACKAGE BODY utilities;
