@@ -14,8 +14,17 @@ This documentation file is part of the final project of Digital Hardware in modu
       - [readIO: reads the current state of the switches and stores it in a register](#readio--reads-the-current-state-of-the-switches-and-stores-it-in-a-register)
       - [halt: stops the program](#halt--stops-the-program)
   * [Example application](#example-application)
-  * [Table of used 'global' signals](#table-of-used--global--signals)
-  * [Registerfile structure](registerfile-structure)
+  * [Parts of the processor](#parts-of-the-processor)
+    + [Controller](#controller)
+    + [Datapath and dataflow](#datapath-and-dataflow)
+      - [Registers](#registers)
+      - [ALU and status bits](#alu-and-status-bits)
+    + [Memory](#memory)
+    + [IO](#io)
+    + [Debugging](#debugging)
+  * [Installation and usage](#installation-and-usage)
+  * [Future improvements](#future-improvements)
+  * [Final words](#final-words)
     
 ## Introduction
 
