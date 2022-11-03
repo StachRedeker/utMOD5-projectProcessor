@@ -178,6 +178,17 @@ The DE1-SoC board has 10 switches, 10 LEDs, 4 momentary push buttons, and 6 seve
 | Switch 0-8 | input variables for the program (during normal operation), input memory address (during debugging) |
 | Switch 9 | activate debugging mode |
 
+And we connected the following functions to the onboard outputs:
+| Output | Function |
+| :-- | :-- | 
+| LED 0 | c |
+| LED 1 | v |
+| LED 2 | z |
+| LED 3 | n |
+| LED 4 | rd |
+| LED 5 | wr |
+
+
 ### Debugging
 In the requirements we stated that we shall implement a debug mode. If the debug mode is active, the user should be able to step through the program one line at a time. Also, the user shall be able to load the contents of a memory adress and display it using the seven segment displays on the FPGA.
 
