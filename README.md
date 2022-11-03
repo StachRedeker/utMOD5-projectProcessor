@@ -210,6 +210,20 @@ One might wonder how we set `DEBUG_NEXT` to 1 for exactly 1 clock cycle when the
 #### Debugging_display
 
 ## Installation and usage
+Use the following files for compilation in ModelSim:
+```
+File 1
+File 2
+...
+File n
+```
+Use the following files for synthesis in Quartus:
+```
+File 1
+File 2
+...
+File n
+```
 
 ## Contributions overview
 | Member | Work |
