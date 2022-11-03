@@ -1,3 +1,4 @@
+restart -f -nowave
 add wave *
 force clk 0,1 5ns -r 10ns
 force reset '1'
