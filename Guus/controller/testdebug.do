@@ -23,7 +23,7 @@ run 200ns
 # DEBUG, NO BUTTON PRESS
 # THIS SHOULD STOP THE PROGRAM, SO NO EXCECUTION
 force TEST_PHASE 10
-force DEBUG
+force DEBUG 1
 force MemString 16#00086240
 force NewInstruction 0, 1 20ns, 0 40ns
 run 200ns
