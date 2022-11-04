@@ -105,7 +105,8 @@ The example program is able to compute the nth Fibonacci number, where n is inpu
 							
 ld [H], %r4               		! loads whether or not we want half of the result
 add %r2, 1, %r2
-add %r6, 1, %r6 			! %r6 will contain a permanent 1
+add %r6, 1, %r6 			! a 1 need for later
+add %r7, 1, %r7				! a 1 need for later
 
 start: ld [C], %r5			! keeps track of the iterations
 addcc %r5, -1, %r5
@@ -128,17 +129,18 @@ be display
 andcc %r4, %r6, %r6	 		! check if we want half of the result
 bne halving
              
-
-halving: srl %r2, 1, %r2		! divide the result by 2 using a shift right
+halving: and %r2, %r7, %r7  		! check if the last bit is a 1 (then the number is odd)
+srl %r2, 1, %r2				! divide the result by 2 using a shift right
+add %r7, %r2, %r2			! and add the 1 back if it was odd
 ba display
-
 
 display: halt             		! display the result
 
 C: 15                     		! how many times we should run the function
-H: 0                     		! H = 0, not halve; H = 1, halve 
+H: 1                     		! H = 0, not halve; H = 1, halve 
 
 .end
+
 ```
 
 ## Parts of the processor
