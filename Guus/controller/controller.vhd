@@ -7,7 +7,7 @@ ENTITY controller IS
 	clk : IN std_logic;
 	reset : IN std_logic;
 	NewInstruction : IN std_logic; 
-	PSR : IN std_logic_vector (3 DOWNTO 0);
+	PSR : IN std_logic_vector (3 DOWNTO 0); --(n,z,v,c)
 	ALU : OUT std_logic_vector (2 DOWNTO 0);
 	MEM : OUT std_logic_vector (2 DOWNTO 0);
 	rs : OUT std_logic_vector(3 DOWNTO 0);
@@ -53,6 +53,7 @@ ELSIF (rising_edge(clk)) AND (halt = '0') THEN
 		address <= PC;--(address of the fetchable instruction)
 		MEM <= "001"; --(b = 0; wr = 0; rd = 1)
 		rd <= "1111"; --(where to store the address)
+		rs <= "0000"; --(default value)
 		Cmux <= '1';  
 		Amux <= '0'; 
 		cntstop := '0';
