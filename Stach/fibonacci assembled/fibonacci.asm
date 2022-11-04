@@ -18,7 +18,7 @@ add %r1, %r3, %r3			! ^^^^
 and %r0, %r1, %r1			! clear reg1
 add %r2, %r1, %r1			! stores %r2 in %r1
 and %r0, %r2, %r2			! clear reg2
-add %r3, %r2, %r2       		! %r2 will contain the result
+add %r3, %r2, %r2       	! %r2 will contain the result
 ba start
 ending: orcc %r4, %r0, %r0	! check if we want the full result
 be display
@@ -28,6 +28,6 @@ halving: and %r2, %r7, %r7  ! check if the last bit is a 1 (then the number is o
 srl %r2, 1, %r2				! divide the result by 2 using a shift right
 add %r7, %r2, %r2			! and add the 1 back if it was odd
 display: display %r2
-halt             	! display the result
+halt             			! display the result
 C: 0                    	! how many times we should run the function
 H: 0                     	! H = 0, not halve; H = 1, halve 
