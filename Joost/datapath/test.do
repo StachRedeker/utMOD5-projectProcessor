@@ -11,7 +11,7 @@ force CMux '1'
 force AMux '0'
 force rd "0001"
 force rs "0000"
-run 20 ns
+run 80 ns
 
 # store hex:11111111 in register 2
 force dataIn "00000000000000000000000000000001"
@@ -19,7 +19,7 @@ force CMux '1'
 force AMux '0'
 force rd "0010"
 force rs "0000"
-run 20 ns
+run 80 ns
 
 # shift register 1 register 2 amount of times
 force dataIn "00000000000000000000000000000000"
