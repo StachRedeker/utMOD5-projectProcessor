@@ -6,6 +6,9 @@ ENTITY controller IS
    PORT (
 	clk : IN std_logic;
 	reset : IN std_logic;
+	DEBUG : IN std_logic;
+	DEBUG_NEXT : IN std_logic;
+	ACK_data : IN std_logic;
 	NewInstruction : IN std_logic; 
 	PSR : IN std_logic_vector (3 DOWNTO 0); --(n,z,v,c)
 	ALU : OUT std_logic_vector (2 DOWNTO 0);
@@ -47,7 +50,7 @@ IF (reset = '0') THEN
 	address <= 0;
 	halt <= '0'; 
 	cntstop := '0';
-ELSIF (rising_edge(clk)) AND (halt = '0') THEN 
+	ELSIF (rising_edge(clk)) AND (halt = '0') AND (ACK_data = '1') AND ((DEBUG /= '1') OR (DEBUG_NEXT = '1')) THEN 
 --------------------------------------------------------------------------------------------Fetch
 	IF(NewInstruction = '0') THEN
 		address <= PC;--(address of the fetchable instruction)
@@ -66,6 +69,8 @@ ELSIF (rising_edge(clk)) AND (halt = '0') THEN
 		Amux <= '0'; --reset value
 		Cmux <= '0'; --reset value
 		MEM <= "000"; --reset value
+		IO <= "00"; --reset value
+		SIMM10 <= "0000000000"; --reset value
 		IF (Op1 = "00") THEN --Branch Instructions
 			CASE Op2 IS 
 				WHEN "00" => ---------------------------------------------------------------Branch Always
@@ -109,23 +114,23 @@ ELSIF (rising_edge(clk)) AND (halt = '0') THEN
 			addressfield <= MemString(15 DOWNTO 7); --output memory (contains the address)
 			CASE Op2 IS 
 				WHEN "00" => ---------------------------------------------------------------Load
-						rd <= MemString(6 DOWNTO 3); --output signal for datapath
+						rs <= MemString(6 DOWNTO 3); --output signal for datapath
 						MEM <= "001"; -- ld, we need to read, add the address
 						Amux <= '0'; --output datapath
 						Cmux <= '1'; --output datapath
 				WHEN "01" => ---------------------------------------------------------------Store
-						rs <= MemString(6 DOWNTO 3); --output signal for datapath
+						rd <= MemString(6 DOWNTO 3); --output signal for datapath
 						MEM <= "010"; -- st, we need to write, add the address
 						Amux <= '1'; --output datapath
 						Cmux <= '0'; --output datapath
 				WHEN "10" => ---------------------------------------------------------------Load Byte
 						MEM <= "101"; -- ldb
-						rd <= MemString(6 DOWNTO 3); --output signal for datapath
+						rs <= MemString(6 DOWNTO 3); --output signal for datapath
 						Amux <= '0'; --output datapath
 						Cmux <= '1'; --output datapath
 				WHEN "11" => ---------------------------------------------------------------Store Byte
 						MEM <= "110"; -- stb
-						rs <= MemString(6 DOWNTO 3); --output signal for datapath
+						rd <= MemString(6 DOWNTO 3); --output signal for datapath
 						Amux <= '1'; --output datapath
 						Cmux <= '0'; --output datapath 
 				WHEN OTHERS => 

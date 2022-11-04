@@ -1,5 +1,5 @@
 restart -f -nowave
-add wave *
+do wave.do
 force reset 0, 1 10 ns
 force PSR 1000 0 ns
 force DEBUG 0
