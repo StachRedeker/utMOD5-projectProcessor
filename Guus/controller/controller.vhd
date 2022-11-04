@@ -14,6 +14,7 @@ ENTITY controller IS
 	rd : OUT std_logic_vector(3 DOWNTO 0);
 	SIMM10: OUT std_logic_vector(9 DOWNTO 0);
 	IO : OUT std_logic_vector(1 DOWNTO 0);
+	rrstatus : OUT std_logic;
 	Amux : OUT std_logic;
 	Cmux : OUT std_logic;
 	MemString : IN std_logic_vector (31 DOWNTO 0)
@@ -24,10 +25,6 @@ ARCHITECTURE bhv OF controller IS
 SIGNAL PC : natural := 0;
 SIGNAL address : natural;
 SIGNAL halt : std_logic := '0'; 
---SIGNAL set_CC : std_logic; --can be discarded if this script works
---SIGNAL rr : std_logic; --can be discarded if this script works
---SIGNAL Op1 : std_logic_vector (1 DOWNTO 0); --can be discarded if this script works
---SIGNAL Op2 : std_logic_vector (1 DOWNTO 0); --can be discarded if this script works
 SIGNAL addressfield : std_logic_vector (8 DOWNTO 0);
 BEGIN
 
@@ -59,31 +56,54 @@ ELSIF (rising_edge(clk)) AND (halt = '0') THEN
 		Cmux <= '1';  
 		Amux <= '0'; 
 		cntstop := '0';
+		ALU <= "111";
+		rrstatus <= '0';
 -- ------------------------------------------------------------------------Decode/Execute
 	ELSIF (NewInstruction = '1') and (cntstop = '0') THEN 
 		Op1 := MemString(19 DOWNTO 18);
 		Op2 := MemString(17 DOWNTO 16);
+		Amux <= '0';
+		Cmux <= '0'; 
+		MEM <= "000";
 		IF (Op1 = "00") THEN --Branch Instructions
 			CASE Op2 IS 
 				WHEN "00" =>
 						tempPCjump := to_integer(unsigned(MemString(15 DOWNTO 7))); --Ba
+						PC <= tempPCjump;
+						tempPC := 0;
 				WHEN "01" => 
 						IF (PSR(2) = '1') THEN --Be if z = 1
 							tempPCjump := to_integer(unsigned(MemString(15 DOWNTO 7)));
+							PC <= tempPCjump;
+							tempPC := 0;
+						ELSE 
+							tempPC := tempPC + 4; 
+							PCupdate := tempPCjump + tempPC;	
+							PC <= PCupdate; --output datapath							
 					    END IF;
 				WHEN "10" => 
 						IF (PSR(2) = '0') THEN --Bne if z = 0
 							tempPCjump := to_integer(unsigned(MemString(15 DOWNTO 7)));
+							PC <= tempPCjump;
+							tempPC := 0;
+						ELSE 
+							tempPC := tempPC + 4; 
+							PCupdate := tempPCjump + tempPC;	
+							PC <= PCupdate; --output datapath
 						END IF;
 				WHEN "11" => 
 						IF (PSR(3) = '1') THEN --Bneg if n = 1
 							tempPCjump := to_integer(unsigned(MemString(15 DOWNTO 7)));
+							PC <= tempPCjump;
+							tempPC := 0;
+						ELSE 
+							tempPC := tempPC + 4; 
+							PCupdate := tempPCjump + tempPC;	
+							PC <= PCupdate; --output datapath
 						END IF;
 				WHEN OTHERS => 
 						REPORT "Warning, current instruction is unknown" SEVERITY warning;
 			END CASE;
-			PC <= tempPCjump; --output datapath
-			tempPC := 0;
 		ELSIF (Op1 = "01") THEN --Memory Instructions
 			addressfield <= MemString(15 DOWNTO 7); --output memory (contains the address)
 			CASE Op2 IS 
@@ -116,6 +136,7 @@ ELSIF (rising_edge(clk)) AND (halt = '0') THEN
 		ELSIF (Op1 = "10") THEN --Arithmetic Instructions
 			set_CC := MemString(15);
 			rr := MemString(14);
+			rrstatus <= rr;
 			CASE rr IS
 				WHEN '1' => 
 		 				rs <= MemString(13 DOWNTO 10); --output signal for datapath
