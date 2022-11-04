@@ -129,7 +129,7 @@ be display
 andcc %r4, %r6, %r6	 		! check if we want half of the result
 bne halving
              
-halving: and %r2, %r7, %r7  ! check if the last bit is a 1 (then the number is odd)
+halving: and %r2, %r7, %r7  		! check if the last bit is a 1 (then the number is odd)
 srl %r2, 1, %r2				! divide the result by 2 using a shift right
 add %r7, %r2, %r2			! and add the 1 back if it was odd
 ba display
