@@ -100,47 +100,46 @@ However, to showcase the full potential of our product, we designed an extended 
 
 The example program is able to compute the nth Fibonacci number, where n is inputted by the user using the onboard switches. The application can also halve the result, if the user requires so.
 ```assembly
-.begin					
-.org 0						
-							
-ld [H], %r4               		! loads whether or not we want half of the result
-add %r2, 1, %r2
-add %r6, 1, %r6 			! a 1 need for later
-add %r7, 1, %r7				! a 1 need for later
+readIO %r8					! let's start with getting user data
+add %r9, 255, %r9				! store 011111111 in %r9
+and %r8, %r9, %r9				! extract the wanted C value
+st %r9, [C]					! store the wanted C value in memory
+srl %r8, 8, %r8					! shift the read IO 8 places to extract the halving bit
+st %r8, [H]					! and store the halving value
 
-start: ld [C], %r5			! keeps track of the iterations
+ld [H], %r4               			! loads whether or not we want half of the result
+add %r2, 1, %r2
+add %r6, 1, %r6 				! a 1 need for later
+add %r7, 1, %r7					! a 1 need for later
+
+start: ld [C], %r5				! keeps track of the iterations
 addcc %r5, -1, %r5
 st %r5, [C]
 bneg ending
 
-and %r0, %r3, %r3			! clear reg3
-add %r2, %r3, %r3			! adds %r1 to %r2 and stores in %r3
-add %r1, %r3, %r3			! ^^^^
-
-and %r0, %r1, %r1			! clear reg1
-add %r2, %r1, %r1			! stores %r2 in %r1
-
-and %r0, %r2, %r2			! clear reg2
-add %r3, %r2, %r2       		! %r2 will contain the result
+and %r0, %r3, %r3				! clear reg3
+add %r2, %r3, %r3				! adds %r1 to %r2 and stores in %r3
+add %r1, %r3, %r3				! ^^^^
+and %r0, %r1, %r1				! clear reg1
+add %r2, %r1, %r1				! stores %r2 in %r1
+and %r0, %r2, %r2				! clear reg2
+add %r3, %r2, %r2       			! %r2 will contain the result
 ba start
 
-ending: orcc %r4, %r0, %r0		! check if we want the full result
+ending: orcc %r4, %r0, %r0			! check if we want the full result
 be display
-andcc %r4, %r6, %r6	 		! check if we want half of the result
-bne halving
-             
-halving: and %r2, %r7, %r7  		! check if the last bit is a 1 (then the number is odd)
-srl %r2, 1, %r2				! divide the result by 2 using a shift right
-add %r7, %r2, %r2			! and add the 1 back if it was odd
-ba display
+andcc %r4, %r6, %r6	 			! check if we want half of the result
+bne halving     
 
-display: halt             		! display the result
+halving: and %r2, %r7, %r7			! check if the last bit is a 1 (then the number is odd)
+srl %r2, 1, %r2					! divide the result by 2 using a shift right
+add %r7, %r2, %r2				! and add the 1 back if it was odd
 
-C: 15                     		! how many times we should run the function
-H: 1                     		! H = 0, not halve; H = 1, halve 
+display: display %r2
+halt             				! display the result
 
-.end
-
+C: 0                    			! how many times we should run the function
+H: 0                     			! H = 0, not halve; H = 1, halve 
 ```
 
 ## Parts of the processor
@@ -168,6 +167,23 @@ The following signals are used between multiple processes. To avoid confusion, w
 #### ALU and status bits
 
 ### Memory
+The memory designed for the processor is created based on the von Neuman architecture. The memory is made up of a 2D-array consisting of 128 blocks, where each block is made up by 4 bytes resulting in a word size of 32 bits. This allows an entire instruction to reside in one memory block. The memory is synthesized on the FPGA resulting in it being physically built using flip-flops. The built in memory on the FPGA is therefore never used. 
+
+Four input signals are used to the memory. These inputs are rd, wr, b and address. We also use a data-in and data-out signal. rd and wr tells the memory if we want to read or write respectively. These are used in combination with b, which tells us if we want to address bytes separetly. Using these four inputs, the memory can perform four different operations. These operations are:
+
+b = 1 and rd = 1
+This stores the selected memory adress in the 8 least significant bits of data-out.
+
+b = 1 and wr = 1
+This stores the 8 least significant bits of data-in in memory at the selected adress.
+
+b = 0 and rd = 1
+This stores an entire word from memory in data-out.
+
+b = 0 and wr = 1
+This stores data-in in 4 sequential bytes in memory.
+
+
 
 ### IO
 The DE1-SoC board has 10 switches, 10 LEDs, 4 momentary push buttons, and 6 seven segments displays. We connected the following functions to the onboard inputs:
@@ -196,7 +212,7 @@ And we connected the following functions to the onboard outputs:
 ### Debugging
 In the requirements we stated that we shall implement a debug mode. If the debug mode is active, the user should be able to step through the program one line at a time. Also, the user shall be able to load the contents of a memory adress and display it using the seven segment displays on the FPGA.
 
-Observe that we are able to pauze a program by stopping the controller in its fetch-decode-execute cycle. In order to accomplish this, we replaced
+Observe that we are able to pause a program by stopping the controller in its fetch-decode-execute cycle. In order to accomplish this, we replaced
 ```VHDL
 ELSIF (rising_edge(clk)) AND (halt = '0') AND (ACK_data = '1') THEN 
 ```
