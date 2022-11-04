@@ -69,17 +69,17 @@ The minimal instruction length to cover all the wanted instructions is 17 bits. 
 
 ### Miscellaneous instructions
 
-#### Display: displays a register value on the seven segments displays
+#### `display`: displays a register value on the seven segments displays
 | Op1 | Op2 | %rs (4 bits) | unused (12 bits) |
 | :--  |:-- |:--  |:-- |
 | 11 | 00 | RRRR | 000000000000 |
 
-#### readIO: reads the current state of the switches and stores it in a register
+#### `readIO`: reads the current state of the switches and stores it in a register
 | Op1 | Op2 | %rd (4 bits) | unused (12 bits) |
 | :--  |:-- |:--  |:-- |
 | 11 | 01 | RRRR | 000000000000 |
 
-#### halt: stops the program
+#### `halt`: stops the program
 | Op1 | Op2 | unused 1s (16 bits) |
 | :--  |:-- |:-- |
 | 11 | 11 | 1111111111111111 |
