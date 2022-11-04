@@ -14,9 +14,10 @@ ENTITY datapath IS
         CMux : IN STD_LOGIC;
         io : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
         ALU : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+	rr : IN STD_LOGIC;
+	SIMM10 : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 
         -- to the control unit
-	rr : OUT STD_LOGIC;
         PCR : OUT STD_LOGIC_VECTOR(3 DOWNTO 0); -- N, Z, V, C resp. 3 downto 0
         Op1 : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
         Op2 : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
@@ -64,7 +65,6 @@ variable counter : integer := 0;
     BEGIN
         IF reset = '0' THEN
             dataMemoryOut <= (OTHERS => '0');
-	    rr <= '0';
             PCR <= "0000";
             Op1 <= "00";
             Op2 <= "00";

@@ -18,7 +18,7 @@ END ENTITY registerfile;
 ARCHITECTURE bhv OF registerfile IS
 
     TYPE registerfile_type IS ARRAY (0 TO 15) OF STD_LOGIC_VECTOR(31 DOWNTO 0);
-    SIGNAL reg_file : registerfile_type := (OTHERS => (OTHERS => '0'));
+    SIGNAL reg_file : registerfile_type := (OTHERS => (OTHERS => '0')); 
 
     FUNCTION decoder(s : STD_LOGIC_VECTOR) RETURN NATURAL IS
         VARIABLE index : NATURAL;
@@ -42,7 +42,7 @@ BEGIN
 --        END IF;
   --  END PROCESS registers;
 
-    PROCESS (clk, BusC, Current_C, Current_A)
+    PROCESS (clk)
   VARIABLE index : NATURAL;
   VARIABLE counter : integer := 0;
     BEGIN
@@ -50,24 +50,26 @@ BEGIN
             BusA <= (31 DOWNTO 0 => '0');
 	    BusC <= (31 DOWNTO 0 => '0');
             IR <= (31 DOWNTO 0 => '0');
-	    
-            --reg_file <= (OTHERS => (OTHERS => '0'));
+	    reg_file <= (OTHERS => (OTHERS => '0'));
         ELSIF rising_edge(clk) THEN
-	
-	IF counter = 1 THEN
+	IF counter = 0 THEN
+	counter := counter + 1;
+	ELSIF counter = 1 THEN
 	BusA <= reg_file(to_integer(unsigned(Current_A)));
 	BusC <= reg_file(to_integer(unsigned(Current_C)));
+	--BusC <= reg_file(to_integer(unsigned(Current_C)));
         PC <= reg_file(14); --Register 14 is program counter
         IR <= reg_file(15); --Register 15 is instruction register
 	counter := counter +1;
-	ELSIF counter < 4 THEN
-	reg_file(to_integer(unsigned(Current_C))) <= BusC;
+	ELSIF counter = 2 THEN
 	counter := counter +1;
-	ELSE
+	ELSIF counter = 3 THEN
+	reg_file(to_integer(unsigned(Current_C))) <= BusC;
 	counter := 0;
 	END IF;
 	reg_file(0) <= (OTHERS => '0'); --%r0 is constant zero
-        --	index := decoder(Current_C);
+        
+	--	index := decoder(Current_C);
         --IF index > 0 THEN
         --    	reg_file(index) <= BusC;
         --END IF;
