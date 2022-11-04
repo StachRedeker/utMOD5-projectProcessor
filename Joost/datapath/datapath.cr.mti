@@ -1,4 +1,4 @@
-{C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/datapath/datapath.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Fabian\datapath\datapath.vhd}
+{C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/datapath/datapath.vhd} {0 {vcom -work work -2002 -explicit -stats=none {C:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Fabian\datapath\datapath.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -6,5 +6,8 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Loading package NUMERIC_STD
 -- Compiling entity datapath
 -- Compiling architecture structure of datapath
+** Error: C:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Fabian\datapath\datapath.vhd(85): Illegal target for signal assignment.
+** Error: C:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Fabian\datapath\datapath.vhd(85): (vcom-1136) Unknown identifier "ACK_datapath".
+** Error: C:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Fabian\datapath\datapath.vhd(154): VHDL Compiler exiting
 
-} {} {}}
+} {9.0 12.0} {}}

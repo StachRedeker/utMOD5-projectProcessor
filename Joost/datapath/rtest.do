@@ -1,15 +1,13 @@
 restart -f -nowave
 add wave *
+#force {reg_file[1]} "10000000000000000000000000000000"
+#force {reg_file[2]} "01000000000000000000000000000000"
 force clk 0,1 10ns -r 20ns
 force reset '0'
-run 10 ns
+run 5 ns
 force reset '1'
-force registerfile_type(1) "10000000000000000000000000000000"
-run 10 ns
+run 5 ns
 
-force  "0001"
 force Current_A "0010"
-run 20 ns
-run 20 ns
-run 20 ns
-run 20 ns
+force Current_C "0011"
+run 80 ns

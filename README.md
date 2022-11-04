@@ -69,17 +69,17 @@ The minimal instruction length to cover all the wanted instructions is 17 bits. 
 
 ### Miscellaneous instructions
 
-#### Display: displays a register value on the seven segments displays
+#### `display`: displays a register value on the seven segments displays
 | Op1 | Op2 | %rs (4 bits) | unused (12 bits) |
 | :--  |:-- |:--  |:-- |
 | 11 | 00 | RRRR | 000000000000 |
 
-#### readIO: reads the current state of the switches and stores it in a register
+#### `readIO`: reads the current state of the switches and stores it in a register
 | Op1 | Op2 | %rd (4 bits) | unused (12 bits) |
 | :--  |:-- |:--  |:-- |
 | 11 | 01 | RRRR | 000000000000 |
 
-#### halt: stops the program
+#### `halt`: stops the program
 | Op1 | Op2 | unused 1s (16 bits) |
 | :--  |:-- |:-- |
 | 11 | 11 | 1111111111111111 |
@@ -178,6 +178,10 @@ The ALU receieves `F2F1F0` from the controller in order to communicate about the
 | 1 | 1 | 0 | ANDcc |
 | 1 | 1 | 1 | nothing (default value) |
 
+The ALU outputs the result, and sets the status bits (n/z/v/c) if required.
+
+#### `ACK_data` 
+
 ### Memory
 We designed the memory based on the von Neumann architecture. The memory is made up of a 2D array consisting of 128 blocks, where each block is made up of 4 bytes. This results in a word size of 32 bits. Hence, a complete instruction can reside in one memory block. The memory is synthesized on the FPGA. It will hence be built using flip-flops. 
 
@@ -228,10 +232,10 @@ ELSIF (rising_edge(clk)) AND (halt = '0') AND (ACK_data = '1') AND ((DEBUG /= '1
 ```
 It can be seen that we added two new signals. `DEBUG` is 1 if the debug switch is turned on. `DEBUG_NEXT` is 1 for exactly 1 clock cycle when a user presses the 'next line' button.
 
-#### Debugging_facilitators
+#### `debugging_facilitators`
 One might wonder how we set `DEBUG_NEXT` to 1 for exactly 1 clock cycle when the user presses the button. The `DEBUG_NEXT` signal shall be an asynchronous input to the controller. Hence, we opted for a dedicated process `debugging_faciliators` that handles this input and transforms it in the required signal. `debugging_faciliators` also produces the signals for the `rd` and `wr` LEDs.
 
-#### Debugging_display
+#### `debugging_display`
 `debugging_display` sends the required signals to the displays and LEDs.
 
 ## Installation and usage
@@ -250,6 +254,8 @@ File 2
 File n
 ```
 
+## Synthesis results
+
 ## Contributions overview
 | Member | Work |
 | :-- | :-- |
@@ -263,3 +269,5 @@ File n
 
 ## Conclusion
 During this project, we developed a virtual processor that can be synthesized on the DE1-SoC board. The virtual processor is designed using VHDL and ships with an application that is able to compute the Fibonacci sequence.
+
+## References and acknowledgements

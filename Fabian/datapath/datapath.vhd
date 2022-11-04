@@ -15,7 +15,7 @@ ENTITY datapath IS
         io : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
         ALU : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
 	rr : IN STD_LOGIC;
-	SIMM10 : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
+	SIMMM10 : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 
         -- to the control unit
         PCR : OUT STD_LOGIC_VECTOR(3 DOWNTO 0); -- N, Z, V, C resp. 3 downto 0
