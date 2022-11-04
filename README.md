@@ -166,6 +166,18 @@ The following signals are used between multiple processes. To avoid confusion, w
 
 #### ALU and status bits
 
+The ALU receieves `F2F1F0` from the controller in order to communicate about the wanted operation.
+| F2 | F1 | F0 | Operation |
+| :-- | :-- | :-- | :-- |
+| 0 | 0 | 0 | AND |
+| 0 | 0 | 1 | OR | 
+| 0 | 1 | 0 | ADD |
+| 0 | 1 | 1 | Shift right |
+| 1 | 0 | 0 | ANDcc |
+| 1 | 0 | 1 | ORcc |
+| 1 | 1 | 0 | ANDcc |
+| 1 | 1 | 1 | nothing (default value) |
+
 ### Memory
 We designed the memory based on the von Neumann architecture. The memory is made up of a 2D-array consisting of 128 blocks, where each block is made up by 4 bytes. This results in a word size of 32 bits. Hence, a complete instruction is able to reside in one memory block. The memory is synthesized on the FPGA. It will be hence be built using flip-flops. 
 
