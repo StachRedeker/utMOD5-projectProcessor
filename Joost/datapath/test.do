@@ -14,18 +14,18 @@ force rs "0000"
 run 20 ns
 
 # store hex:11111111 in register 2
-force dataIn "00010001000100010001000100010001"
+force dataIn "00000000000000000000000000000001"
 force CMux '1'
 force AMux '0'
 force rd "0010"
 force rs "0000"
 run 20 ns
 
-# add register 1 to register 3
+# shift register 1 register 2 amount of times
 force dataIn "00000000000000000000000000000000"
 force CMux '0'
 force AMux '0'
-force rd "0011"
-force rs "0001"
+force rd "0001"
+force rs "0010"
 force ALU "110"
-run 20 ns
+run 80 ns
