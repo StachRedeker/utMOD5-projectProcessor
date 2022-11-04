@@ -254,6 +254,8 @@ File 2
 File n
 ```
 
+## Synthesis results
+
 ## Contributions overview
 | Member | Work |
 | :-- | :-- |
