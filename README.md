@@ -167,6 +167,23 @@ The following signals are used between multiple processes. To avoid confusion, w
 #### ALU and status bits
 
 ### Memory
+The memory designed for the processor is created based on the von Neuman architecture. The memory is made up of a 2D-array consisting of 128 blocks, where each block is made up by 4 bytes resulting in a word size of 32 bits. This allows an entire instruction to reside in one memory block. The memory is synthesized on the FPGA resulting in it being physically built using flip-flops. The built in memory on the FPGA is therefore never used. 
+
+Four input signals are used to the memory. These inputs are rd, wr, b and address. We also use a data-in and data-out signal. rd and wr tells the memory if we want to read or write respectively. These are used in combination with b, which tells us if we want to address bytes separetly. Using these four inputs, the memory can perform four different operations. These operations are:
+
+b = 1 and rd = 1
+This stores the selected memory adress in the 8 least significant bits of data-out.
+
+b = 1 and wr = 1
+This stores the 8 least significant bits of data-in in memory at the selected adress.
+
+b = 0 and rd = 1
+This stores an entire word from memory in data-out.
+
+b = 0 and wr = 1
+This stores data-in in 4 sequential bytes in memory.
+
+
 
 ### IO
 The DE1-SoC board has 10 switches, 10 LEDs, 4 momentary push buttons, and 6 seven segments displays. We connected the following functions to the onboard inputs:
@@ -195,7 +212,7 @@ And we connected the following functions to the onboard outputs:
 ### Debugging
 In the requirements we stated that we shall implement a debug mode. If the debug mode is active, the user should be able to step through the program one line at a time. Also, the user shall be able to load the contents of a memory adress and display it using the seven segment displays on the FPGA.
 
-Observe that we are able to pauze a program by stopping the controller in its fetch-decode-execute cycle. In order to accomplish this, we replaced
+Observe that we are able to pause a program by stopping the controller in its fetch-decode-execute cycle. In order to accomplish this, we replaced
 ```VHDL
 ELSIF (rising_edge(clk)) AND (halt = '0') AND (ACK_data = '1') THEN 
 ```
