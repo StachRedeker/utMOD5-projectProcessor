@@ -9,24 +9,24 @@ z2
 cModel Technology
 dC:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/memory
 Edatapath
-Z0 w1667483443
+Z0 w1667566979
 Z1 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
 Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z3 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
 Z4 dC:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/datapath
-Z5 8C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/datapath/datapath.vhd
-Z6 FC:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/datapath/datapath.vhd
+Z5 8C:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Fabian\datapath\datapath.vhd
+Z6 FC:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Fabian\datapath\datapath.vhd
 l0
 L4
-V52N@=YR1Bea=go2G:A1XU0
-!s100 <Kknmn6c6`c5UJC8^IYQ13
+VJP`QCkmMV9@A6oQFd3?k]3
+!s100 Um:2N^:mnLX9``_C9k_@f0
 Z7 OV;C;10.5b;63
 32
-Z8 !s110 1667487308
+Z8 !s110 1667566982
 !i10b 1
-Z9 !s108 1667487308.000000
-Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/datapath/datapath.vhd|
-Z11 !s107 C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/datapath/datapath.vhd|
+Z9 !s108 1667566982.000000
+Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Fabian\datapath\datapath.vhd|
+Z11 !s107 C:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Fabian\datapath\datapath.vhd|
 !i113 1
 Z12 o-work work -2002 -explicit
 Z13 tExplicit 1 CvgOpt 0
@@ -34,11 +34,11 @@ Astructure
 R1
 R2
 R3
-DEx4 work 8 datapath 0 22 52N@=YR1Bea=go2G:A1XU0
-l56
-L31
-Vmm6;L9?MJj^MQj?bjLMXW2
-!s100 QkXG2Y>`94;70K`zDTSQS1
+Z14 DEx4 work 8 datapath 0 22 JP`QCkmMV9@A6oQFd3?k]3
+l57
+L32
+VAaPM@ADL0Wj@kZTORVeB[0
+!s100 bQSna7D]Z3hCZU18KTbcf3
 R7
 32
 R8
@@ -50,24 +50,24 @@ R11
 R12
 R13
 Eregisterfile
-Z14 w1667483220
+Z15 w1667560450
 R1
 R2
 R3
 R4
-Z15 8C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/datapath/registerfile.vhd
-Z16 FC:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/datapath/registerfile.vhd
+Z16 8C:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Fabian\datapath\registerfile.vhd
+Z17 FC:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Fabian\datapath\registerfile.vhd
 l0
 L4
-VH^cKEHalaoQ@AR1zQjJO10
-!s100 5jHeQ>_Sd;jQbON_SOhg61
+VWYCYWjbOUX?A1TIEeZR=k0
+!s100 A;EBe6FeRF]Wkzfh6JCaA1
 R7
 32
-R8
+Z18 !s110 1667566981
 !i10b 1
-R9
-Z17 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/datapath/registerfile.vhd|
-Z18 !s107 C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/datapath/registerfile.vhd|
+Z19 !s108 1667566981.000000
+Z20 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Fabian\datapath\registerfile.vhd|
+Z21 !s107 C:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Fabian\datapath\registerfile.vhd|
 !i113 1
 R12
 R13
@@ -75,18 +75,18 @@ Abhv
 R1
 R2
 R3
-DEx4 work 12 registerfile 0 22 H^cKEHalaoQ@AR1zQjJO10
-l34
-L17
-VXDbTK_nH<4gFLhWc`ALLK0
-!s100 ZJnQQ8926Y=_gZf=6Oz0E3
+DEx4 work 12 registerfile 0 22 WYCYWjbOUX?A1TIEeZR=k0
+l35
+L18
+V;;N@_?@XNDX>_3AQ_DY6=1
+!s100 7cjOnWd:2lQ:2ZYKJNCVd1
 R7
 32
-R8
-!i10b 1
-R9
-R17
 R18
+!i10b 1
+R19
+R20
+R21
 !i113 1
 R12
 R13
