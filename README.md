@@ -154,9 +154,8 @@ We opted for a finite state machine (FSM) over microstore because a FSM is easie
 ![FSM](Stach/FSM.png)
 
 ### Datapath and dataflow
-The following signals are used between multiple processes. To avoid confusion, we try to give the signals the same name in every process.
-
-[LINK TO EXCEL FILE WITH ALL SIGNALS]
+There is a significant number of signals that transport data between processes. To avoid confusion, we try to give the signals the same name in every process.
+[This table contains the signals that are used to communicate between processes](/Signals.pdf)
 
 #### Registers
 | Register | Function |
