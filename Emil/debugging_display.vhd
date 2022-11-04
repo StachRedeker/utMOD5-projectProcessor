@@ -26,7 +26,7 @@ ENTITY debugging_facilitator IS
         rd_status : IN STD_LOGIC;
 
         --Output
-        address : OUT STD_LOGIC_VECTOR(9 downto 0);
+        address : OUT STD_LOGIC_VECTOR(9 DOWNTO 0);
         wr : OUT STD_LOGIC;
         b : OUT STD_LOGIC;
         rd : OUT STD_LOGIC;
@@ -50,14 +50,14 @@ BEGIN
 
             --reset stuff
 
-        ELSIF falling_edge(clk) THEN
+        ELSIF rising_edge(clk) THEN
 
             IF LOAD_ADDRESS = '1' THEN
 
                 address <= sw(9 DOWNTO 0); --values of the switches
                 wr <= '0';
                 b <= '0';
-                    rd <= '1';
+                rd <= '1';
                 cmux <= '1';
                 amux <= '0';
 
@@ -65,15 +65,13 @@ BEGIN
 
             displaycontent(bin2hex(memory_data_out(19 DOWNTO 0)), dig0, dig1, dig2, dig3, dig4, dig5);
 
-                led(3) <= PCR(3);
-                led(2) <= PCR(2);
-                led(1) <= PCR(1);
-                led(0) <= PCR(0);
+            led(3) <= PCR(3);
+            led(2) <= PCR(2);
+            led(1) <= PCR(1);
+            led(0) <= PCR(0);
 
             led(4) <= rd_status;
             led(5) <= wr_status;
-
-
         END IF;
     END PROCESS;
 END;

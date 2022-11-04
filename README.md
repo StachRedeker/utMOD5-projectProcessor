@@ -14,9 +14,9 @@ This documentation file is part of the final project of Digital Hardware in modu
   * [Conclusion](#conclusion)
     
 ## Introduction
-JFEGS is a virtual processor designed in VHDL for the Altera System-on-Chip (SoC) FPGA. The processor can be compiled using ModelSim and syntesized using Quartus. Various requirements were set. We discussed those in our [project plan](/ProjectPlan.pdf).
+JFEGS is a virtual processor designed in VHDL for the Altera System-on-Chip (SoC) FPGA. The processor can be compiled using ModelSim and synthesized using Quartus. Various requirements were set. We discussed those in our [project plan](/ProjectPlan.pdf).
 
-In this documentation file, we aim to eleborate on the workings of our virtual processor. This document can also serve as a starting point for people who wants to write programs for our system. At first, we discuss the instruction format and our example application. After that, we dig deeper into our processor and give a brief overview of the workings of various important components. Lastly, we provide an installation guide and make recommendations for further improvements.
+In this documentation file, we aim to elaborate on the workings of our virtual processor. This document can also serve as a starting point for people who wants to write programs for our system. First, we discuss the instruction format and our example application. After that, we dig deeper into our processor and give a brief overview of the workings of various important components. Lastly, we provide an installation guide and make recommendations for further improvements.
 
 
 ## Instruction format
@@ -69,17 +69,17 @@ The minimal instruction length to cover all the wanted instructions is 17 bits. 
 
 ### Miscellaneous instructions
 
-#### Display: displays a register value on the seven segments displays
+#### `display`: displays a register value on the seven segments displays
 | Op1 | Op2 | %rs (4 bits) | unused (12 bits) |
 | :--  |:-- |:--  |:-- |
 | 11 | 00 | RRRR | 000000000000 |
 
-#### readIO: reads the current state of the switches and stores it in a register
+#### `readIO`: reads the current state of the switches and stores it in a register
 | Op1 | Op2 | %rd (4 bits) | unused (12 bits) |
 | :--  |:-- |:--  |:-- |
 | 11 | 01 | RRRR | 000000000000 |
 
-#### halt: stops the program
+#### `halt`: stops the program
 | Op1 | Op2 | unused 1s (16 bits) |
 | :--  |:-- |:-- |
 | 11 | 11 | 1111111111111111 |
@@ -97,7 +97,7 @@ add %r0, %r3, %r2
 ba fun
 .end
 ```
-However, to showcase the full potential of our product, we designed an extended Fibonacci application that makes use of the large majority of the functionaility of our instruction set. Also, observe that a two address machine is not able to handle instructions that use three registers. Hence, our application is rewritten such that it only uses at maximum two registers per instruction.
+However, to showcase the full potential of our product, we designed an extended Fibonacci application that uses the majority of the functionality of our instruction set. Also, observe that a two-address machine cannot handle instructions that use three registers. Hence, our application is rewritten such that it only uses a maximum of two registers per instruction.
 
 The example program is able to compute the nth Fibonacci number, where n is inputted by the user using the onboard switches. The application can also halve the result, if the user requires so.
 ```assembly
@@ -147,16 +147,15 @@ H: 0                     			! H = 0, not halve; H = 1, halve
 This chapter gives a brief summary of different processor parts.
 
 ### Controller
-The controller is the brain of our processor. It is able to perform the fetch-decode-excecute cycle. It fetches the instructions from the memory, stores them in the instruction register, and from there, interprets them (decode). After that, the controller sends signals to the other systems in the processor to make sure that the operation gets correctly excecuted.
+The controller is the brain of our processor. It is able to perform the fetch-decode-execute cycle. It fetches the instructions from the memory, stores them in the instruction register, and from there, interprets them (decode). After that, the controller sends signals to the other systems in the processor to make sure that the operation gets correctly executed.
 
 We opted for a finite state machine (FSM) over microstore because a FSM is easier and more elegant to implement for smaller instruction sets. Although mircostore allows for a more generalizable instruction set, a FSM should suffice in our case.
 
 ![FSM](Stach/FSM.png)
 
 ### Datapath and dataflow
-The following signals are used between multiple processes. To avoid confusion, we try to give the signals the same name in every process.
-
-[LINK TO EXCEL FILE WITH ALL SIGNALS]
+There is a significant number of signals that transport data between processes. To avoid confusion, we try to give the signals the same name in every process.
+[This table contains the signals that are used to communicate between processes.](/Signals.pdf)
 
 #### Registers
 | Register | Function |
@@ -179,8 +178,12 @@ The ALU receieves `F2F1F0` from the controller in order to communicate about the
 | 1 | 1 | 0 | ANDcc |
 | 1 | 1 | 1 | nothing (default value) |
 
+The ALU outputs the result, and sets the status bits (n/z/v/c) if required.
+
+#### `ACK_data` 
+
 ### Memory
-We designed the memory based on the von Neumann architecture. The memory is made up of a 2D-array consisting of 128 blocks, where each block is made up by 4 bytes. This results in a word size of 32 bits. Hence, a complete instruction is able to reside in one memory block. The memory is synthesized on the FPGA. It will be hence be built using flip-flops. 
+We designed the memory based on the von Neumann architecture. The memory is made up of a 2D array consisting of 128 blocks, where each block is made up of 4 bytes. This results in a word size of 32 bits. Hence, a complete instruction can reside in one memory block. The memory is synthesized on the FPGA. It will hence be built using flip-flops. 
 
 4 input signals are picked up by the memory. These inputs are `rd`, `wr`, `b`, and `address`. We also use a `data-in` and data-out `signal`. `rd` and `wr` tell the memory if we want to read or write respectively. These are used in combination with `b`, which tells us if we want to address bytes separately. The memory is able to perform 4 different operations. These operations are:
 
@@ -217,9 +220,9 @@ And we connected the following functions to the onboard outputs:
 
 
 ### Debugging
-In the requirements we stated that we shall implement a debug mode. If the debug mode is active, the user should be able to step through the program one line at a time. Also, the user shall be able to load the contents of a memory adress and display it using the seven segment displays on the FPGA.
+In the requirements, we stated that we should implement a debug mode. If the debug mode is active, the user should be able to step through the program one line at a time. Also, the user shall be able to load the contents of a memory address and display it using the seven-segment displays on the FPGA.
 
-Observe that we are able to pause a program by stopping the controller in its fetch-decode-execute cycle. In order to accomplish this, we replaced
+Observe that we can pause a program by stopping the controller in its fetch-decode-execute cycle. To accomplish this, we replaced
 ```VHDL
 ELSIF (rising_edge(clk)) AND (halt = '0') AND (ACK_data = '1') THEN 
 ```
@@ -229,10 +232,11 @@ ELSIF (rising_edge(clk)) AND (halt = '0') AND (ACK_data = '1') AND ((DEBUG /= '1
 ```
 It can be seen that we added two new signals. `DEBUG` is 1 if the debug switch is turned on. `DEBUG_NEXT` is 1 for exactly 1 clock cycle when a user presses the 'next line' button.
 
-#### Debugging_facilitators
-One might wonder how we set `DEBUG_NEXT` to 1 for exactly 1 clock cycle when the user presses the button. The `DEBUG_NEXT` signal shall be an asynchronous input to the controller. Hence, we opted for a dedicated process `debugging_faciliators` that handles this input. 
+#### `debugging_facilitators`
+One might wonder how we set `DEBUG_NEXT` to 1 for exactly 1 clock cycle when the user presses the button. The `DEBUG_NEXT` signal shall be an asynchronous input to the controller. Hence, we opted for a dedicated process `debugging_faciliators` that handles this input and transforms it in the required signal. `debugging_faciliators` also produces the signals for the `rd` and `wr` LEDs.
 
-#### Debugging_display
+#### `debugging_display`
+`debugging_display` sends the required signals to the displays and LEDs.
 
 ## Installation and usage
 Use the following files for compilation in ModelSim:

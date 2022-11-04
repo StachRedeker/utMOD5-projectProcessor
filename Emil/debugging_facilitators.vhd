@@ -6,13 +6,13 @@ ENTITY debugging_facilitator IS
     PORT (
         clk : IN STD_LOGIC;
         reset : IN STD_LOGIC; --key0
-        debug_next_key : IN STD_LOGIC; --key1
+        next_instruction_key : IN STD_LOGIC; --key1
         load_address_key : IN STD_LOGIC; --key2
         DEBUG_NEXT : OUT STD_LOGIC;
         LOAD_ADDRESS : OUT STD_LOGIC;
 
-        wr : IN STD_LOGIC;
-        rd : IN STD_LOGIC;
+        AMux : IN STD_LOGIC; --writing
+        CMux : IN STD_LOGIC; --reading
 
 
         --Output
@@ -26,9 +26,9 @@ END;
 
 ARCHITECTURE bhv OF debugging_facilitator IS
 BEGIN
-    PROCESS (clk, reset, debug_next_key, load_address_key, wr, rd)
+    PROCESS (clk, reset, next_instruction_key, load_address_key, AMux, CMux)
 
-        VARIABLE previous_debug_next_key : STD_LOGIC;
+        VARIABLE previous_next_instruction_key : STD_LOGIC;
         VARIABLE previous_load_address_key : STD_LOGIC;
 
     BEGIN
@@ -37,14 +37,14 @@ BEGIN
           
             --reset stuff
 
-        ELSIF falling_edge(clk) THEN
+        ELSIF rising_edge(clk) THEN
 
-            IF debug_next_key = '0' AND previous_debug_next_key = '1' THEN
+            IF next_instruction_key = '0' AND previous_next_instruction_key = '1' THEN
                 DEBUG_NEXT <= '1';
             ELSE
                 DEBUG_NEXT <= '0';
             END IF;
-            previous_debug_next_key := debug_next_key;
+            previous_next_instruction_key := next_instruction_key;
             
             IF load_address_key = '0' AND previous_load_address_key = '1' THEN
                 LOAD_ADDRESS <= '1';
@@ -54,8 +54,8 @@ BEGIN
             previous_load_address_key := load_address_key;
 
 
-            wr_status <= wr;
-            rd_status <= rd;
+            wr_status <= AMux;
+            rd_status <= CMux;
 
             
         END IF;
