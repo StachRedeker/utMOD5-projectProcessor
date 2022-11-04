@@ -1,0 +1,229 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "ALU[0]",
+					"strict" : false
+				},
+				{
+					"name" : "ALU[1]",
+					"strict" : false
+				},
+				{
+					"name" : "ALU[2]",
+					"strict" : false
+				},
+				{
+					"name" : "MEM[0]",
+					"strict" : false
+				},
+				{
+					"name" : "MEM[1]",
+					"strict" : false
+				},
+				{
+					"name" : "MEM[2]",
+					"strict" : false
+				},
+				{
+					"name" : "rs[0]",
+					"strict" : false
+				},
+				{
+					"name" : "rs[1]",
+					"strict" : false
+				},
+				{
+					"name" : "rs[2]",
+					"strict" : false
+				},
+				{
+					"name" : "rs[3]",
+					"strict" : false
+				},
+				{
+					"name" : "rd[0]",
+					"strict" : false
+				},
+				{
+					"name" : "rd[1]",
+					"strict" : false
+				},
+				{
+					"name" : "rd[2]",
+					"strict" : false
+				},
+				{
+					"name" : "rd[3]",
+					"strict" : false
+				},
+				{
+					"name" : "SIMM10[0]",
+					"strict" : false
+				},
+				{
+					"name" : "SIMM10[1]",
+					"strict" : false
+				},
+				{
+					"name" : "SIMM10[2]",
+					"strict" : false
+				},
+				{
+					"name" : "SIMM10[3]",
+					"strict" : false
+				},
+				{
+					"name" : "SIMM10[4]",
+					"strict" : false
+				},
+				{
+					"name" : "SIMM10[5]",
+					"strict" : false
+				},
+				{
+					"name" : "SIMM10[6]",
+					"strict" : false
+				},
+				{
+					"name" : "SIMM10[7]",
+					"strict" : false
+				},
+				{
+					"name" : "SIMM10[8]",
+					"strict" : false
+				},
+				{
+					"name" : "SIMM10[9]",
+					"strict" : false
+				},
+				{
+					"name" : "IO[0]",
+					"strict" : false
+				},
+				{
+					"name" : "IO[1]",
+					"strict" : false
+				},
+				{
+					"name" : "rr",
+					"strict" : false
+				},
+				{
+					"name" : "Amux",
+					"strict" : false
+				},
+				{
+					"name" : "Cmux",
+					"strict" : false
+				},
+				{
+					"name" : "NewInstruction",
+					"strict" : false
+				},
+				{
+					"name" : "MemString[16]",
+					"strict" : false
+				},
+				{
+					"name" : "MemString[15]",
+					"strict" : false
+				},
+				{
+					"name" : "MemString[17]",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "DEBUG",
+					"strict" : false
+				},
+				{
+					"name" : "DEBUG_NEXT",
+					"strict" : false
+				},
+				{
+					"name" : "ACK_data",
+					"strict" : false
+				},
+				{
+					"name" : "reset",
+					"strict" : false
+				},
+				{
+					"name" : "MemString[18]",
+					"strict" : false
+				},
+				{
+					"name" : "MemString[19]",
+					"strict" : false
+				},
+				{
+					"name" : "MemString[12]",
+					"strict" : false
+				},
+				{
+					"name" : "MemString[3]",
+					"strict" : false
+				},
+				{
+					"name" : "MemString[10]",
+					"strict" : false
+				},
+				{
+					"name" : "MemString[14]",
+					"strict" : false
+				},
+				{
+					"name" : "MemString[13]",
+					"strict" : false
+				},
+				{
+					"name" : "MemString[4]",
+					"strict" : false
+				},
+				{
+					"name" : "MemString[11]",
+					"strict" : false
+				},
+				{
+					"name" : "MemString[5]",
+					"strict" : false
+				},
+				{
+					"name" : "MemString[6]",
+					"strict" : false
+				},
+				{
+					"name" : "MemString[7]",
+					"strict" : false
+				},
+				{
+					"name" : "MemString[8]",
+					"strict" : false
+				},
+				{
+					"name" : "MemString[9]",
+					"strict" : false
+				},
+				{
+					"name" : "MemString[0]",
+					"strict" : false
+				},
+				{
+					"name" : "MemString[1]",
+					"strict" : false
+				},
+				{
+					"name" : "MemString[2]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

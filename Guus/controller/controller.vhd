@@ -10,6 +10,7 @@ ENTITY controller IS
 	DEBUG_NEXT : IN std_logic;
 	ACK_data : IN std_logic;
 	NewInstruction : IN std_logic; 
+	-- TEST_PHASE : IN std_logic_vector (1 DOWNTO 0); -- TAKE THIS OUT AFTER TESTS!!!!!!!!!!!!!!!!!!!!!!!
 	PSR : IN std_logic_vector (3 DOWNTO 0); --(n,z,v,c)
 	ALU : OUT std_logic_vector (2 DOWNTO 0);
 	MEM : OUT std_logic_vector (2 DOWNTO 0);
@@ -59,9 +60,11 @@ IF (reset = '0') THEN
 		rs <= "0000"; --(default value)
 		Cmux <= '1';  
 		Amux <= '0'; 
+		IO <= "00"; --reset value
 		cntstop := '0';
 		ALU <= "111"; --reset value where it wont perform any operation
 		rr <= '0'; --reset value
+		SIMM10 <= "0000000000"; --reset value
 -- -----------------------------------------------------------------------------------------Decode/Execute
 	ELSIF (NewInstruction = '1') and (cntstop = '0') THEN 
 		Op1 := MemString(19 DOWNTO 18);
@@ -69,8 +72,6 @@ IF (reset = '0') THEN
 		Amux <= '0'; --reset value
 		Cmux <= '0'; --reset value
 		MEM <= "000"; --reset value
-		IO <= "00"; --reset value
-		SIMM10 <= "0000000000"; --reset value
 		IF (Op1 = "00") THEN --Branch Instructions
 			CASE Op2 IS 
 				WHEN "00" => ---------------------------------------------------------------Branch Always

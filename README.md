@@ -9,8 +9,9 @@ This documentation file is part of the final project of Digital Hardware in modu
   * [Example application](#example-application)
   * [Parts of the processor](#parts-of-the-processor)
   * [Installation and usage](#installation-and-usage)
+  * [Contributions overview](#contributions-overview)
   * [Future improvements](#future-improvements)
-  * [Final words](#final-words)
+  * [Conclusion](#conclusion)
     
 ## Introduction
 JFEGS is a virtual processor designed in VHDL for the Altera System-on-Chip (SoC) FPGA. The processor can be compiled using ModelSim and syntesized using Quartus. Various requirements were set. We discussed those in our [project plan](/ProjectPlan.pdf).
@@ -166,23 +167,29 @@ The following signals are used between multiple processes. To avoid confusion, w
 
 #### ALU and status bits
 
+The ALU receieves `F2F1F0` from the controller in order to communicate about the wanted operation.
+| F2 | F1 | F0 | Operation |
+| :-- | :-- | :-- | :-- |
+| 0 | 0 | 0 | AND |
+| 0 | 0 | 1 | OR | 
+| 0 | 1 | 0 | ADD |
+| 0 | 1 | 1 | Shift right |
+| 1 | 0 | 0 | ANDcc |
+| 1 | 0 | 1 | ORcc |
+| 1 | 1 | 0 | ANDcc |
+| 1 | 1 | 1 | nothing (default value) |
+
 ### Memory
-The memory designed for the processor is created based on the von Neuman architecture. The memory is made up of a 2D-array consisting of 128 blocks, where each block is made up by 4 bytes resulting in a word size of 32 bits. This allows an entire instruction to reside in one memory block. The memory is synthesized on the FPGA resulting in it being physically built using flip-flops. The built in memory on the FPGA is therefore never used. 
+We designed the memory based on the von Neumann architecture. The memory is made up of a 2D-array consisting of 128 blocks, where each block is made up by 4 bytes. This results in a word size of 32 bits. Hence, a complete instruction is able to reside in one memory block. The memory is synthesized on the FPGA. It will be hence be built using flip-flops. 
 
-Four input signals are used to the memory. These inputs are rd, wr, b and address. We also use a data-in and data-out signal. rd and wr tells the memory if we want to read or write respectively. These are used in combination with b, which tells us if we want to address bytes separetly. Using these four inputs, the memory can perform four different operations. These operations are:
+4 input signals are picked up by the memory. These inputs are `rd`, `wr`, `b`, and `address`. We also use a `data-in` and data-out `signal`. `rd` and `wr` tell the memory if we want to read or write respectively. These are used in combination with `b`, which tells us if we want to address bytes separately. The memory is able to perform 4 different operations. These operations are:
 
-b = 1 and rd = 1
-This stores the selected memory adress in the 8 least significant bits of data-out.
-
-b = 1 and wr = 1
-This stores the 8 least significant bits of data-in in memory at the selected adress.
-
-b = 0 and rd = 1
-This stores an entire word from memory in data-out.
-
-b = 0 and wr = 1
-This stores data-in in 4 sequential bytes in memory.
-
+| rd | wr | b | Operation
+| :-- | :-- | :-- | :-- |
+| 1 | | 1 | store the selected memory address in the 8 least significant bits of `data-out` |
+| | 1 | 1 | store the 8 least significant bits of data-in in memory at the selected address |
+| 1 | | 0 | store an entire word from memory in `data-out` |
+| | 1 | 0 | store `data-in` in 4 sequential bytes in memory |
 
 
 ### IO
