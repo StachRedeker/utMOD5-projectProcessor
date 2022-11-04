@@ -1,7 +1,7 @@
 restart -f -nowave
 do wave.do
 force reset 0, 1 10 ns
-force PSR 1111 0 ns
+force PSR 1000 0 ns
 force DEBUG 0
 force ACK_data 1
 force clk 0 , 1 10 ns -repeat 20 ns 
