@@ -5,8 +5,8 @@ set_global_assignment -name VHDL_FILE debugging.vhd
 
 set_location_assignment PIN_AF14 -to clk
 set_location_assignment PIN_AA14 -to reset -comment KEY[0]
-set_location_assignment PIN_AA15 -to key1 -comment Check correct name
-set_location_assignment PIN_W15 -to key2
+set_location_assignment PIN_AA15 -to next_instruction_key
+set_location_assignment PIN_W15 -to load_address_key
 
 set_location_assignment PIN_AE26 -to dig0[0] -comment HEX0[0]
 set_location_assignment PIN_AE27 -to dig0[1]
