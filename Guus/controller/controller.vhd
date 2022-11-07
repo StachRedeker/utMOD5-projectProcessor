@@ -11,7 +11,7 @@ ENTITY controller IS
 	ACK_data : IN std_logic;
 	NewInstruction : IN std_logic; 
 	-- TEST_PHASE : IN std_logic_vector (1 DOWNTO 0); -- TAKE THIS OUT AFTER TESTS!!!!!!!!!!!!!!!!!!!!!!!
-	PSR : IN std_logic_vector (3 DOWNTO 0); --(n,z,v,c)
+	PCR : IN std_logic_vector (3 DOWNTO 0); --(n,z,v,c)
 	ALU : OUT std_logic_vector (2 DOWNTO 0);
 	MEM : OUT std_logic_vector (2 DOWNTO 0);
 	rs : OUT std_logic_vector(3 DOWNTO 0);
@@ -21,7 +21,7 @@ ENTITY controller IS
 	rr : OUT std_logic;
 	Amux : OUT std_logic;
 	Cmux : OUT std_logic;
-	MemString : IN std_logic_vector (31 DOWNTO 0)
+	memory_data_out : IN std_logic_vector (31 DOWNTO 0)
         );
 END ENTITY controller;
 
@@ -32,7 +32,7 @@ SIGNAL halt : std_logic := '0';
 SIGNAL addressfield : std_logic_vector (8 DOWNTO 0);
 BEGIN
 
-decode: PROCESS(clk,reset)
+decode: PROCESS(clk,reset,PCR)
 VARIABLE tempPCjump: natural := 0; 
 VARIABLE tempPC: natural := 0;
 VARIABLE PCupdate: natural :=0;
@@ -67,20 +67,20 @@ IF (reset = '0') THEN
 		SIMM10 <= "0000000000"; --reset value
 -- -----------------------------------------------------------------------------------------Decode/Execute
 	ELSIF (NewInstruction = '1') and (cntstop = '0') THEN 
-		Op1 := MemString(19 DOWNTO 18);
-		Op2 := MemString(17 DOWNTO 16);
+		Op1 := memory_data_out(19 DOWNTO 18);
+		Op2 := memory_data_out(17 DOWNTO 16);
 		Amux <= '0'; --reset value
 		Cmux <= '0'; --reset value
 		MEM <= "000"; --reset value
 		IF (Op1 = "00") THEN --Branch Instructions
 			CASE Op2 IS 
 				WHEN "00" => ---------------------------------------------------------------Branch Always
-						tempPCjump := to_integer(unsigned(MemString(15 DOWNTO 7)));
+						tempPCjump := to_integer(unsigned(memory_data_out(15 DOWNTO 7)));
 						PC <= tempPCjump;
 						tempPC := 0;
 				WHEN "01" => ---------------------------------------------------------------Branch Equal (IF z = 1)
-						IF (PSR(2) = '1') THEN
-							tempPCjump := to_integer(unsigned(MemString(15 DOWNTO 7)));
+						IF (PCR(2) = '1') THEN
+							tempPCjump := to_integer(unsigned(memory_data_out(15 DOWNTO 7)));
 							PC <= tempPCjump;
 							tempPC := 0;
 						ELSE 
@@ -89,8 +89,8 @@ IF (reset = '0') THEN
 							PC <= PCupdate; --output datapath							
 					    END IF;
 				WHEN "10" => ---------------------------------------------------------------Branch Not Equal (IF z = 0)
-						IF (PSR(2) = '0') THEN 
-							tempPCjump := to_integer(unsigned(MemString(15 DOWNTO 7)));
+						IF (PCR(2) = '0') THEN 
+							tempPCjump := to_integer(unsigned(memory_data_out(15 DOWNTO 7)));
 							PC <= tempPCjump;
 							tempPC := 0;
 						ELSE 
@@ -99,8 +99,8 @@ IF (reset = '0') THEN
 							PC <= PCupdate; --output datapath
 						END IF;
 				WHEN "11" => ---------------------------------------------------------------Branch Negative (IF n = 1)
-						IF (PSR(3) = '1') THEN
-							tempPCjump := to_integer(unsigned(MemString(15 DOWNTO 7)));
+						IF (PCR(3) = '1') THEN
+							tempPCjump := to_integer(unsigned(memory_data_out(15 DOWNTO 7)));
 							PC <= tempPCjump;
 							tempPC := 0;
 						ELSE 
@@ -112,26 +112,26 @@ IF (reset = '0') THEN
 						REPORT "Warning, current instruction is unknown" SEVERITY warning;
 			END CASE;
 		ELSIF (Op1 = "01") THEN --Memory Instructions
-			addressfield <= MemString(15 DOWNTO 7); --output memory (contains the address)
+			addressfield <= memory_data_out(15 DOWNTO 7); --output memory (contains the address)
 			CASE Op2 IS 
 				WHEN "00" => ---------------------------------------------------------------Load
-						rs <= MemString(6 DOWNTO 3); --output signal for datapath
+						rs <= memory_data_out(6 DOWNTO 3); --output signal for datapath
 						MEM <= "001"; -- ld, we need to read, add the address
 						Amux <= '0'; --output datapath
 						Cmux <= '1'; --output datapath
 				WHEN "01" => ---------------------------------------------------------------Store
-						rd <= MemString(6 DOWNTO 3); --output signal for datapath
+						rd <= memory_data_out(6 DOWNTO 3); --output signal for datapath
 						MEM <= "010"; -- st, we need to write, add the address
 						Amux <= '1'; --output datapath
 						Cmux <= '0'; --output datapath
 				WHEN "10" => ---------------------------------------------------------------Load Byte
 						MEM <= "101"; -- ldb
-						rs <= MemString(6 DOWNTO 3); --output signal for datapath
+						rs <= memory_data_out(6 DOWNTO 3); --output signal for datapath
 						Amux <= '0'; --output datapath
 						Cmux <= '1'; --output datapath
 				WHEN "11" => ---------------------------------------------------------------Store Byte
 						MEM <= "110"; -- stb
-						rd <= MemString(6 DOWNTO 3); --output signal for datapath
+						rd <= memory_data_out(6 DOWNTO 3); --output signal for datapath
 						Amux <= '1'; --output datapath
 						Cmux <= '0'; --output datapath 
 				WHEN OTHERS => 
@@ -141,13 +141,13 @@ IF (reset = '0') THEN
 			PCupdate := tempPCjump + tempPC;	
 			PC <= PCupdate; --output datapath
 		ELSIF (Op1 = "10") THEN --Arithmetic Instructions
-			set_CC := MemString(15);
-			rrstatus := MemString(14);
+			set_CC := memory_data_out(15);
+			rrstatus := memory_data_out(14);
 			rr <= rrstatus;
 			CASE rrstatus IS
 				WHEN '1' => 
-		 				rs <= MemString(13 DOWNTO 10); --output signal for datapath
-		 				rd <= MemString(9 DOWNTO 6); --output signal for datapath
+		 				rs <= memory_data_out(13 DOWNTO 10); --output signal for datapath
+		 				rd <= memory_data_out(9 DOWNTO 6); --output signal for datapath
 						IF (set_CC = '0') THEN 
 							CASE Op2 IS 
 								WHEN "00" => ----------------------------------------------AND
@@ -174,8 +174,8 @@ IF (reset = '0') THEN
 								END CASE;
 						END IF;
 				WHEN '0' =>
-						rd <= MemString(13 DOWNTO 10); --output signal for datapath
-						SIMM10 <= MemString(9 DOWNTO 0); --output signal for datapath
+						rd <= memory_data_out(13 DOWNTO 10); --output signal for datapath
+						SIMM10 <= memory_data_out(9 DOWNTO 0); --output signal for datapath
 						IF (set_CC = '0') THEN 
 							CASE Op2 IS 
 								WHEN "00" => ----------------------------------------------AND
@@ -210,13 +210,13 @@ IF (reset = '0') THEN
 		ELSIF (Op1 = "11") THEN --Miscellaneous Instructions
 			CASE Op2 IS 
 				WHEN "00" => --------------------------------------------------------------Display
-						rs <= MemString(15 DOWNTO 12); --output datapath
+						rs <= memory_data_out(15 DOWNTO 12); --output datapath
 						IO <= "01"; --output datapath
 						tempPC := tempPC + 4;
 						PCupdate := tempPCjump + tempPC; 	
 						PC <= PCupdate; --output datapath 
 				WHEN "01" => --------------------------------------------------------------ReadI/O
-						rd <= MemString(15 DOWNTO 12); --output datapath
+						rd <= memory_data_out(15 DOWNTO 12); --output datapath
 						IO <= "10"; --output datapath
 						tempPC := tempPC + 4;
 						PCupdate := tempPCjump + tempPC; 	
