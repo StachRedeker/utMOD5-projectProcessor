@@ -6,7 +6,7 @@ add wave -noupdate /controller/DEBUG
 add wave -noupdate /controller/DEBUG_NEXT
 add wave -noupdate /controller/ACK_data
 add wave -noupdate /controller/NewInstruction
-add wave -noupdate /controller/PSR
+add wave -noupdate /controller/PCR
 add wave -noupdate /controller/ALU
 add wave -noupdate /controller/MEM
 add wave -noupdate -radix unsigned /controller/rs
@@ -16,11 +16,10 @@ add wave -noupdate /controller/IO
 add wave -noupdate /controller/rr
 add wave -noupdate /controller/Amux
 add wave -noupdate /controller/Cmux
-add wave -noupdate /controller/MemString
+add wave -noupdate /controller/memory_data_out
 add wave -noupdate /controller/PC
 add wave -noupdate /controller/address
 add wave -noupdate /controller/halt
-add wave -noupdate /controller/addressfield
 TreeUpdate [SetDefaultTree]
 WaveRestoreCursors {{Cursor 1} {1110591 ps} 0}
 quietly wave cursor active 1

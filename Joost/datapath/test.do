@@ -197,5 +197,4 @@ force rs "0000"
 force ALU "111"
 run 140 ns
 
-
 run 20 ns
