@@ -49,9 +49,6 @@ The minimal instruction length to cover all the wanted instructions is 17 bits. 
 | stb | 11 |
 
 ### Arithmetic instructions
-| Op1 | Op2 | cc | rr | %rd (4 bits) | simm10 (10 bits)
-| :--  |:-- |:--  |:-- | :-- | :-- |
-| 10 | ZZ | C | 0 | RRRR | ssssssssss |
 
 | Op1 | Op2 | cc | rr | %rs (4 bits) | %rd (4 bits) | unused (6 bits)
 | :--  |:-- |:--  |:-- | :-- | :-- | :-- |
@@ -224,7 +221,7 @@ In the requirements, we stated that we should implement a debug mode. If the deb
 
 Observe that we can pause a program by stopping the controller in its fetch-decode-execute cycle. To accomplish this, we replaced
 ```VHDL
-ELSIF (rising_edge(clk)) AND (halt = '0') AND (ACK_data = '1') THEN 
+ELSIF (rising_edge(clk)) THEN 
 ```
 with
 ```VHDL

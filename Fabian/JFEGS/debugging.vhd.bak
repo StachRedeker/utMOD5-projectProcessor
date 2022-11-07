@@ -93,7 +93,7 @@ BEGIN
 
     
 
-    df : debugging_facilitators PORT MAP(clk, reset, next_instruction_key, load_address_key, DEBUG_NEXT, LOAD_ADDRESS, AMux_temp, Cmux_temp, wr_status, rd_status);
+    df : debugging_facilitators PORT MAP(clk, reset, next_instruction_key, load_address_key, DEBUG_NEXT, LOAD_ADDRESS, AMux, Cmux, wr_status, rd_status);
     dd : debugging_display PORT MAP(clk, reset, sw, led, dig0, dig1, dig2, dig3, dig4, dig5, LOAD_ADDRESS, wr_status, rd_status, address, st, b, ld, CMux_temp, AMux_temp, PCR, memory_data_out);
     AMux <= AMux_temp; 
     CMux <= CMux_temp;

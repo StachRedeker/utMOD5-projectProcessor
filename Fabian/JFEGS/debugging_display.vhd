@@ -1,11 +1,12 @@
 LIBRARY IEEE;
+LIBRARY IEEE;
 USE IEEE.std_logic_1164.ALL;
 USE IEEE.numeric_std.ALL;
 LIBRARY work;
 USE work.utilities.ALL;
 USE work.io.ALL;
 
-ENTITY debugging_display IS
+ENTITY debugging_facilitator IS
     PORT (
         clk : IN STD_LOGIC;
         reset : IN STD_LOGIC; --key0
@@ -40,7 +41,7 @@ ENTITY debugging_display IS
     );
 END;
 
-ARCHITECTURE bhv OF debugging_display IS
+ARCHITECTURE bhv OF debugging_facilitator IS
 BEGIN
     PROCESS (clk, reset, sw, memory_data_out, PCR, wr_status, rd_status, LOAD_ADDRESS)
 
