@@ -6,7 +6,7 @@ ENTITY controller IS
    PORT (
 	clk : IN std_logic;
 	reset : IN std_logic;
-	DEBUG : IN std_logic;
+	sw : IN std_logic_vector(9 DOWNTO 0);
 	DEBUG_NEXT : IN std_logic;
 	ACK_data : IN std_logic;
 	NewInstruction : IN std_logic; 
@@ -18,6 +18,7 @@ ENTITY controller IS
 	SIMM10: OUT std_logic_vector(9 DOWNTO 0);
 	IO : OUT std_logic_vector(1 DOWNTO 0);
 	rr : OUT std_logic;
+	address : OUT std_logic_vector(8 DOWNTO 0);
 	Amux : OUT std_logic;
 	Cmux : OUT std_logic;
 	memory_data_out : IN std_logic_vector (31 DOWNTO 0)
@@ -25,10 +26,8 @@ ENTITY controller IS
 END ENTITY controller;
 
 ARCHITECTURE bhv OF controller IS
-SIGNAL PC : natural := 0;
-SIGNAL address : natural;
+SIGNAL PC : integer := 0;
 SIGNAL halt : std_logic := '0'; 
-SIGNAL addressfield : std_logic_vector (8 DOWNTO 0);
 BEGIN
 
 decode: PROCESS(clk,reset,PCR)
@@ -47,13 +46,13 @@ IF (reset = '0') THEN
 	PCupdate := 0;
 	tempPCjump := 0;
 	PC<= 0;
-	address <= 0;
+	address <= "000000000";
 	halt <= '0'; 
 	cntstop := '0';
-	ELSIF (rising_edge(clk)) AND (halt = '0') AND (ACK_data = '1') AND ((DEBUG /= '1') OR (DEBUG_NEXT = '1')) THEN 
+	ELSIF (rising_edge(clk)) AND (halt = '0') AND (ACK_data = '1') AND ((sw(9) /= '1') OR (DEBUG_NEXT = '1')) THEN 
 --------------------------------------------------------------------------------------------Fetch
 	IF(NewInstruction = '0') THEN
-		address <= PC;--(address of the fetchable instruction)
+		address <= std_logic_vector(to_unsigned(PC,address'length));--(address of the fetchable instruction)
 		MEM <= "001"; --(b = 0; wr = 0; rd = 1)
 		rd <= "1111"; --(where to store the address)
 		rs <= "0000"; --(default value)
@@ -111,7 +110,7 @@ IF (reset = '0') THEN
 						REPORT "Warning, current instruction is unknown" SEVERITY warning;
 			END CASE;
 		ELSIF (Op1 = "01") THEN --Memory Instructions
-			addressfield <= memory_data_out(15 DOWNTO 7); --output memory (contains the address)
+			address <= memory_data_out(15 DOWNTO 7); --output memory (contains the address)
 			CASE Op2 IS 
 				WHEN "00" => ---------------------------------------------------------------Load
 						rs <= memory_data_out(6 DOWNTO 3); --output signal for datapath
