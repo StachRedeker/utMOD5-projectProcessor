@@ -13,6 +13,7 @@ ENTITY registerfile IS
         PC : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
 	rr : IN STD_LOGIC;
 	SIMM10 : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
+	Amux : IN STD_LOGIC;
 	counter_output : OUT integer := 0
     );
 END ENTITY registerfile;
@@ -50,8 +51,8 @@ PROCESS (reset, clk)
 				BusA <= reg_file(to_integer(unsigned(Current_A)));
 			END IF;
 			BusC <= reg_file(to_integer(unsigned(Current_C)));
-        		PC <= reg_file(14); --Register 14 is program counter
-	        	IR <= reg_file(15); --Register 15 is instruction register
+        	--	PC <= reg_file(14); --Register 14 is program counter
+	        --	IR <= reg_file(15); --Register 15 is instruction register
 			
 			counter := counter +1;
 		ELSIF counter = 3 THEN
@@ -59,9 +60,14 @@ PROCESS (reset, clk)
 		ELSIF counter = 4 THEN	
 			BusC <= (OTHERS => 'Z');
 			counter := counter +1;
-		ELSE
+		ELSIF counter = 5 THEN
+			IF Current_C = "1111" THEN
+			IR <= BusC;
+			END IF;
 			reg_file(to_integer(unsigned(Current_C))) <= BusC;
-			counter :=0;
+			counter := counter +1;
+		ELSE 
+			counter := 0;
 		END IF;
 	
 		reg_file(0) <= (OTHERS => '0'); --%r0 is constant zero
