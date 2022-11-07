@@ -160,7 +160,7 @@ There is a significant number of signals that transport data between processes. 
 The global datapath schematic is shown in the following diagram. 
 ![](/DatapathSchematic.jpg "Global Datapath Schematic")
 
-#### Registers
+#### Registerfile Structure
 | Register | Function |
 | :-- | :-- |
 | Register 0-13 | general purpose |
