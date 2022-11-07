@@ -5,7 +5,7 @@ LIBRARY work;
 USE work.utilities.ALL;
 USE work.io.ALL;
 
-ENTITY debugging_facilitator IS
+ENTITY debugging_display IS
     PORT (
         clk : IN STD_LOGIC;
         reset : IN STD_LOGIC; --key0
@@ -26,10 +26,10 @@ ENTITY debugging_facilitator IS
         rd_status : IN STD_LOGIC;
 
         --Output
-        address : OUT STD_LOGIC_VECTOR(9 DOWNTO 0);
-        wr : OUT STD_LOGIC;
+        address : OUT STD_LOGIC_VECTOR(8 DOWNTO 0);
+        st : OUT STD_LOGIC;
         b : OUT STD_LOGIC;
-        rd : OUT STD_LOGIC;
+        ld : OUT STD_LOGIC;
         cmux : OUT STD_LOGIC;
         amux : OUT STD_LOGIC;
 
@@ -40,7 +40,7 @@ ENTITY debugging_facilitator IS
     );
 END;
 
-ARCHITECTURE bhv OF debugging_facilitator IS
+ARCHITECTURE bhv OF debugging_display IS
 BEGIN
     PROCESS (clk, reset, sw, memory_data_out, PCR, wr_status, rd_status, LOAD_ADDRESS)
 
@@ -54,10 +54,10 @@ BEGIN
 
             IF LOAD_ADDRESS = '1' THEN
 
-                address <= sw(9 DOWNTO 0); --values of the switches
-                wr <= '0';
+                address <= sw(8 DOWNTO 0); --values of the switches
+                st <= '0';
                 b <= '0';
-                rd <= '1';
+                ld <= '1';
                 cmux <= '1';
                 amux <= '0';
 
