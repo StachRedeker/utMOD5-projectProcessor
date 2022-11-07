@@ -51,7 +51,7 @@ BEGIN
 
             --reset stuff
 
-        ELSIF rising_edge(clk) AND sw(9) = '1' THEN
+        ELSIF rising_edge(clk) THEN
 
             IF LOAD_ADDRESS = '1' THEN
 
