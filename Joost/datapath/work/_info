@@ -9,84 +9,174 @@ z2
 cModel Technology
 dC:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/memory
 Edatapath
-Z0 w1667818165
-Z1 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
-Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
-Z3 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
-Z4 dC:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/datapath
-Z5 8C:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Fabian\datapath\datapath.vhd
-Z6 FC:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Fabian\datapath\datapath.vhd
+Z0 w1667827825
+Z1 DPx4 work 2 io 0 22 YcO3Yf21EBNbAX05zBhDd0
+Z2 DPx4 work 9 utilities 0 22 5=25mh`4OL^iNG4;GQ`5^0
+Z3 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z4 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z5 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+Z6 dC:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/datapath
+Z7 8C:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Fabian\datapath\datapath.vhd
+Z8 FC:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Fabian\datapath\datapath.vhd
 l0
-L4
-V3j<S@XY`;NgBdUVRODlA52
-!s100 l:N8R<<mdDk;L4[nkWaM32
-Z7 OV;C;10.5b;63
+L9
+Vjf=C63Na;>KlB09DN>I:B1
+!s100 7:cgnf:UF@gCogR`dA7^82
+Z9 OV;C;10.5b;63
 32
-Z8 !s110 1667818167
+Z10 !s110 1667827828
 !i10b 1
-Z9 !s108 1667818167.000000
-Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Fabian\datapath\datapath.vhd|
-Z11 !s107 C:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Fabian\datapath\datapath.vhd|
+Z11 !s108 1667827827.000000
+Z12 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Fabian\datapath\datapath.vhd|
+Z13 !s107 C:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Fabian\datapath\datapath.vhd|
 !i113 1
-Z12 o-work work -2002 -explicit
-Z13 tExplicit 1 CvgOpt 0
+Z14 o-work work -2002 -explicit
+Z15 tExplicit 1 CvgOpt 0
 Astructure
 R1
 R2
 R3
-Z14 DEx4 work 8 datapath 0 22 3j<S@XY`;NgBdUVRODlA52
-l64
-L36
-V_V9dIe1GXcehfFNe6FEf83
-!s100 H2T;94C?P?DL_ef;WXnj:3
-R7
-32
-R8
-!i10b 1
+R4
+R5
+DEx4 work 8 datapath 0 22 jf=C63Na;>KlB09DN>I:B1
+l74
+L45
+VE^UQWAN?Kznaik[;n>LK81
+!s100 9JZW[538<MbG9]Q1c7^@>2
 R9
+32
 R10
+!i10b 1
 R11
-!i113 1
 R12
 R13
-Eregisterfile
-Z15 w1667817324
+!i113 1
+R14
+R15
+Pio
+R2
+R3
+R4
+R5
+Z16 w1667820731
+R6
+Z17 8C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Emil/io.vhd
+Z18 FC:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Emil/io.vhd
+l0
+L7
+VYcO3Yf21EBNbAX05zBhDd0
+!s100 49io@B60Ie2dgQMYX6m8a1
+R9
+32
+b1
+R10
+!i10b 1
+Z19 !s108 1667827828.000000
+Z20 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Emil/io.vhd|
+Z21 !s107 C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Emil/io.vhd|
+!i113 1
+R14
+R15
+Bbody
 R1
 R2
 R3
 R4
-Z16 8C:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Fabian\datapath\registerfile.vhd
-Z17 FC:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Fabian\datapath\registerfile.vhd
+R5
+l0
+L27
+Z22 V_zSC[iJfLg:@=2OOJ;0U53
+Z23 !s100 d_:f7mYP]Of;ddhTFhCl]1
+R9
+32
+R10
+!i10b 1
+R19
+R20
+R21
+!i113 1
+R14
+R15
+Eregisterfile
+Z24 w1667827309
+R3
+R4
+R5
+R6
+Z25 8C:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Fabian\datapath\registerfile.vhd
+Z26 FC:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Fabian\datapath\registerfile.vhd
 l0
 L4
-VM]Xh@e>b5odN^0oWX6Xm^0
-!s100 Dc^L1SmMKNeo]aHA;XQGN3
-R7
-32
-R8
-!i10b 1
+V<95jHj<`7U9aZS:WN[Nha1
+!s100 EEE_^n7WJbIWU<Xb@AU8j1
 R9
-Z18 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Fabian\datapath\registerfile.vhd|
-Z19 !s107 C:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Fabian\datapath\registerfile.vhd|
+32
+Z27 !s110 1667827827
+!i10b 1
+R11
+Z28 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Fabian\datapath\registerfile.vhd|
+Z29 !s107 C:\Users\joost\OneDrive - University of Twente\Documenten\GitHub\utMOD5-projectProcessor\Fabian\datapath\registerfile.vhd|
 !i113 1
-R12
-R13
+R14
+R15
 Abhv
-R1
+R3
+R4
+R5
+DEx4 work 12 registerfile 0 22 <95jHj<`7U9aZS:WN[Nha1
+l26
+L22
+VV8FS;4?=LaFlLz5LHkAJY0
+!s100 FIj`TL:U@GhDUd<f8cJP40
+R9
+32
+R27
+!i10b 1
+R11
+R28
+R29
+!i113 1
+R14
+R15
+Putilities
+R3
+R4
+R5
+Z30 w1667463106
+R6
+Z31 8C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Emil/utilities.vhd
+Z32 FC:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Emil/utilities.vhd
+l0
+L5
+V5=25mh`4OL^iNG4;GQ`5^0
+!s100 TH9?X@N17fBb2?BSlMbWE1
+R9
+32
+b1
+R10
+!i10b 1
+R19
+Z33 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Emil/utilities.vhd|
+Z34 !s107 C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Emil/utilities.vhd|
+!i113 1
+R14
+R15
+Bbody
 R2
 R3
-DEx4 work 12 registerfile 0 22 M]Xh@e>b5odN^0oWX6Xm^0
-l25
-L21
-VUbfKGe8neH@cm^UDT?BW40
-!s100 OF88GWZonbRSAiLe=BFAO1
-R7
-32
-R8
-!i10b 1
+R4
+R5
+l0
+L23
+V45IgDj_WRj0^PM`>AmQoV3
+!s100 ;A8;9Wol<f<Vz@ngIM?Hi2
 R9
-R18
+32
+R10
+!i10b 1
 R19
+R33
+R34
 !i113 1
-R12
-R13
+R14
+R15
