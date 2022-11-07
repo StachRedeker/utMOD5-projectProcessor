@@ -2,7 +2,6 @@ onerror {resume}
 quietly WaveActivateNextPane {} 0
 add wave -noupdate /datapath/clk
 add wave -noupdate /datapath/reset
-add wave -noupdate /datapath/controller_done
 add wave -noupdate /datapath/memory_data_out
 add wave -noupdate /datapath/memory_data_in
 add wave -noupdate /datapath/AMux
@@ -29,8 +28,14 @@ add wave -noupdate /datapath/CC_V
 add wave -noupdate /datapath/CC_Z
 add wave -noupdate /datapath/CC_N
 add wave -noupdate /datapath/io
+add wave -noupdate /datapath/dig0
+add wave -noupdate /datapath/dig1
+add wave -noupdate /datapath/dig2
+add wave -noupdate /datapath/dig3
+add wave -noupdate /datapath/dig4
+add wave -noupdate /datapath/dig5
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {964242 ps} 0}
+WaveRestoreCursors {{Cursor 1} {1597415 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 150
 configure wave -valuecolwidth 100
@@ -46,4 +51,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ms
 update
-WaveRestoreZoom {162725 ps} {1307225 ps}
+WaveRestoreZoom {1162725 ps} {2307225 ps}
