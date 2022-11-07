@@ -27,7 +27,7 @@ ARCHITECTURE structure OF JFEGS IS
         PORT (
             clk : IN STD_LOGIC;
             reset : IN STD_LOGIC;
-            DEBUG : IN STD_LOGIC;
+            sw : IN std_logic_vector(9 DOWNTO 0);
             DEBUG_NEXT : IN STD_LOGIC;
             ACK_data : IN STD_LOGIC;
             NewInstruction : IN STD_LOGIC;
@@ -39,6 +39,7 @@ ARCHITECTURE structure OF JFEGS IS
             SIMM10 : OUT STD_LOGIC_VECTOR(9 DOWNTO 0);
             IO : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
             rr : OUT STD_LOGIC;
+            address : OUT std_logic_vector(8 DOWNTO 0);
             Amux : OUT STD_LOGIC;
             Cmux : OUT STD_LOGIC;
             memory_data_out : IN STD_LOGIC_VECTOR (31 DOWNTO 0)
@@ -47,14 +48,14 @@ ARCHITECTURE structure OF JFEGS IS
 
     COMPONENT memory IS
         PORT (
-            ld : IN STD_LOGIC; -- if 1 you are reading
-            st : IN STD_LOGIC; -- if 1 you are writing
-            b : IN STD_LOGIC; -- if 1 you are addressing bytes seperately
             address : IN STD_LOGIC_VECTOR(8 DOWNTO 0); -- 7 bits for 128 blocks + 2 bits for 4 bytes per block
             memory_data_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0); -- input to the memory
             reset : IN STD_LOGIC; -- button 0 of FPGA
             clk : IN STD_LOGIC; -- clock of FPGA
-            memory_data_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0) -- output of the memory
+            memory_data_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0); -- output of the memory
+            ld : IN STD_LOGIC; -- if 1 you are reading
+            st : IN STD_LOGIC; -- if 1 you are writing
+            b : IN STD_LOGIC -- if 1 you are addressing bytes seperately
         );
     END COMPONENT memory;
 
@@ -77,7 +78,9 @@ ARCHITECTURE structure OF JFEGS IS
             ACK_data : OUT STD_LOGIC;
             -- to the data memory
             NewInstruction : OUT STD_LOGIC;
-            memory_data_in : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+            memory_data_in : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+            dig0, dig1, dig2, dig3, dig4, dig5 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
+            sw : IN STD_LOGIC_VECTOR(9 DOWNTO 0)
         );
     END COMPONENT datapath;
 
@@ -108,7 +111,6 @@ ARCHITECTURE structure OF JFEGS IS
         );
     END COMPONENT debugging;
 
-    SIGNAL DEBUG : STD_LOGIC;
     SIGNAL DEBUG_NEXT : STD_LOGIC;
     SIGNAL ACK_data : STD_LOGIC;
     SIGNAL NewInstruction : STD_LOGIC;
@@ -131,12 +133,9 @@ ARCHITECTURE structure OF JFEGS IS
 
 BEGIN
 
-    cntr : controller PORT MAP(clk, reset, DEBUG, DEBUG_NEXT, ACK_data, NewInstruction, PCR, ALU, MEM, rs, rd, SIMM10, IO, rr, Amux, Cmux, memory_data_out);
-    b <= MEM(2);
-    st <= MEM(1);
-    ld <= MEM(0);
-    memo : memory PORT MAP(ld, st, b, address, memory_data_in, reset, clk, memory_data_out);
+    cntr : controller PORT MAP(clk, reset, sw, DEBUG_NEXT, ACK_data, NewInstruction, PCR, ALU, MEM, rs, rd, SIMM10, IO, rr, address, Amux, Cmux, memory_data_out);
+    memo : memory PORT MAP(address, memory_data_in, reset, clk, memory_data_out, ld => MEM(0), st => MEM(1), b => MEM(2));
 
-    dp : datapath PORT MAP(clk, memory_data_in, reset, rd, AMux, rs, CMux, IO, ALU, rr, SIMM10, PCR, ACK_data, NewInstruction, memory_data_out);
+    dp : datapath PORT MAP(clk, memory_data_out, reset, rd, AMux, rs, CMux, IO, ALU, rr, SIMM10, PCR, ACK_data, NewInstruction, memory_data_in, dig0, dig1, dig2, dig3, dig4, dig5, sw);
     db : debugging PORT MAP(clk, reset, next_instruction_key, load_address_key, AMux, Cmux, sw, PCR, memory_data_out, DEBUG_NEXT, led, dig0, dig1, dig2, dig3, dig4, dig5, address, st, b, ld);
 END structure;

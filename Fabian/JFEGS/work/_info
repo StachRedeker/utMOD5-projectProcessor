@@ -9,7 +9,7 @@ z2
 cModel Technology
 dC:/Skola/DH/VHDL_tutorial/JFEGS
 Econtroller
-Z0 w1667809439
+Z0 w1667829327
 Z1 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
 Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z3 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
@@ -18,13 +18,13 @@ Z5 8C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEG
 Z6 FC:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\controller.vhd
 l0
 L5
-VUTg[K714?9ITBzncEH]UX2
-!s100 A>U92N67MdKLU<`cSXg5Y1
+V[L=HYGfQY=[]a9Bk9A8K[0
+!s100 dE<ACF4S6SU3ddX295zPL2
 Z7 OV;C;10.5b;63
 32
-Z8 !s110 1667817563
+Z8 !s110 1667838281
 !i10b 1
-Z9 !s108 1667817563.000000
+Z9 !s108 1667838281.000000
 Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\controller.vhd|
 Z11 !s107 C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\controller.vhd|
 !i113 1
@@ -34,11 +34,11 @@ Abhv
 R1
 R2
 R3
-DEx4 work 10 controller 0 22 UTg[K714?9ITBzncEH]UX2
-l33
+DEx4 work 10 controller 0 22 [L=HYGfQY=[]a9Bk9A8K[0
+l31
 L28
-VZ]_gUP]kM7HH9T>QbcaI]0
-!s100 m?@jK9M^g^PWlM7gSeU?Q0
+VkPU1T[6[QR?EZNQKPi3``1
+!s100 bzVCbXkG`m;?C0PBIM_Yo3
 R7
 32
 R8
@@ -50,65 +50,69 @@ R11
 R12
 R13
 Edatapath
-Z14 w1667813391
+Z14 w1667835909
+Z15 DPx4 work 2 io 0 22 YcO3Yf21EBNbAX05zBhDd0
+Z16 DPx4 work 9 utilities 0 22 5=25mh`4OL^iNG4;GQ`5^0
 R1
 R2
 R3
 R4
-Z15 8C:/Users/fabia/OneDrive/Documents/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/datapath.vhd
-Z16 FC:/Users/fabia/OneDrive/Documents/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/datapath.vhd
+Z17 8C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\datapath.vhd
+Z18 FC:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\datapath.vhd
 l0
-L4
-VgIE4j1:[ZSB4h3_odRl_?3
-!s100 <VW<zZ:OI5JQRnoaYfn3I3
+L9
+VSDfU[EP?[IZlj3DZ:eUB;0
+!s100 <>i@m_R@zMz9`K0mRed@21
 R7
 32
-Z17 !s110 1667817564
+Z19 !s110 1667838282
 !i10b 1
-Z18 !s108 1667817564.000000
-Z19 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/fabia/OneDrive/Documents/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/datapath.vhd|
-Z20 !s107 C:/Users/fabia/OneDrive/Documents/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/datapath.vhd|
+Z20 !s108 1667838282.000000
+Z21 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\datapath.vhd|
+Z22 !s107 C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\datapath.vhd|
 !i113 1
 R12
 R13
 Astructure
+R15
+R16
 R1
 R2
 R3
-DEx4 work 8 datapath 0 22 gIE4j1:[ZSB4h3_odRl_?3
-l61
-L33
-VfL39glOKSK:ePWa7Q9n0O1
-!s100 ECUi=jMoSoHlj]88Pn:Xg2
+DEx4 work 8 datapath 0 22 SDfU[EP?[IZlj3DZ:eUB;0
+l72
+L43
+V>bfYn0lJTS;3Meo>]1Y^R1
+!s100 ;_Rcb>c46m=gO2Iel[Q1O1
 R7
 32
-R17
-!i10b 1
-R18
 R19
+!i10b 1
 R20
+R21
+R22
 !i113 1
 R12
 R13
 Edebugging
-Z21 w1667812660
+Z23 w1667836983
 R1
 R2
 R3
 R4
-Z22 8C:/Users/fabia/OneDrive/Documents/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/debugging.vhd
-Z23 FC:/Users/fabia/OneDrive/Documents/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/debugging.vhd
+Z24 8C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\debugging.vhd
+Z25 FC:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\debugging.vhd
 l0
 L4
-VT>[1aVY:AjHK^^aZaQbBe2
-!s100 lO7nlG4LzbFAL9K21aUHT1
+V[<QNUac7@@a3JBVj<bEjT2
+!s100 f<k`2h;BBch[R]ogZnXUd2
 R7
 32
-R17
+R19
 !i10b 1
-R18
-Z24 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/fabia/OneDrive/Documents/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/debugging.vhd|
-Z25 !s107 C:/Users/fabia/OneDrive/Documents/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/debugging.vhd|
+R20
+Z26 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\debugging.vhd|
+Z27 !s107 C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\debugging.vhd|
 !i113 1
 R12
 R13
@@ -116,40 +120,85 @@ Astructure
 R1
 R2
 R3
-DEx4 work 9 debugging 0 22 T>[1aVY:AjHK^^aZaQbBe2
-l92
-L34
-V15D?hM@1C[o[mJWR3LQkh1
-!s100 @R;K75]LI6gFT]96:DFo^0
+DEx4 work 9 debugging 0 22 [<QNUac7@@a3JBVj<bEjT2
+l90
+L32
+VH:PlCYf<LkPIYQQPeffeG3
+!s100 Qei285RQT>h2:ce[jL:OM3
 R7
 32
-R17
+R19
 !i10b 1
-R18
-R24
-R25
+R20
+R26
+R27
 !i113 1
 R12
 R13
-Edebugging_facilitator
-Z26 w1667578135
+Edebugging_display
+Z28 w1667831453
+R15
+R16
 R1
 R2
 R3
 R4
-Z27 8C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\debugging_facilitators.vhd
-Z28 FC:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\debugging_facilitators.vhd
+Z29 8C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\debugging_display.vhd
+Z30 FC:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\debugging_display.vhd
 l0
-L5
-V4hPmZJLzJ:PnNakNIFLZg3
-!s100 NmmfOQ1ZX=AXV@f1GdafG1
+L9
+V<`KCWSfbk<9QfBNZZoc2f0
+!s100 _oYEa@On]nhS5^5SAE?X82
 R7
 32
-R17
+R19
 !i10b 1
-R18
-Z29 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\debugging_facilitators.vhd|
-Z30 !s107 C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\debugging_facilitators.vhd|
+R20
+Z31 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\debugging_display.vhd|
+Z32 !s107 C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\debugging_display.vhd|
+!i113 1
+R12
+R13
+Abhv
+R15
+R16
+R1
+R2
+R3
+DEx4 work 17 debugging_display 0 22 <`KCWSfbk<9QfBNZZoc2f0
+l45
+L44
+Ve0ink9NWo:G_YRZCGzn_o3
+!s100 1:En:_DlZIM=N<dMK3ZNi1
+R7
+32
+R19
+!i10b 1
+R20
+R31
+R32
+!i113 1
+R12
+R13
+Edebugging_facilitator
+Z33 w1667831450
+R1
+R2
+R3
+R4
+Z34 8C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\debugging_facilitators.vhd
+Z35 FC:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\debugging_facilitators.vhd
+l0
+L5
+VUU2IQPYb3N6LScHk4FVFG3
+!s100 2cW5mSAMd=f@b;n2ZdI5_1
+R7
+32
+R19
+!i10b 1
+R20
+Z36 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\debugging_facilitators.vhd|
+Z37 !s107 C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\debugging_facilitators.vhd|
 !i113 1
 R12
 R13
@@ -157,30 +206,30 @@ Abhv
 R1
 R2
 R3
-DEx4 work 21 debugging_facilitator 0 22 4hPmZJLzJ:PnNakNIFLZg3
-l28
-L27
-VPoiPVF4CdnXZYgCC]PKzV2
-!s100 O9VN=2Y?n6oVQ:Zdi3b160
+DEx4 work 21 debugging_facilitator 0 22 UU2IQPYb3N6LScHk4FVFG3
+l24
+L23
+V`n1?:BaSN36PIcC^<bKU70
+!s100 fcl=l[cCHJVLYF=C>eood2
 R7
 32
-R17
+R19
 !i10b 1
-R18
-R29
-R30
+R20
+R36
+R37
 !i113 1
 R12
 R13
 Pio
-Z31 DPx4 work 9 utilities 0 22 5=25mh`4OL^iNG4;GQ`5^0
+R16
 R1
 R2
 R3
-Z32 w1667492702
+Z38 w1667492702
 R4
-Z33 8C:/Users/fabia/OneDrive/Documents/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/io.vhd
-Z34 FC:/Users/fabia/OneDrive/Documents/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/io.vhd
+Z39 8C:/Users/fabia/OneDrive/Documents/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/io.vhd
+Z40 FC:/Users/fabia/OneDrive/Documents/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/io.vhd
 l0
 L7
 VYcO3Yf21EBNbAX05zBhDd0
@@ -188,17 +237,17 @@ VYcO3Yf21EBNbAX05zBhDd0
 R7
 32
 b1
-R17
+R19
 !i10b 1
-R18
-Z35 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/fabia/OneDrive/Documents/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/io.vhd|
-Z36 !s107 C:/Users/fabia/OneDrive/Documents/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/io.vhd|
+R20
+Z41 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/fabia/OneDrive/Documents/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/io.vhd|
+Z42 !s107 C:/Users/fabia/OneDrive/Documents/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/io.vhd|
 !i113 1
 R12
 R13
 Bbody
-DPx4 work 2 io 0 22 YcO3Yf21EBNbAX05zBhDd0
-R31
+R15
+R16
 R1
 R2
 R3
@@ -208,33 +257,33 @@ V_zSC[iJfLg:@=2OOJ;0U53
 !s100 d_:f7mYP]Of;ddhTFhCl]1
 R7
 32
-R17
+R19
 !i10b 1
-R18
-R35
-R36
+R20
+R41
+R42
 !i113 1
 R12
 R13
 Ejfegs
-Z37 w1667817560
+Z43 w1667838276
 R1
 R2
 R3
 R4
-Z38 8C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\JFEGS.vhd
-Z39 FC:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\JFEGS.vhd
+Z44 8C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\JFEGS.vhd
+Z45 FC:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\JFEGS.vhd
 l0
 L4
 VXlzBi4Y[n8_NDeiO8jLz;1
 !s100 XB0=OQ<mCa6==A8CZg4=l3
 R7
 32
-Z40 !s110 1667817565
+Z46 !s110 1667838283
 !i10b 1
-R18
-Z41 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\JFEGS.vhd|
-Z42 !s107 C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\JFEGS.vhd|
+R20
+Z47 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\JFEGS.vhd|
+Z48 !s107 C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\JFEGS.vhd|
 !i113 1
 R12
 R13
@@ -243,82 +292,82 @@ R1
 R2
 R3
 DEx4 work 5 jfegs 0 22 XlzBi4Y[n8_NDeiO8jLz;1
-l132
+l134
 L24
-VGZ3YkdgLADZcK79BIIoAU1
-!s100 OVNj:eVUPRXbBLbdc]4jb0
+VT5SS5ROnP^^@mG:Ab0:5;1
+!s100 NP7=?aeF4n7JQHoLkRnF23
 R7
 32
-R40
-!i10b 1
-R18
-R41
-R42
-!i113 1
-R12
-R13
-Ememory
-Z43 w1667812083
-R31
-R1
-R2
-R3
-R4
-Z44 8C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\memory.vhd
-Z45 FC:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\memory.vhd
-l0
-L8
-Vm;W=:HRU?C1_c;>ofD7Q11
-!s100 UK90nV:Q]aaH`i=A3Dz6>0
-R7
-32
-R40
-!i10b 1
-Z46 !s108 1667817565.000000
-Z47 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\memory.vhd|
-Z48 !s107 C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\memory.vhd|
-!i113 1
-R12
-R13
-Astructure
-R31
-R1
-R2
-R3
-DEx4 work 6 memory 0 22 m;W=:HRU?C1_c;>ofD7Q11
-l62
-L20
-VmVz]e81a4aUiGYO<64Z4L0
-!s100 g;M[0nKWNNkkmk5F4Rc:h3
-R7
-32
-R40
-!i10b 1
 R46
+!i10b 1
+R20
 R47
 R48
 !i113 1
 R12
 R13
-Eregisterfile
-Z49 w1667807499
+Ememory
+Z49 w1667834211
+R16
 R1
 R2
 R3
 R4
-Z50 8C:/Users/fabia/OneDrive/Documents/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/registerfile.vhd
-Z51 FC:/Users/fabia/OneDrive/Documents/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/registerfile.vhd
+Z50 8C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\memory.vhd
+Z51 FC:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\memory.vhd
 l0
-L4
-VYhU8?Ll6lY^Z`Igmg=;;>2
-!s100 `kf3B]5H0<mgZl_@8hLVk2
+L8
+VOn?`3M=1TC]NCC^57N6]=3
+!s100 A4R@X1?bieNR0<Dbg@j`90
 R7
 32
-R40
-!i10b 1
 R46
-Z52 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/fabia/OneDrive/Documents/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/registerfile.vhd|
-Z53 !s107 C:/Users/fabia/OneDrive/Documents/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/registerfile.vhd|
+!i10b 1
+Z52 !s108 1667838283.000000
+Z53 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\memory.vhd|
+Z54 !s107 C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\memory.vhd|
+!i113 1
+R12
+R13
+Astructure
+R16
+R1
+R2
+R3
+DEx4 work 6 memory 0 22 On?`3M=1TC]NCC^57N6]=3
+l63
+L21
+VWMgL3TAH>[1l_N?[H3U@82
+!s100 Qj[@]6^H;MYWmkgf[52781
+R7
+32
+R46
+!i10b 1
+R52
+R53
+R54
+!i113 1
+R12
+R13
+Eregisterfile
+Z55 w1667830317
+R1
+R2
+R3
+R4
+Z56 8C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\registerfile.vhd
+Z57 FC:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\registerfile.vhd
+l0
+L4
+V[j9GWQ6WjkkdJ;bGa81z52
+!s100 VSzBamkYZhV1EaU<4>h761
+R7
+32
+R46
+!i10b 1
+R52
+Z58 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\registerfile.vhd|
+Z59 !s107 C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\registerfile.vhd|
 !i113 1
 R12
 R13
@@ -326,18 +375,18 @@ Abhv
 R1
 R2
 R3
-Z54 DEx4 work 12 registerfile 0 22 YhU8?Ll6lY^Z`Igmg=;;>2
+Z60 DEx4 work 12 registerfile 0 22 [j9GWQ6WjkkdJ;bGa81z52
 l25
 L21
-Z55 VO4CDb7bCLXAOH0UDZkIM40
-Z56 !s100 =SGcIV[Y]Xgi==L3[DhbY0
+Z61 V]Jj;ge6iTRX0miL4lWgc<0
+Z62 !s100 5gRNnIR[ITW_oM95lkO:o2
 R7
 32
-R40
-!i10b 1
 R46
+!i10b 1
 R52
-R53
+R58
+R59
 !i113 1
 R12
 R13
@@ -345,10 +394,10 @@ Putilities
 R1
 R2
 R3
-Z57 w1667462489
+Z63 w1667462489
 R4
-Z58 8C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\utilities.vhd
-Z59 FC:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\utilities.vhd
+Z64 8C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\utilities.vhd
+Z65 FC:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\utilities.vhd
 l0
 L5
 V5=25mh`4OL^iNG4;GQ`5^0
@@ -359,13 +408,13 @@ b1
 R8
 !i10b 1
 R9
-Z60 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\utilities.vhd|
-Z61 !s107 C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\utilities.vhd|
+Z66 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\utilities.vhd|
+Z67 !s107 C:\Users\fabia\OneDrive\Documents\GitHub\utMOD5-projectProcessor\Fabian\JFEGS\utilities.vhd|
 !i113 1
 R12
 R13
 Bbody
-R31
+R16
 R1
 R2
 R3
@@ -378,8 +427,8 @@ R7
 R8
 !i10b 1
 R9
-R60
-R61
+R66
+R67
 !i113 1
 R12
 R13

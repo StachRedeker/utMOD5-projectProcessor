@@ -6,7 +6,7 @@ LIBRARY work;
 USE work.utilities.ALL;
 USE work.io.ALL;
 
-ENTITY debugging_facilitator IS
+ENTITY debugging_display IS
     PORT (
         clk : IN STD_LOGIC;
         reset : IN STD_LOGIC; --key0
@@ -31,8 +31,8 @@ ENTITY debugging_facilitator IS
         st : OUT STD_LOGIC;
         b : OUT STD_LOGIC;
         ld : OUT STD_LOGIC;
-        cmux : OUT STD_LOGIC;
-        amux : OUT STD_LOGIC;
+        CMux_temp : OUT STD_LOGIC;
+        AMux_temp : OUT STD_LOGIC;
 
         PCR : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
 
@@ -41,7 +41,7 @@ ENTITY debugging_facilitator IS
     );
 END;
 
-ARCHITECTURE bhv OF debugging_facilitator IS
+ARCHITECTURE bhv OF debugging_display IS
 BEGIN
     PROCESS (clk, reset, sw, memory_data_out, PCR, wr_status, rd_status, LOAD_ADDRESS)
 
@@ -59,8 +59,8 @@ BEGIN
                 st <= '0';
                 b <= '0';
                 ld <= '1';
-                cmux <= '1';
-                amux <= '0';
+                CMux_temp <= '1';
+                AMux_temp <= '0';
 
             END IF;
 

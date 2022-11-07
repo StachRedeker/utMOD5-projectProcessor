@@ -13,7 +13,7 @@ ENTITY debugging IS
         PCR : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
         memory_data_out : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
         DEBUG_NEXT : OUT STD_LOGIC;
-	led : OUT STD_LOGIC_VECTOR(9 DOWNTO 0);
+        led : OUT STD_LOGIC_VECTOR(9 DOWNTO 0);
 
         dig0 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
         dig1 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
@@ -21,12 +21,10 @@ ENTITY debugging IS
         dig3 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
         dig4 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
         dig5 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
-	address : OUT STD_LOGIC_VECTOR(8 DOWNTO 0);
+        address : OUT STD_LOGIC_VECTOR(8 DOWNTO 0);
         st : OUT STD_LOGIC;
         b : OUT STD_LOGIC;
         ld : OUT STD_LOGIC
-
-
 
     );
 END ENTITY debugging;
@@ -42,8 +40,8 @@ ARCHITECTURE structure OF debugging IS
             DEBUG_NEXT : OUT STD_LOGIC;
             LOAD_ADDRESS : OUT STD_LOGIC;
 
-            AMux : IN STD_LOGIC;
-            Cmux : IN STD_LOGIC;
+            AMux_temp : IN STD_LOGIC;
+            Cmux_temp : IN STD_LOGIC;
             --Output
             wr_status : OUT STD_LOGIC;
             rd_status : OUT STD_LOGIC
@@ -75,8 +73,8 @@ ARCHITECTURE structure OF debugging IS
             st : OUT STD_LOGIC;
             b : OUT STD_LOGIC;
             ld : OUT STD_LOGIC;
-            cmux : OUT STD_LOGIC;
-            amux : OUT STD_LOGIC;
+            CMux_temp : OUT STD_LOGIC;
+            AMux_temp : OUT STD_LOGIC;
 
             PCR : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
             memory_data_out : IN STD_LOGIC_VECTOR(31 DOWNTO 0)
@@ -86,16 +84,14 @@ ARCHITECTURE structure OF debugging IS
     SIGNAL wr_status : STD_LOGIC;
     SIGNAL rd_status : STD_LOGIC;
     SIGNAL LOAD_ADDRESS : STD_LOGIC;
-    SIGNAL AMux_temp : STD_LOGIC;	
-    SIGNAL CMux_temp : STD_LOGIC;	
+    SIGNAL AMux_temp : STD_LOGIC;
+    SIGNAL CMux_temp : STD_LOGIC;
 
 BEGIN
 
-    
-
     df : debugging_facilitators PORT MAP(clk, reset, next_instruction_key, load_address_key, DEBUG_NEXT, LOAD_ADDRESS, AMux_temp, Cmux_temp, wr_status, rd_status);
     dd : debugging_display PORT MAP(clk, reset, sw, led, dig0, dig1, dig2, dig3, dig4, dig5, LOAD_ADDRESS, wr_status, rd_status, address, st, b, ld, CMux_temp, AMux_temp, PCR, memory_data_out);
-    AMux <= AMux_temp; 
+    AMux <= AMux_temp;
     CMux <= CMux_temp;
 
 END structure;

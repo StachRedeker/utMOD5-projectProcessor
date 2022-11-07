@@ -1,10 +1,15 @@
 LIBRARY IEEE;
 USE IEEE.std_logic_1164.ALL;
 USE IEEE.numeric_std.ALL;
+LIBRARY work;
+USE work.utilities.ALL;
+USE work.io.ALL;
+
+
 ENTITY datapath IS
     PORT (
         clk : IN STD_LOGIC;
-        memory_data_out : IN STD_LOGIC_VECTOR(31 DOWNTO 0); -- from the data memory
+        memory_data_out : IN STD_LOGIC_VECTOR(31 DOWNTO 0); -- from the data memory --change to memory_data_out
         reset : IN STD_LOGIC;
 
         -- from the control unit
@@ -16,16 +21,21 @@ ENTITY datapath IS
         ALU : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
 	rr : IN STD_LOGIC;
 	SIMM10 : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
+	--controller_done : IN STD_LOGIC;
 
         -- to the control unit
         PCR : OUT STD_LOGIC_VECTOR(3 DOWNTO 0); -- N, Z, V, C resp. 3 downto 0
-        Op1 : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
-        Op2 : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
-	ACK_data : OUT STD_LOGIC;
+        --Op1 : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
+        --Op2 : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
+	ACK_data : OUT STD_LOGIC;				-- change to ACK_data
 	NewInstruction : OUT STD_LOGIC;
 
         -- to the data memory
-        memory_data_in : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+        memory_data_in : OUT STD_LOGIC_VECTOR(31 DOWNTO 0); -- change to memory_data_in
+	
+	-- to and from the display
+	dig0, dig1, dig2, dig3, dig4, dig5 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
+	sw : IN STD_LOGIC_VECTOR(9 DOWNTO 0)
 
     );
 END ENTITY datapath;
@@ -41,11 +51,12 @@ ARCHITECTURE structure OF datapath IS
             Current_A : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
             BusA : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
             IR : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-            PC : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+       --     PC : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
 	    rr : IN STD_LOGIC;
 	    SIMM10 : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
-		Amux : IN STD_LOGIC
-        );
+	    Amux : IN STD_LOGIC;
+	    io : IN STD_LOGIC_VECTOR(1 DOWNTO 0)
+);
     END COMPONENT registerfile;
 
     SIGNAL BusA, BusC, IR : STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -61,20 +72,26 @@ ARCHITECTURE structure OF datapath IS
 BEGIN
 
     reg_file : registerfile
-    PORT MAP(clk, reset, BusC, Current_C, Current_A, BusA, IR, rr => rr, simm10 => simm10, Amux => Amux);
+    PORT MAP(clk, reset, BusC, Current_C, Current_A, BusA, IR, rr => rr, simm10 => simm10, Amux => Amux, io => io);
 
 PROCESS (clk, reset) --, dataIn, rd, AMux, rs, CMux, io, ALU)
 variable counter : integer := 0;
 BEGIN
 	IF reset = '0' THEN
-	        memory_data_in <= (OTHERS => '0');
+	    --    memory_data_in <= (OTHERS => '0');
 	        PCR <= "0000";
-	        Op1 <= "00";
-	        Op2 <= "00";
+	     --   Op1 <= "00";
+	--        Op2 <= "00";
 		counter := 0;
 		ALU_output_with_carry <= (OTHERS => '0');
 		BusA <= (OTHERS => 'Z');
 		BusC <= (OTHERS => 'Z');
+		dig0 <= "1111111";
+		dig1 <= "1111111";
+		dig2 <= "1111111";
+		dig3 <= "1111111";
+		dig4 <= "1111111";
+		dig5 <= "1111111";
 	ELSIF rising_edge(clk) THEN	
 		IF counter = 0 THEN
 			NewInstruction <= '0';
@@ -135,23 +152,50 @@ BEGIN
 			END IF;
 			counter := counter +1;
 	ELSIF counter = 4 THEN
-		IF AMux = '0' AND CMux = '0' THEN
+		IF (AMux = '0' AND CMux = '0') AND io /= "10" AND io /= "01" THEN
 			BusC <= ALU_output_with_carry(31 DOWNTO 0);
 		ELSIF CMux = '1' THEN
 			BusC <= memory_data_out;
 		ELSIF AMux = '1' THEN
 			memory_data_in <= BusA;
 			BusC <= (OTHERS => '0');
+		ELSIF io = "10" THEN
+			BusC(31 DOWNTO 9) <= (OTHERS => '0'); 
+			BusC(8 DOWNTO 0) <= sw(8 downto 0);	
+		ELSIF io = "01" THEN
+			displaycontent(bin2hex(BusA(23 DOWNTO 0)), dig0, dig1, dig2, dig3, dig4, dig5); 
+		END IF;
+
+		IF (to_integer(unsigned(ALU)) > 3) AND (ALU /= "111") THEN -- set CC active since ANDCC and ORCC are Operations changing the CC
+			CC_N <= ALU_output_with_carry(31);
+		IF ALU_output_with_carry(31 DOWNTO 0) = (31 DOWNTO 0 => '0') THEN
+			CC_Z <= '1';
+		ELSE
+			CC_Z <= '0';
+		END IF;
+		IF (BusA(31) = BusC(31)) AND (BusA(31) /= ALU_output_with_carry(31)) THEN
+			CC_V <= '1';
+		ELSE
+			CC_V <= '0';
+		END IF;
+			CC_C <= ALU_output_with_carry(32);
+		ELSE
+			PCR <= (OTHERS => '0');
 		END IF;
 		counter := counter +1;
-	ELSE
+	ELSIF counter = 5 THEN
 	--BusC <= (OTHERS => 'Z'); 
-	IF rd = "1111" THEN
-	NewInstruction <= '1';
-	END IF; 
-	ACK_data <= '1';
-	counter := 0;
+		IF rd = "1111" THEN
+			NewInstruction <= '1';
+		END IF; 
+		ACK_data <= '1';
+		counter := counter+1;
+	ELSE
+		counter := 0;
+		ACK_data <= '0';
+		NewInstruction <= '0'; 
 	END IF;
+
 END IF;
     
 	--ACK_datapath <= '1';

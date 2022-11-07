@@ -73,6 +73,6 @@ PROCESS (reset, clk)
 		reg_file(0) <= (OTHERS => '0'); --%r0 is constant zero
 		
 	END IF;
-	
+	counter_output <= counter;
     END PROCESS;
 END ARCHITECTURE bhv;

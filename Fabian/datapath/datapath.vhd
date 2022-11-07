@@ -29,8 +29,6 @@ ENTITY datapath IS
         --Op2 : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
 	ACK_data : OUT STD_LOGIC;				-- change to ACK_data
 	NewInstruction : OUT STD_LOGIC;
-	counter_test : OUT integer;			--remove
-        --  bit13 : OUT STD_LOGIC;
 
         -- to the data memory
         memory_data_in : OUT STD_LOGIC_VECTOR(31 DOWNTO 0); -- change to memory_data_in
@@ -85,7 +83,6 @@ BEGIN
 	     --   Op1 <= "00";
 	--        Op2 <= "00";
 		counter := 0;
-		counter_test <= 0;
 		ALU_output_with_carry <= (OTHERS => '0');
 		BusA <= (OTHERS => 'Z');
 		BusC <= (OTHERS => 'Z');
@@ -198,7 +195,7 @@ BEGIN
 		ACK_data <= '0';
 		NewInstruction <= '0'; 
 	END IF;
-	counter_test <= counter;
+
 END IF;
     
 	--ACK_datapath <= '1';

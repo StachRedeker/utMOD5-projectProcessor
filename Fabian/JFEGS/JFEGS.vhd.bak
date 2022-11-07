@@ -8,7 +8,7 @@ ENTITY JFEGS IS
         reset : IN STD_LOGIC; --key0
         next_instruction_key : IN STD_LOGIC; --key1
         load_address_key : IN STD_LOGIC; --key2 
-        sw : IN STD_LOGIC_VECTOR(9 DOWNTO 0) --sw 9-0
+        sw : IN STD_LOGIC_VECTOR(9 DOWNTO 0); --sw 9-0
 
         --outputs
         led : OUT STD_LOGIC_VECTOR(9 DOWNTO 0);
@@ -17,7 +17,7 @@ ENTITY JFEGS IS
         dig2 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
         dig3 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
         dig4 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
-        dig5 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
+        dig5 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0)
     );
 END ENTITY JFEGS;
 
@@ -27,7 +27,7 @@ ARCHITECTURE structure OF JFEGS IS
         PORT (
             clk : IN STD_LOGIC;
             reset : IN STD_LOGIC;
-            DEBUG : IN STD_LOGIC;
+            sw : IN std_logic_vector(9 DOWNTO 0);
             DEBUG_NEXT : IN STD_LOGIC;
             ACK_data : IN STD_LOGIC;
             NewInstruction : IN STD_LOGIC;
@@ -77,7 +77,9 @@ ARCHITECTURE structure OF JFEGS IS
             ACK_data : OUT STD_LOGIC;
             -- to the data memory
             NewInstruction : OUT STD_LOGIC;
-            memory_data_in : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+            memory_data_in : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+            dig0, dig1, dig2, dig3, dig4, dig5 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
+            sw : IN STD_LOGIC_VECTOR(9 DOWNTO 0)
         );
     END COMPONENT datapath;
 
@@ -131,12 +133,12 @@ ARCHITECTURE structure OF JFEGS IS
 
 BEGIN
 
-    cntr : controller PORT MAP(clk, reset, DEBUG, DEBUG_NEXT, ACK_data, NewInstruction, PCR, ALU, MEM, rs, rd, SIMM10, IO, rr, Amux, Cmux, memory_data_out);
+    cntr : controller PORT MAP(clk, reset, sw, DEBUG_NEXT, ACK_data, NewInstruction, PCR, ALU, MEM, rs, rd, SIMM10, IO, rr, Amux, Cmux, memory_data_out);
     b <= MEM(2);
     st <= MEM(1);
     ld <= MEM(0);
     memo : memory PORT MAP(ld, st, b, address, memory_data_in, reset, clk, memory_data_out);
 
-    dp : datapath PORT MAP(clk, memory_data_in, reset, rd, AMux, rs, CMux, IO, ALU, rr, SIMM10, PCR, ACK_data, NewInstruction, memory_data_out);
+    dp : datapath PORT MAP(clk, memory_data_in, reset, rd, AMux, rs, CMux, IO, ALU, rr, SIMM10, PCR, ACK_data, NewInstruction, memory_data_out, sw);
     db : debugging PORT MAP(clk, reset, next_instruction_key, load_address_key, AMux, Cmux, sw, PCR, memory_data_out, DEBUG_NEXT, led, dig0, dig1, dig2, dig3, dig4, dig5, address, st, b, ld);
 END structure;
