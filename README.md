@@ -157,7 +157,7 @@ We opted for a finite state machine (FSM) over microstore because a FSM is easie
 There is a significant number of signals that transport data between processes. To avoid confusion, we try to give the signals the same name in every process.
 [This table contains the signals that are used to communicate between processes.](/Signals.pdf)
  
-[The global datapath schematic is shown in the following diagram.] (/Tree diagrams-2.pdf)
+![The global datapath schematic is shown in the following diagram.](/DatapathSchematic.jpg "Global Datapath Schematic")
 
 #### Registers
 | Register | Function |
