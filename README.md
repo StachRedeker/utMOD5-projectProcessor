@@ -149,7 +149,7 @@ This chapter gives a brief summary of different processor parts.
 ### Controller
 The controller is the brain of our processor. It is able to perform the fetch-decode-execute cycle. It fetches the instructions from the memory, stores them in the instruction register, and from there, interprets them (decode). After that, the controller sends signals to the other systems in the processor to make sure that the operation gets correctly executed.
 
-We opted for a finite state machine (FSM) over microstore because a FSM is easier and more elegant to implement for smaller instruction sets. Although mircostore allows for a more generalizable instruction set, a FSM should suffice in our case.
+We opted for a finite state machine (FSM) over microstore because a FSM is easier and more elegant to implement for smaller instruction sets. Although microstore allows for a more generalizable instruction set, a FSM should suffice in our case.
 
 ![FSM](Stach/FSM.png)
 
@@ -185,9 +185,9 @@ The ALU outputs the result, and sets the status bits (n/z/v/c) if required.
 ### Memory
 We designed the memory based on the von Neumann architecture. The memory is made up of a 2D array consisting of 128 blocks, where each block is made up of 4 bytes. This results in a word size of 32 bits. Hence, a complete instruction can reside in one memory block. The memory is synthesized on the FPGA. It will hence be built using flip-flops. 
 
-4 input signals are picked up by the memory. These inputs are `rd`, `wr`, `b`, and `address`. We also use a `data-in` and data-out `signal`. `rd` and `wr` tell the memory if we want to read or write respectively. These are used in combination with `b`, which tells us if we want to address bytes separately. The memory is able to perform 4 different operations. These operations are:
+4 input signals are picked up by the memory. These inputs are `ld`, `st`, `b`, and `address`. We also use a `data-in` and data-out `signal`. `ld` and `st` tell the memory if we want to read or write respectively. These are used in combination with `b`, which tells us if we want to address bytes separately. The memory is able to perform 4 different operations. These operations are:
 
-| rd | wr | b | Operation
+| ld | st | b | Operation
 | :-- | :-- | :-- | :-- |
 | 1 | | 1 | store the selected memory address in the 8 least significant bits of `data-out` |
 | | 1 | 1 | store the 8 least significant bits of data-in in memory at the selected address |

@@ -44,9 +44,9 @@ PACKAGE BODY io IS
             WHEN "1000" => RETURN NOT "1111111"; -- 8
             WHEN "1001" => RETURN NOT "1101111"; -- 9
             WHEN "1010" => RETURN NOT "1110111"; -- A
-            WHEN "1011" => RETURN NOT "1111100"; -- B
+            WHEN "1011" => RETURN NOT "1111100"; -- b
             WHEN "1100" => RETURN NOT "0111001"; -- C
-            WHEN "1101" => RETURN NOT "1011110"; -- D
+            WHEN "1101" => RETURN NOT "1011110"; -- d
             WHEN "1110" => RETURN NOT "1111001"; -- E
             WHEN "1111" => RETURN NOT "1110001"; -- F
             WHEN OTHERS => RETURN NOT "1000000"; -- -
