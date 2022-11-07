@@ -149,7 +149,7 @@ This chapter gives a brief summary of different processor parts.
 ### Controller
 The controller is the brain of our processor. It is able to perform the fetch-decode-execute cycle. It fetches the instructions from the memory, stores them in the instruction register, and from there, interprets them (decode). After that, the controller sends signals to the other systems in the processor to make sure that the operation gets correctly executed.
 
-We opted for a finite state machine (FSM) over microstore because a FSM is easier and more elegant to implement for smaller instruction sets. Although mircostore allows for a more generalizable instruction set, a FSM should suffice in our case.
+We opted for a finite state machine (FSM) over microstore because a FSM is easier and more elegant to implement for smaller instruction sets. Although microstore allows for a more generalizable instruction set, a FSM should suffice in our case.
 
 ![FSM](Stach/FSM.png)
 
