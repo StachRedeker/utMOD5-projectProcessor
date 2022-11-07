@@ -149,15 +149,18 @@ This chapter gives a brief summary of different processor parts.
 ### Controller
 The controller is the brain of our processor. It is able to perform the fetch-decode-execute cycle. It fetches the instructions from the memory, stores them in the instruction register, and from there, interprets them (decode). After that, the controller sends signals to the other systems in the processor to make sure that the operation gets correctly executed.
 
-We opted for a finite state machine (FSM) over microstore because a FSM is easier and more elegant to implement for smaller instruction sets. Although mircostore allows for a more generalizable instruction set, a FSM should suffice in our case.
+We opted for a finite state machine (FSM) over microstore because a FSM is easier and more elegant to implement for smaller instruction sets. Although microstore allows for a more generalizable instruction set, a FSM should suffice in our case.
 
 ![FSM](Stach/FSM.png)
 
 ### Datapath and dataflow
 There is a significant number of signals that transport data between processes. To avoid confusion, we try to give the signals the same name in every process.
 [This table contains the signals that are used to communicate between processes.](/Signals.pdf)
+ 
+The global datapath schematic is shown in the following diagram. 
+![](/DatapathSchematic.jpg "Global Datapath Schematic")
 
-#### Registers
+#### Registerfile Structure
 | Register | Function |
 | :-- | :-- |
 | Register 0-13 | general purpose |
@@ -233,7 +236,7 @@ ELSIF (rising_edge(clk)) AND (halt = '0') AND (ACK_data = '1') AND ((DEBUG /= '1
 It can be seen that we added two new signals. `DEBUG` is 1 if the debug switch is turned on. `DEBUG_NEXT` is 1 for exactly 1 clock cycle when a user presses the 'next line' button.
 
 #### `debugging_facilitators`
-One might wonder how we set `DEBUG_NEXT` to 1 for exactly 1 clock cycle when the user presses the button. The `DEBUG_NEXT` signal shall be an asynchronous input to the controller. Hence, we opted for a dedicated process `debugging_faciliators` that handles this input and transforms it in the required signal. `debugging_faciliators` also produces the signals for the `rd` and `wr` LEDs.
+One might wonder how we set `DEBUG_NEXT` to 1 for exactly 1 clock cycle when the user presses the button. The `DEBUG_NEXT` signal shall be an asynchronous input to the controller. Hence, we opted for a dedicated process `debugging_faciliators` that handles this input and transforms it to the required signal. `debugging_faciliators` also produces the signals for the `rd` and `wr` LEDs.
 
 #### `debugging_display`
 `debugging_display` sends the required signals to the displays and LEDs.
