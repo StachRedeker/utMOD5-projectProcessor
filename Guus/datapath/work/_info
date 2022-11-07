@@ -1,0 +1,92 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/guusb/Documents/GitHub/utMOD5-projectProcessor/Guus/controller
+Edatapath
+Z0 w1667576753
+Z1 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z3 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+Z4 dC:/Users/guusb/Documents/GitHub/utMOD5-projectProcessor/Guus/datapath
+Z5 8C:/Users/guusb/Documents/GitHub/utMOD5-projectProcessor/Fabian/datapath/datapath.vhd
+Z6 FC:/Users/guusb/Documents/GitHub/utMOD5-projectProcessor/Fabian/datapath/datapath.vhd
+l0
+L4
+V8@lab0H2YmRfj3O2ClUh=2
+!s100 9MA?kPi9[[oI@W[b_9hKg1
+Z7 OV;C;10.5b;63
+32
+Z8 !s110 1667577629
+!i10b 1
+Z9 !s108 1667577629.000000
+Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/guusb/Documents/GitHub/utMOD5-projectProcessor/Fabian/datapath/datapath.vhd|
+Z11 !s107 C:/Users/guusb/Documents/GitHub/utMOD5-projectProcessor/Fabian/datapath/datapath.vhd|
+!i113 1
+Z12 o-work work -2002 -explicit
+Z13 tExplicit 1 CvgOpt 0
+Astructure
+R1
+R2
+R3
+DEx4 work 8 datapath 0 22 8@lab0H2YmRfj3O2ClUh=2
+l58
+L33
+V;ELoNN>mLCODNlSJYQ?SY1
+!s100 =0VWWQohI0LODDfI^TJ4Q0
+R7
+32
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13
+Eregisterfile
+Z14 w1667577450
+R1
+R2
+R3
+R4
+Z15 8C:/Users/guusb/Documents/GitHub/utMOD5-projectProcessor/Fabian/datapath/registerfile.vhd
+Z16 FC:/Users/guusb/Documents/GitHub/utMOD5-projectProcessor/Fabian/datapath/registerfile.vhd
+l0
+L4
+Vk^^6d:e7JWIQia7kM>HAh2
+!s100 fLBHIhU9_d]7PDJgA99Yl0
+R7
+32
+R8
+!i10b 1
+R9
+Z17 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/guusb/Documents/GitHub/utMOD5-projectProcessor/Fabian/datapath/registerfile.vhd|
+Z18 !s107 C:/Users/guusb/Documents/GitHub/utMOD5-projectProcessor/Fabian/datapath/registerfile.vhd|
+!i113 1
+R12
+R13
+Abhv
+R1
+R2
+R3
+Z19 DEx4 work 12 registerfile 0 22 k^^6d:e7JWIQia7kM>HAh2
+l35
+L18
+V7P>bb5XW;WCa1j?O[ZOnK0
+!s100 9:oNjaV>gPOCWjZ:]iSL12
+R7
+32
+R8
+!i10b 1
+R9
+R17
+R18
+!i113 1
+R12
+R13
