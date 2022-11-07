@@ -2,6 +2,7 @@ restart -f -nowave
 do wave.do
 force clk 0,1 10ns -r 20ns
 force reset '0'
+force io "00"
 run 1 ns
 force reset '1'
 run 9 ns
@@ -171,5 +172,29 @@ force rs "0110"
 force ALU "110"
 run 140 ns
 
+# display register 1
+force memory_data_out "00000000000000000000000000000000"
+force simm10 "0000000000"
+force io "01"
+force rr '0'
+force CMux '0'
+force AMux '0'
+force rd "0000"
+force rs "0001"
+force ALU "111"
+run 140 ns
+
+# display register 8
+force sw "0011111111"
+force memory_data_out "00000000000000000000000000000000"
+force simm10 "0000000000"
+force io "10"
+force rr '0'
+force CMux '0'
+force AMux '0'
+force rd "1000"
+force rs "0000"
+force ALU "111"
+run 140 ns
 
 run 20 ns

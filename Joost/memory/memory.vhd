@@ -6,8 +6,8 @@ LIBRARY work;
 USE work.utilities.ALL;
 
 ENTITY memory IS
-  PORT (rd      	: IN std_logic;				-- if 1 you are reading
-        wr		: IN std_logic;				-- if 1 you are writing
+  PORT (ld      	: IN std_logic;				-- if 1 you are reading
+        st		: IN std_logic;				-- if 1 you are writing
 	b		: IN std_logic;				-- if 1 you are addressing bytes seperately
 	address		: IN std_logic_vector(8 DOWNTO 0);	-- 7 bits for 128 blocks + 2 bits for 4 bytes per block
 	memory_data_in	: IN std_logic_vector(31 DOWNTO 0);	-- input to the memory
@@ -86,17 +86,17 @@ forloop2:		FOR j IN 0 TO 3 LOOP
 		END LOOP forloop1;
 --		file_close(read_file);
  	ELSIF rising_edge(clk) THEN
-		IF (b='1') AND (rd='1') THEN -- stores the selected memory adress in the 8 least significant bits of dataOut
+		IF (b='1') AND (ld='1') THEN -- stores the selected memory adress in the 8 least significant bits of dataOut
 			memory_data_out(7 DOWNTO 0) <= memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), to_integer(unsigned(address(1 DOWNTO 0))));
 			memory_data_out(31 DOWNTO 8) <= (OTHERS => '0');
-		ELSIF (b='1') AND (wr='1') THEN -- stores the 8 least significant bits of dataIn in memory at the selected adress.
+		ELSIF (b='1') AND (st='1') THEN -- stores the 8 least significant bits of dataIn in memory at the selected adress.
 			memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), to_integer(unsigned(address(1 DOWNTO 0)))) <= memory_data_in(7 DOWNTO 0);		
-		ELSIF (b='0') AND (rd='1') THEN -- stores an entire word from memory in dataOut
+		ELSIF (b='0') AND (ld='1') THEN -- stores an entire word from memory in dataOut
 			memory_data_out(31 DOWNTO 24) <= memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 3);
 			memory_data_out(23 DOWNTO 16) <= memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 2);
 			memory_data_out(15 DOWNTO 8) <= memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 1);
 			memory_data_out(7 DOWNTO 0) <= memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 0);
-		ELSIF (b='0') AND (wr='1') THEN -- stores dataIn in 4 sequential bytes in memory
+		ELSIF (b='0') AND (st='1') THEN -- stores dataIn in 4 sequential bytes in memory
 			memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 3) <= memory_data_in(31 DOWNTO 24);
 			memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 2) <= memory_data_in(23 DOWNTO 16);
 			memory_store_adr(to_integer(unsigned(address(8 DOWNTO 2))), 1) <= memory_data_in(15 DOWNTO 8);

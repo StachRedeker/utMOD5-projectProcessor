@@ -14,6 +14,7 @@ ENTITY registerfile IS
 	rr : IN STD_LOGIC;
 	SIMM10 : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 	Amux : IN STD_LOGIC;
+	io : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
 	counter_output : OUT integer := 0
     );
 END ENTITY registerfile;
@@ -40,7 +41,7 @@ PROCESS (reset, clk)
 		ELSIF counter = 1 THEN
 			counter := counter +1;
 		ELSIF counter = 2 THEN
-			IF rr = '0' AND Amux = '0' THEN
+			IF rr = '0' AND Amux = '0' AND io /= "10" AND io /= "01" THEN
 				BusA(9 DOWNTO 0) <= SIMM10;
 				IF SIMM10(9) = '1' THEN
 				BusA (31 DOWNTO 10) <= (31 DOWNTO 10 => '1');
