@@ -10,7 +10,6 @@ ENTITY controller IS
 	DEBUG_NEXT : IN std_logic;
 	ACK_data : IN std_logic;
 	NewInstruction : IN std_logic; 
-	-- TEST_PHASE : IN std_logic_vector (1 DOWNTO 0); -- TAKE THIS OUT AFTER TESTS!!!!!!!!!!!!!!!!!!!!!!!
 	PCR : IN std_logic_vector (3 DOWNTO 0); --(n,z,v,c)
 	ALU : OUT std_logic_vector (2 DOWNTO 0);
 	MEM : OUT std_logic_vector (2 DOWNTO 0);
