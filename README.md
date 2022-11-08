@@ -227,7 +227,7 @@ And we connected the following functions to the onboard outputs:
 
 
 ### Debugging
-In the requirements, we stated that we should implement a debug mode. If the debug mode is active, the user should be able to step through the program one line at a time. Also, the user shall be able to load the contents of a memory address and display it using the seven-segment displays on the FPGA.
+In the requirements, we stated that we should implement a debug mode. If the debug mode is active, the user should be able to step through the program one line at a time. Also, the user shall be able to load the contents of a memory address and display it using the seven-segment displays on the FPGA. 
 
 Observe that we can pause a program by stopping the controller in its fetch-decode-execute cycle. To accomplish this, we replaced
 ```VHDL
