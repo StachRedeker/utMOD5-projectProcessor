@@ -247,19 +247,32 @@ One might wonder how we set `DEBUG_NEXT` to 1 for exactly 1 clock cycle when the
 `debugging_display` sends the required signals to the displays and LEDs.
 
 ## Installation and usage
-Use the following files for compilation in ModelSim:
+Use the following files for compilation in ModelSim. These files can be compiled using the Auto Generate function in compile order:
 ```
-File 1
-File 2
-...
-File n
+controller.vhd
+datapath.vhd
+debugging.vhd
+debugging_display.vhd
+debugging_facilitators..vhd
+io.vhd
+JFEGS.vhd
+memory.vhd
+registerfile.vhd
+utilities.vhd
 ```
 Use the following files for synthesis in Quartus:
 ```
-File 1
-File 2
-...
-File n
+JFEGS.qsf
+controller.vhd
+datapath.vhd
+debugging.vhd
+debugging_display.vhd
+debugging_facilitators..vhd
+io.vhd
+JFEGS.vhd
+memory.vhd
+registerfile.vhd
+utilities.vhd
 ```
 
 ## Synthesis results
