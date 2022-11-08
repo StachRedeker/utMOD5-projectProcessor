@@ -1,5 +1,5 @@
 # JFEGS: a virtual processor for the DE1-SoC board
-> Yet another revolutionary product that computes the Fibonacci sequence, designed by **J**oost Buursink (s2790882), **F**abian Widlund (s3100235), **E**mil Imhagen (s3108139), **G**uus Branderhorst (s2795132), and **S**tach Redeker (s2758695).
+> Yet another revolutionary product that computes the Fibonacci sequence, designed by **J**oost Buursink, **F**abian Widlund, **E**mil Imhagen, **G**uus Branderhorst, and **S**tach Redeker.
 
 This documentation file is part of the final project of Digital Hardware in module 5 of Electrical Engineering, University of Twente.
 
@@ -143,8 +143,6 @@ C: 0                    			! how many times we should run the function
 H: 0                     			! H = 0, not halve; H = 1, halve 
 ```
 
-The program is preloaded in the main memory. It is possible to store multiple programs, when one places them after each other in the memory array.
-
 ## Parts of the processor
 This chapter gives a brief summary of different processor parts.
 
@@ -169,6 +167,7 @@ The global datapath schematic is shown in the following diagram.
 | Register 14 | program counter |
 | Register 15 | instruction register | 
 
+At the start of our application, an instruction is fetched from main memory at address zero. This instruction is stored in the instruction register. Next, the controller decodes the instruction and supplies the datapath with the correct signals for the desired instruction. The datapath executes the instruction, which corresponds to the output signals from the controller. At the end of an instruction, the program counter is incremented with four, such that the datapath loads the next instruction into the instruction register. 
 #### ALU and status bits
 
 The ALU receieves `F2F1F0` from the controller in order to communicate about the wanted operation.
@@ -186,8 +185,6 @@ The ALU receieves `F2F1F0` from the controller in order to communicate about the
 The ALU outputs the result, and sets the status bits (n/z/v/c) if required.
 
 #### `ACK_data` 
-
-[NEEDS SIGNAL DESCRIPTION]
 
 ### Memory
 We designed the memory based on the von Neumann architecture. The memory is made up of a 2D array consisting of 128 blocks, where each block is made up of 4 bytes. This results in a word size of 32 bits. Hence, a complete instruction can reside in one memory block. The memory is synthesized on the FPGA. It will hence be built using flip-flops. 
@@ -227,7 +224,7 @@ And we connected the following functions to the onboard outputs:
 
 
 ### Debugging
-In the requirements, we stated that we should implement a debug mode. If the debug mode is active, the user should be able to step through the program one line at a time. Also, the user shall be able to load the contents of a memory address and display it using the seven-segment displays on the FPGA. 
+In the requirements, we stated that we should implement a debug mode. If the debug mode is active, the user should be able to step through the program one line at a time. Also, the user shall be able to load the contents of a memory address and display it using the seven-segment displays on the FPGA.
 
 Observe that we can pause a program by stopping the controller in its fetch-decode-execute cycle. To accomplish this, we replaced
 ```VHDL
@@ -266,11 +263,11 @@ File n
 ## Contributions overview
 | Member | Work |
 | :-- | :-- |
-| Joost Buursink | Joost was the lead developer of the memory. He also designed most of the datapath. |
-| Fabian Widlund | Fabian worked on the datapath, the global port map, and parts of the final presentation. | 
-| Emil Imhagen | Emil worked on debugging, IO, and the global port map. |
-| Guus Branderhorst | Guus designed the controller (in collaboration with Stach) and helped with the datapath. |
-| Stach Redeker| Stach designed the controller (in collaboration with Guus), worked on the debugging/IO, and wrote the majority of the documentation. |
+| Joost Buursink | |
+| Fabian Widlund | | 
+| Emil Imhagen | |
+| Guus Branderhorst | |
+| Stach Redeker| |
 
 ## Future improvements
 
