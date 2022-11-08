@@ -184,6 +184,7 @@ The ALU receieves `F2F1F0` from the controller in order to communicate about the
 The ALU outputs the result, and sets the status bits (n/z/v/c) if required.
 
 #### `ACK_data` 
+`ACK_data` is 1 if the datapath is not performing an operation. This signal is used to send to the controller that a new instruction can be fetched, decoded, and executed.
 
 ### Memory
 We designed the memory based on the von Neumann architecture. The memory is made up of a 2D array consisting of 128 blocks, where each block is made up of 4 bytes. This results in a word size of 32 bits. Hence, a complete instruction can reside in one memory block. The memory is synthesized on the FPGA. It will hence be built using flip-flops. 
