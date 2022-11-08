@@ -64,11 +64,10 @@ BEGIN
 
             END IF;
 
-            IF sw(9) = '1' THEN
-
+         
                 displaycontent(bin2hex(memory_data_out(19 DOWNTO 0)), dig0, dig1, dig2, dig3, dig4, dig5);
 
-            END IF;
+         
 
             led(3) <= PCR(3);
             led(2) <= PCR(2);
