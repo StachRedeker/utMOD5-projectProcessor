@@ -295,4 +295,4 @@ utilities.vhd
 During this project, we developed a virtual processor that can be synthesized on the DE1-SoC board. The virtual processor is designed using VHDL and ships with an application that is able to compute the Fibonacci sequence.
 
 ## References and acknowledgements
-Bert van Molenkamp has released a VHDL description of the ARC processor. Although this is a three address machine, the overall code structuring was proven to be quite helpful during our project.
+Bert van Molenkamp has released a [VHDL description of the ARC processor](http://iiusatech.com/murdocca/CAO/VHDL.html). Although the ARC processor is a three address machine, the overall code structuring was proven to be quite helpful during our project.
