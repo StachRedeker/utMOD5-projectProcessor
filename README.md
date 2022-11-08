@@ -185,6 +185,8 @@ The ALU outputs the result, and sets the status bits (n/z/v/c) if required.
 
 #### `ACK_data` 
 
+[NEEDS SIGNAL DESCRIPTION]
+
 ### Memory
 We designed the memory based on the von Neumann architecture. The memory is made up of a 2D array consisting of 128 blocks, where each block is made up of 4 bytes. This results in a word size of 32 bits. Hence, a complete instruction can reside in one memory block. The memory is synthesized on the FPGA. It will hence be built using flip-flops. 
 
