@@ -71,7 +71,6 @@ IF (reset = '0') THEN
 		Amux <= '0'; --reset value
 		Cmux <= '0'; --reset value
 		MEM <= "000"; --reset value
-		rd <= "0000";
 		IF (Op1 = "00") THEN --Branch Instructions
 			CASE Op2 IS 
 				WHEN "00" => ---------------------------------------------------------------Branch Always

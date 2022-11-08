@@ -180,7 +180,7 @@ BEGIN
 		END IF;
 			CC_C <= ALU_output_with_carry(32);
 		ELSE
-			PCR <= (OTHERS => '0');
+			--PCR <= (OTHERS => '0');
 		END IF;
 		counter := counter +1;
 	ELSIF counter = 5 THEN

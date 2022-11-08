@@ -104,7 +104,7 @@ ARCHITECTURE structure OF JFEGS IS
             dig3 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
             dig4 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
             dig5 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
-            address : OUT STD_LOGIC_VECTOR(8 DOWNTO 0);
+            --address : OUT STD_LOGIC_VECTOR(8 DOWNTO 0);
             st : OUT STD_LOGIC;
             b : OUT STD_LOGIC;
             ld : OUT STD_LOGIC
@@ -137,5 +137,5 @@ BEGIN
     memo : memory PORT MAP(address, memory_data_in, reset, clk, memory_data_out, ld => MEM(0), st => MEM(1), b => MEM(2));
 
     dp : datapath PORT MAP(clk, memory_data_out, reset, rd, AMux, rs, CMux, IO, ALU, rr, SIMM10, PCR, ACK_data, NewInstruction, memory_data_in, dig0, dig1, dig2, dig3, dig4, dig5, sw);
-    db : debugging PORT MAP(clk, reset, next_instruction_key, load_address_key, AMux, Cmux, sw, PCR, memory_data_out, DEBUG_NEXT, led, dig0, dig1, dig2, dig3, dig4, dig5, address, st, b, ld);
+    --db : debugging PORT MAP(clk, reset, next_instruction_key, load_address_key, AMux, Cmux, sw, PCR, memory_data_out, DEBUG_NEXT, led, dig0, dig1, dig2, dig3, dig4, dig5, address, st, b, ld);
 END structure;

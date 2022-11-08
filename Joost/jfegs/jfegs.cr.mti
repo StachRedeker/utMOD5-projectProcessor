@@ -1,0 +1,88 @@
+{C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/memory.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/memory.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package utilities
+-- Compiling entity memory
+-- Compiling architecture structure of memory
+
+} {} {}} {C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/registerfile.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/registerfile.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity registerfile
+-- Compiling architecture bhv of registerfile
+
+} {} {}} {C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/datapath.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/datapath.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package utilities
+-- Loading package io
+-- Compiling entity datapath
+-- Compiling architecture structure of datapath
+
+} {} {}} {C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/JFEGS.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/JFEGS.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity JFEGS
+-- Compiling architecture structure of JFEGS
+
+} {} {}} {C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/utilities.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/utilities.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling package utilities
+-- Compiling package body utilities
+-- Loading package utilities
+
+} {} {}} {C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/io.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/io.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package utilities
+-- Compiling package io
+-- Compiling package body io
+-- Loading package io
+
+} {} {}} {C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/debugging.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/debugging.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity debugging
+-- Compiling architecture structure of debugging
+
+} {} {}} {C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/debugging_facilitators.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/debugging_facilitators.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity debugging_facilitator
+-- Compiling architecture bhv of debugging_facilitator
+
+} {} {}} {C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/controller.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/controller.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity controller
+-- Compiling architecture bhv of controller
+
+} {} {}}

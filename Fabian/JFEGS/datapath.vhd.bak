@@ -55,7 +55,7 @@ ARCHITECTURE structure OF datapath IS
 	    rr : IN STD_LOGIC;
 	    SIMM10 : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 	    Amux : IN STD_LOGIC;
-	    io : IN STD_LOGIC_VECTOR
+	    io : IN STD_LOGIC_VECTOR(1 DOWNTO 0)
 );
     END COMPONENT registerfile;
 
@@ -78,7 +78,7 @@ PROCESS (clk, reset) --, dataIn, rd, AMux, rs, CMux, io, ALU)
 variable counter : integer := 0;
 BEGIN
 	IF reset = '0' THEN
-	        memory_data_in <= (OTHERS => '0');
+	    --    memory_data_in <= (OTHERS => '0');
 	        PCR <= "0000";
 	     --   Op1 <= "00";
 	--        Op2 <= "00";
