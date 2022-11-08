@@ -51,9 +51,9 @@ BEGIN
 
             --reset stuff
 
-        ELSIF rising_edge(clk) AND sw(9) = '1' THEN
+        ELSIF rising_edge(clk) THEN
 
-            IF LOAD_ADDRESS = '0' THEN
+            IF LOAD_ADDRESS = '1' THEN
 
                 address <= sw(8 DOWNTO 0); --values of the switches
                 st <= '0';
@@ -64,10 +64,7 @@ BEGIN
 
             END IF;
 
-         
-                displaycontent(bin2hex(memory_data_out(19 DOWNTO 0)), dig0, dig1, dig2, dig3, dig4, dig5);
-
-         
+            displaycontent(bin2hex(memory_data_out(19 DOWNTO 0)), dig0, dig1, dig2, dig3, dig4, dig5);
 
             led(3) <= PCR(3);
             led(2) <= PCR(2);
