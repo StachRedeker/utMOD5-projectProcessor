@@ -143,6 +143,8 @@ C: 0                    			! how many times we should run the function
 H: 0                     			! H = 0, not halve; H = 1, halve 
 ```
 
+The program is preloaded in the main memory. It is possible to store multiple programs, when one places them after each other in the memory array.
+
 ## Parts of the processor
 This chapter gives a brief summary of different processor parts.
 
