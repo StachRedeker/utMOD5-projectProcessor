@@ -1,0 +1,858 @@
+Analysis & Synthesis report for jfegs
+Tue Nov 08 15:16:55 2022
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. Removed Registers Triggering Further Register Optimizations
+ 10. General Register Statistics
+ 11. Inverted Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Port Connectivity Checks: "datapath:dp|registerfile:reg_file"
+ 14. Post-Synthesis Netlist Statistics for Top Partition
+ 15. Elapsed Time Per Partition
+ 16. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Tue Nov 08 15:16:54 2022       ;
+; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
+; Revision Name                   ; jfegs                                       ;
+; Top-level Entity Name           ; JFEGS                                       ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 4918                                        ;
+; Total pins                      ; 66                                          ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; jfegs              ; jfegs              ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 6           ;
+;                            ;             ;
+; Average used               ; 2.90        ;
+; Maximum used               ; 6           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;  38.0%      ;
+;     Processor 3            ;  38.0%      ;
+;     Processor 4            ;  38.0%      ;
+;     Processor 5            ;  38.0%      ;
+;     Processor 6            ;  38.0%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                         ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                                                                  ; Library ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------------------------------------------------------------+---------+
+; datapath.vhd                     ; yes             ; User VHDL File  ; C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd     ;         ;
+; controller.vhd                   ; yes             ; User VHDL File  ; C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/controller.vhd   ;         ;
+; memory.vhd                       ; yes             ; User VHDL File  ; C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/memory.vhd       ;         ;
+; utilities.vhd                    ; yes             ; User VHDL File  ; C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/utilities.vhd    ;         ;
+; registerfile.vhd                 ; yes             ; User VHDL File  ; C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/registerfile.vhd ;         ;
+; JFEGS.vhd                        ; yes             ; User VHDL File  ; C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/JFEGS.vhd        ;         ;
+; io.vhd                           ; yes             ; User VHDL File  ; C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/io.vhd           ;         ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimate of Logic utilization (ALMs needed) ; 4357      ;
+;                                             ;           ;
+; Combinational ALUT usage for logic          ; 4363      ;
+;     -- 7 input functions                    ; 1         ;
+;     -- 6 input functions                    ; 3022      ;
+;     -- 5 input functions                    ; 715       ;
+;     -- 4 input functions                    ; 205       ;
+;     -- <=3 input functions                  ; 420       ;
+;                                             ;           ;
+; Dedicated logic registers                   ; 4918      ;
+;                                             ;           ;
+; I/O pins                                    ; 66        ;
+;                                             ;           ;
+; Total DSP Blocks                            ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 4918      ;
+; Total fan-out                               ; 43272     ;
+; Average fan-out                             ; 4.60      ;
++---------------------------------------------+-----------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                             ;
++-------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------+--------------+--------------+
+; Compilation Hierarchy Node    ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                      ; Entity Name  ; Library Name ;
++-------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------+--------------+--------------+
+; |JFEGS                        ; 4363 (0)            ; 4918 (0)                  ; 0                 ; 0          ; 66   ; 0            ; |JFEGS                                   ; JFEGS        ; work         ;
+;    |controller:cntr|          ; 60 (60)             ; 63 (63)                   ; 0                 ; 0          ; 0    ; 0            ; |JFEGS|controller:cntr                   ; controller   ; work         ;
+;    |datapath:dp|              ; 649 (295)           ; 727 (182)                 ; 0                 ; 0          ; 0    ; 0            ; |JFEGS|datapath:dp                       ; datapath     ; work         ;
+;       |registerfile:reg_file| ; 354 (354)           ; 545 (545)                 ; 0                 ; 0          ; 0    ; 0            ; |JFEGS|datapath:dp|registerfile:reg_file ; registerfile ; work         ;
+;    |memory:memo|              ; 3654 (3654)         ; 4128 (4128)               ; 0                 ; 0          ; 0    ; 0            ; |JFEGS|memory:memo                       ; memory       ; work         ;
++-------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------+--------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++--------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                           ;
++---------------------------------------------------+----------------------------------------------------------+
+; Register name                                     ; Reason for Removal                                       ;
++---------------------------------------------------+----------------------------------------------------------+
+; datapath:dp|registerfile:reg_file|reg_file[0][31] ; Stuck at GND due to stuck port data_in                   ;
+; datapath:dp|registerfile:reg_file|reg_file[0][30] ; Stuck at GND due to stuck port data_in                   ;
+; datapath:dp|registerfile:reg_file|reg_file[0][29] ; Stuck at GND due to stuck port data_in                   ;
+; datapath:dp|registerfile:reg_file|reg_file[0][28] ; Stuck at GND due to stuck port data_in                   ;
+; datapath:dp|registerfile:reg_file|reg_file[0][27] ; Stuck at GND due to stuck port data_in                   ;
+; datapath:dp|registerfile:reg_file|reg_file[0][26] ; Stuck at GND due to stuck port data_in                   ;
+; datapath:dp|registerfile:reg_file|reg_file[0][25] ; Stuck at GND due to stuck port data_in                   ;
+; datapath:dp|registerfile:reg_file|reg_file[0][24] ; Stuck at GND due to stuck port data_in                   ;
+; datapath:dp|registerfile:reg_file|reg_file[0][23] ; Stuck at GND due to stuck port data_in                   ;
+; datapath:dp|registerfile:reg_file|reg_file[0][22] ; Stuck at GND due to stuck port data_in                   ;
+; datapath:dp|registerfile:reg_file|reg_file[0][21] ; Stuck at GND due to stuck port data_in                   ;
+; datapath:dp|registerfile:reg_file|reg_file[0][20] ; Stuck at GND due to stuck port data_in                   ;
+; datapath:dp|registerfile:reg_file|reg_file[0][19] ; Stuck at GND due to stuck port data_in                   ;
+; datapath:dp|registerfile:reg_file|reg_file[0][18] ; Stuck at GND due to stuck port data_in                   ;
+; datapath:dp|registerfile:reg_file|reg_file[0][17] ; Stuck at GND due to stuck port data_in                   ;
+; datapath:dp|registerfile:reg_file|reg_file[0][16] ; Stuck at GND due to stuck port data_in                   ;
+; datapath:dp|registerfile:reg_file|reg_file[0][15] ; Stuck at GND due to stuck port data_in                   ;
+; datapath:dp|registerfile:reg_file|reg_file[0][14] ; Stuck at GND due to stuck port data_in                   ;
+; datapath:dp|registerfile:reg_file|reg_file[0][13] ; Stuck at GND due to stuck port data_in                   ;
+; datapath:dp|registerfile:reg_file|reg_file[0][12] ; Stuck at GND due to stuck port data_in                   ;
+; datapath:dp|registerfile:reg_file|reg_file[0][11] ; Stuck at GND due to stuck port data_in                   ;
+; datapath:dp|registerfile:reg_file|reg_file[0][10] ; Stuck at GND due to stuck port data_in                   ;
+; datapath:dp|registerfile:reg_file|reg_file[0][9]  ; Stuck at GND due to stuck port data_in                   ;
+; datapath:dp|registerfile:reg_file|reg_file[0][8]  ; Stuck at GND due to stuck port data_in                   ;
+; datapath:dp|registerfile:reg_file|reg_file[0][7]  ; Stuck at GND due to stuck port data_in                   ;
+; datapath:dp|registerfile:reg_file|reg_file[0][6]  ; Stuck at GND due to stuck port data_in                   ;
+; datapath:dp|registerfile:reg_file|reg_file[0][5]  ; Stuck at GND due to stuck port data_in                   ;
+; datapath:dp|registerfile:reg_file|reg_file[0][4]  ; Stuck at GND due to stuck port data_in                   ;
+; datapath:dp|registerfile:reg_file|reg_file[0][3]  ; Stuck at GND due to stuck port data_in                   ;
+; datapath:dp|registerfile:reg_file|reg_file[0][2]  ; Stuck at GND due to stuck port data_in                   ;
+; datapath:dp|registerfile:reg_file|reg_file[0][1]  ; Stuck at GND due to stuck port data_in                   ;
+; datapath:dp|registerfile:reg_file|reg_file[0][0]  ; Stuck at GND due to stuck port data_in                   ;
+; controller:cntr|\decode:tempPCjump[9..30]         ; Lost fanout                                              ;
+; controller:cntr|MEM[1]                            ; Merged with controller:cntr|Amux                         ;
+; controller:cntr|MEM[0]                            ; Merged with controller:cntr|Cmux                         ;
+; datapath:dp|registerfile:reg_file|counter[31]     ; Merged with datapath:dp|counter[31]                      ;
+; datapath:dp|registerfile:reg_file|counter[30]     ; Merged with datapath:dp|counter[30]                      ;
+; datapath:dp|registerfile:reg_file|counter[29]     ; Merged with datapath:dp|counter[29]                      ;
+; datapath:dp|registerfile:reg_file|counter[28]     ; Merged with datapath:dp|counter[28]                      ;
+; datapath:dp|registerfile:reg_file|counter[27]     ; Merged with datapath:dp|counter[27]                      ;
+; datapath:dp|registerfile:reg_file|counter[26]     ; Merged with datapath:dp|counter[26]                      ;
+; datapath:dp|registerfile:reg_file|counter[25]     ; Merged with datapath:dp|counter[25]                      ;
+; datapath:dp|registerfile:reg_file|counter[24]     ; Merged with datapath:dp|counter[24]                      ;
+; datapath:dp|registerfile:reg_file|counter[23]     ; Merged with datapath:dp|counter[23]                      ;
+; datapath:dp|registerfile:reg_file|counter[22]     ; Merged with datapath:dp|counter[22]                      ;
+; datapath:dp|registerfile:reg_file|counter[21]     ; Merged with datapath:dp|counter[21]                      ;
+; datapath:dp|registerfile:reg_file|counter[20]     ; Merged with datapath:dp|counter[20]                      ;
+; datapath:dp|registerfile:reg_file|counter[19]     ; Merged with datapath:dp|counter[19]                      ;
+; datapath:dp|registerfile:reg_file|counter[18]     ; Merged with datapath:dp|counter[18]                      ;
+; datapath:dp|registerfile:reg_file|counter[17]     ; Merged with datapath:dp|counter[17]                      ;
+; datapath:dp|registerfile:reg_file|counter[16]     ; Merged with datapath:dp|counter[16]                      ;
+; datapath:dp|registerfile:reg_file|counter[15]     ; Merged with datapath:dp|counter[15]                      ;
+; datapath:dp|registerfile:reg_file|counter[14]     ; Merged with datapath:dp|counter[14]                      ;
+; datapath:dp|registerfile:reg_file|counter[13]     ; Merged with datapath:dp|counter[13]                      ;
+; datapath:dp|registerfile:reg_file|counter[12]     ; Merged with datapath:dp|counter[12]                      ;
+; datapath:dp|registerfile:reg_file|counter[11]     ; Merged with datapath:dp|counter[11]                      ;
+; datapath:dp|registerfile:reg_file|counter[10]     ; Merged with datapath:dp|counter[10]                      ;
+; datapath:dp|registerfile:reg_file|counter[9]      ; Merged with datapath:dp|counter[9]                       ;
+; datapath:dp|registerfile:reg_file|counter[8]      ; Merged with datapath:dp|counter[8]                       ;
+; datapath:dp|registerfile:reg_file|counter[7]      ; Merged with datapath:dp|counter[7]                       ;
+; datapath:dp|registerfile:reg_file|counter[6]      ; Merged with datapath:dp|counter[6]                       ;
+; datapath:dp|registerfile:reg_file|counter[5]      ; Merged with datapath:dp|counter[5]                       ;
+; datapath:dp|registerfile:reg_file|counter[4]      ; Merged with datapath:dp|counter[4]                       ;
+; datapath:dp|registerfile:reg_file|counter[3]      ; Merged with datapath:dp|counter[3]                       ;
+; datapath:dp|registerfile:reg_file|counter[1]      ; Merged with datapath:dp|counter[1]                       ;
+; datapath:dp|registerfile:reg_file|counter[0]      ; Merged with datapath:dp|counter[0]                       ;
+; datapath:dp|registerfile:reg_file|counter[2]      ; Merged with datapath:dp|counter[2]                       ;
+; controller:cntr|\decode:tempPC[1]                 ; Merged with controller:cntr|\decode:tempPC[0]            ;
+; datapath:dp|BusC[1]~en                            ; Merged with datapath:dp|BusC[0]~en                       ;
+; datapath:dp|BusC[2]~en                            ; Merged with datapath:dp|BusC[0]~en                       ;
+; datapath:dp|BusC[3]~en                            ; Merged with datapath:dp|BusC[0]~en                       ;
+; datapath:dp|BusC[4]~en                            ; Merged with datapath:dp|BusC[0]~en                       ;
+; datapath:dp|BusC[5]~en                            ; Merged with datapath:dp|BusC[0]~en                       ;
+; datapath:dp|BusC[6]~en                            ; Merged with datapath:dp|BusC[0]~en                       ;
+; datapath:dp|BusC[7]~en                            ; Merged with datapath:dp|BusC[0]~en                       ;
+; datapath:dp|BusC[8]~en                            ; Merged with datapath:dp|BusC[0]~en                       ;
+; datapath:dp|BusC[9]~en                            ; Merged with datapath:dp|BusC[0]~en                       ;
+; datapath:dp|BusC[10]~en                           ; Merged with datapath:dp|BusC[0]~en                       ;
+; datapath:dp|BusC[11]~en                           ; Merged with datapath:dp|BusC[0]~en                       ;
+; datapath:dp|BusC[12]~en                           ; Merged with datapath:dp|BusC[0]~en                       ;
+; datapath:dp|BusC[13]~en                           ; Merged with datapath:dp|BusC[0]~en                       ;
+; datapath:dp|BusC[14]~en                           ; Merged with datapath:dp|BusC[0]~en                       ;
+; datapath:dp|BusC[15]~en                           ; Merged with datapath:dp|BusC[0]~en                       ;
+; datapath:dp|BusC[16]~en                           ; Merged with datapath:dp|BusC[0]~en                       ;
+; datapath:dp|BusC[17]~en                           ; Merged with datapath:dp|BusC[0]~en                       ;
+; datapath:dp|BusC[18]~en                           ; Merged with datapath:dp|BusC[0]~en                       ;
+; datapath:dp|BusC[19]~en                           ; Merged with datapath:dp|BusC[0]~en                       ;
+; datapath:dp|BusC[20]~en                           ; Merged with datapath:dp|BusC[0]~en                       ;
+; datapath:dp|BusC[21]~en                           ; Merged with datapath:dp|BusC[0]~en                       ;
+; datapath:dp|BusC[22]~en                           ; Merged with datapath:dp|BusC[0]~en                       ;
+; datapath:dp|BusC[23]~en                           ; Merged with datapath:dp|BusC[0]~en                       ;
+; datapath:dp|BusC[24]~en                           ; Merged with datapath:dp|BusC[0]~en                       ;
+; datapath:dp|BusC[25]~en                           ; Merged with datapath:dp|BusC[0]~en                       ;
+; datapath:dp|BusC[26]~en                           ; Merged with datapath:dp|BusC[0]~en                       ;
+; datapath:dp|BusC[27]~en                           ; Merged with datapath:dp|BusC[0]~en                       ;
+; datapath:dp|BusC[28]~en                           ; Merged with datapath:dp|BusC[0]~en                       ;
+; datapath:dp|BusC[29]~en                           ; Merged with datapath:dp|BusC[0]~en                       ;
+; datapath:dp|BusC[30]~en                           ; Merged with datapath:dp|BusC[0]~en                       ;
+; datapath:dp|BusC[31]~en                           ; Merged with datapath:dp|BusC[0]~en                       ;
+; datapath:dp|registerfile:reg_file|BusC[1]~en      ; Merged with datapath:dp|registerfile:reg_file|BusC[0]~en ;
+; datapath:dp|registerfile:reg_file|BusC[2]~en      ; Merged with datapath:dp|registerfile:reg_file|BusC[0]~en ;
+; datapath:dp|registerfile:reg_file|BusC[3]~en      ; Merged with datapath:dp|registerfile:reg_file|BusC[0]~en ;
+; datapath:dp|registerfile:reg_file|BusC[4]~en      ; Merged with datapath:dp|registerfile:reg_file|BusC[0]~en ;
+; datapath:dp|registerfile:reg_file|BusC[5]~en      ; Merged with datapath:dp|registerfile:reg_file|BusC[0]~en ;
+; datapath:dp|registerfile:reg_file|BusC[6]~en      ; Merged with datapath:dp|registerfile:reg_file|BusC[0]~en ;
+; datapath:dp|registerfile:reg_file|BusC[7]~en      ; Merged with datapath:dp|registerfile:reg_file|BusC[0]~en ;
+; datapath:dp|registerfile:reg_file|BusC[8]~en      ; Merged with datapath:dp|registerfile:reg_file|BusC[0]~en ;
+; datapath:dp|registerfile:reg_file|BusC[9]~en      ; Merged with datapath:dp|registerfile:reg_file|BusC[0]~en ;
+; datapath:dp|registerfile:reg_file|BusC[10]~en     ; Merged with datapath:dp|registerfile:reg_file|BusC[0]~en ;
+; datapath:dp|registerfile:reg_file|BusC[11]~en     ; Merged with datapath:dp|registerfile:reg_file|BusC[0]~en ;
+; datapath:dp|registerfile:reg_file|BusC[12]~en     ; Merged with datapath:dp|registerfile:reg_file|BusC[0]~en ;
+; datapath:dp|registerfile:reg_file|BusC[13]~en     ; Merged with datapath:dp|registerfile:reg_file|BusC[0]~en ;
+; datapath:dp|registerfile:reg_file|BusC[14]~en     ; Merged with datapath:dp|registerfile:reg_file|BusC[0]~en ;
+; datapath:dp|registerfile:reg_file|BusC[15]~en     ; Merged with datapath:dp|registerfile:reg_file|BusC[0]~en ;
+; datapath:dp|registerfile:reg_file|BusC[16]~en     ; Merged with datapath:dp|registerfile:reg_file|BusC[0]~en ;
+; datapath:dp|registerfile:reg_file|BusC[17]~en     ; Merged with datapath:dp|registerfile:reg_file|BusC[0]~en ;
+; datapath:dp|registerfile:reg_file|BusC[18]~en     ; Merged with datapath:dp|registerfile:reg_file|BusC[0]~en ;
+; datapath:dp|registerfile:reg_file|BusC[19]~en     ; Merged with datapath:dp|registerfile:reg_file|BusC[0]~en ;
+; datapath:dp|registerfile:reg_file|BusC[20]~en     ; Merged with datapath:dp|registerfile:reg_file|BusC[0]~en ;
+; datapath:dp|registerfile:reg_file|BusC[21]~en     ; Merged with datapath:dp|registerfile:reg_file|BusC[0]~en ;
+; datapath:dp|registerfile:reg_file|BusC[22]~en     ; Merged with datapath:dp|registerfile:reg_file|BusC[0]~en ;
+; datapath:dp|registerfile:reg_file|BusC[23]~en     ; Merged with datapath:dp|registerfile:reg_file|BusC[0]~en ;
+; datapath:dp|registerfile:reg_file|BusC[24]~en     ; Merged with datapath:dp|registerfile:reg_file|BusC[0]~en ;
+; datapath:dp|registerfile:reg_file|BusC[25]~en     ; Merged with datapath:dp|registerfile:reg_file|BusC[0]~en ;
+; datapath:dp|registerfile:reg_file|BusC[26]~en     ; Merged with datapath:dp|registerfile:reg_file|BusC[0]~en ;
+; datapath:dp|registerfile:reg_file|BusC[27]~en     ; Merged with datapath:dp|registerfile:reg_file|BusC[0]~en ;
+; datapath:dp|registerfile:reg_file|BusC[28]~en     ; Merged with datapath:dp|registerfile:reg_file|BusC[0]~en ;
+; datapath:dp|registerfile:reg_file|BusC[29]~en     ; Merged with datapath:dp|registerfile:reg_file|BusC[0]~en ;
+; datapath:dp|registerfile:reg_file|BusC[30]~en     ; Merged with datapath:dp|registerfile:reg_file|BusC[0]~en ;
+; datapath:dp|registerfile:reg_file|BusC[31]~en     ; Merged with datapath:dp|registerfile:reg_file|BusC[0]~en ;
+; controller:cntr|\decode:tempPC[0]                 ; Stuck at GND due to stuck port data_in                   ;
+; controller:cntr|\decode:tempPC[9..30]             ; Lost fanout                                              ;
+; Total Number of Removed Registers = 174           ;                                                          ;
++---------------------------------------------------+----------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                       ;
++------------------------------------+--------------------+-------------------------------------------------------------------------+
+; Register name                      ; Reason for Removal ; Registers Removed due to This Register                                  ;
++------------------------------------+--------------------+-------------------------------------------------------------------------+
+; controller:cntr|\decode:tempPC[30] ; Lost Fanouts       ; controller:cntr|\decode:tempPC[29], controller:cntr|\decode:tempPC[28], ;
+;                                    ;                    ; controller:cntr|\decode:tempPC[27], controller:cntr|\decode:tempPC[26], ;
+;                                    ;                    ; controller:cntr|\decode:tempPC[25], controller:cntr|\decode:tempPC[24], ;
+;                                    ;                    ; controller:cntr|\decode:tempPC[23], controller:cntr|\decode:tempPC[22], ;
+;                                    ;                    ; controller:cntr|\decode:tempPC[21], controller:cntr|\decode:tempPC[20], ;
+;                                    ;                    ; controller:cntr|\decode:tempPC[19], controller:cntr|\decode:tempPC[18], ;
+;                                    ;                    ; controller:cntr|\decode:tempPC[17], controller:cntr|\decode:tempPC[16], ;
+;                                    ;                    ; controller:cntr|\decode:tempPC[15], controller:cntr|\decode:tempPC[14], ;
+;                                    ;                    ; controller:cntr|\decode:tempPC[13], controller:cntr|\decode:tempPC[12], ;
+;                                    ;                    ; controller:cntr|\decode:tempPC[11], controller:cntr|\decode:tempPC[10], ;
+;                                    ;                    ; controller:cntr|\decode:tempPC[9]                                       ;
++------------------------------------+--------------------+-------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 4918  ;
+; Number of registers using Synchronous Clear  ; 199   ;
+; Number of registers using Synchronous Load   ; 43    ;
+; Number of registers using Asynchronous Clear ; 4817  ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 4884  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------------+
+; Inverted Register Statistics                           ;
++----------------------------------------------+---------+
+; Inverted Register                            ; Fan out ;
++----------------------------------------------+---------+
+; datapath:dp|dig0[0]                          ; 1       ;
+; datapath:dp|dig0[1]                          ; 1       ;
+; datapath:dp|dig0[2]                          ; 1       ;
+; datapath:dp|dig0[3]                          ; 1       ;
+; datapath:dp|dig0[4]                          ; 1       ;
+; datapath:dp|dig0[5]                          ; 1       ;
+; datapath:dp|dig0[6]                          ; 1       ;
+; datapath:dp|dig1[0]                          ; 1       ;
+; datapath:dp|dig1[1]                          ; 1       ;
+; datapath:dp|dig1[2]                          ; 1       ;
+; datapath:dp|dig1[3]                          ; 1       ;
+; datapath:dp|dig1[4]                          ; 1       ;
+; datapath:dp|dig1[5]                          ; 1       ;
+; datapath:dp|dig1[6]                          ; 1       ;
+; datapath:dp|dig2[0]                          ; 1       ;
+; datapath:dp|dig2[1]                          ; 1       ;
+; datapath:dp|dig2[2]                          ; 1       ;
+; datapath:dp|dig2[3]                          ; 1       ;
+; datapath:dp|dig2[4]                          ; 1       ;
+; datapath:dp|dig2[5]                          ; 1       ;
+; datapath:dp|dig2[6]                          ; 1       ;
+; datapath:dp|dig3[0]                          ; 1       ;
+; datapath:dp|dig3[1]                          ; 1       ;
+; datapath:dp|dig3[2]                          ; 1       ;
+; datapath:dp|dig3[3]                          ; 1       ;
+; datapath:dp|dig3[4]                          ; 1       ;
+; datapath:dp|dig3[5]                          ; 1       ;
+; datapath:dp|dig3[6]                          ; 1       ;
+; datapath:dp|dig4[0]                          ; 1       ;
+; datapath:dp|dig4[1]                          ; 1       ;
+; datapath:dp|dig4[2]                          ; 1       ;
+; datapath:dp|dig4[3]                          ; 1       ;
+; datapath:dp|dig4[4]                          ; 1       ;
+; datapath:dp|dig4[5]                          ; 1       ;
+; datapath:dp|dig4[6]                          ; 1       ;
+; datapath:dp|dig5[0]                          ; 1       ;
+; datapath:dp|dig5[1]                          ; 1       ;
+; datapath:dp|dig5[2]                          ; 1       ;
+; datapath:dp|dig5[3]                          ; 1       ;
+; datapath:dp|dig5[4]                          ; 1       ;
+; datapath:dp|dig5[5]                          ; 1       ;
+; datapath:dp|dig5[6]                          ; 1       ;
+; datapath:dp|registerfile:reg_file|BusC[0]~en ; 65      ;
+; memory:memo|memory_store_adr[0][2][3]        ; 2       ;
+; memory:memo|memory_store_adr[1][2][3]        ; 2       ;
+; memory:memo|memory_store_adr[2][2][3]        ; 2       ;
+; memory:memo|memory_store_adr[8][2][3]        ; 2       ;
+; memory:memo|memory_store_adr[9][2][3]        ; 2       ;
+; memory:memo|memory_store_adr[11][2][3]       ; 2       ;
+; memory:memo|memory_store_adr[4][2][3]        ; 2       ;
+; memory:memo|memory_store_adr[7][2][3]        ; 2       ;
+; memory:memo|memory_store_adr[14][2][3]       ; 2       ;
+; memory:memo|memory_store_adr[15][2][3]       ; 2       ;
+; memory:memo|memory_store_adr[16][2][3]       ; 2       ;
+; memory:memo|memory_store_adr[17][2][3]       ; 2       ;
+; memory:memo|memory_store_adr[18][2][3]       ; 2       ;
+; memory:memo|memory_store_adr[19][2][3]       ; 2       ;
+; memory:memo|memory_store_adr[24][2][3]       ; 2       ;
+; memory:memo|memory_store_adr[26][2][3]       ; 2       ;
+; memory:memo|memory_store_adr[27][2][3]       ; 2       ;
+; memory:memo|memory_store_adr[20][2][3]       ; 2       ;
+; memory:memo|memory_store_adr[22][2][3]       ; 2       ;
+; memory:memo|memory_store_adr[28][2][3]       ; 2       ;
+; memory:memo|memory_store_adr[29][2][3]       ; 2       ;
+; memory:memo|memory_store_adr[30][2][3]       ; 2       ;
+; memory:memo|memory_store_adr[0][2][2]        ; 2       ;
+; memory:memo|memory_store_adr[3][2][2]        ; 2       ;
+; memory:memo|memory_store_adr[10][2][2]       ; 2       ;
+; memory:memo|memory_store_adr[5][2][2]        ; 2       ;
+; memory:memo|memory_store_adr[6][2][2]        ; 2       ;
+; memory:memo|memory_store_adr[12][2][2]       ; 2       ;
+; memory:memo|memory_store_adr[29][2][2]       ; 2       ;
+; memory:memo|memory_store_adr[30][2][2]       ; 2       ;
+; memory:memo|memory_store_adr[0][2][0]        ; 2       ;
+; memory:memo|memory_store_adr[3][2][0]        ; 2       ;
+; memory:memo|memory_store_adr[4][2][0]        ; 2       ;
+; memory:memo|memory_store_adr[5][2][0]        ; 2       ;
+; memory:memo|memory_store_adr[12][2][0]       ; 2       ;
+; memory:memo|memory_store_adr[13][2][0]       ; 2       ;
+; memory:memo|memory_store_adr[27][2][0]       ; 2       ;
+; memory:memo|memory_store_adr[22][2][0]       ; 2       ;
+; memory:memo|memory_store_adr[23][2][0]       ; 2       ;
+; memory:memo|memory_store_adr[30][2][0]       ; 2       ;
+; memory:memo|memory_store_adr[1][2][1]        ; 2       ;
+; memory:memo|memory_store_adr[8][2][1]        ; 2       ;
+; memory:memo|memory_store_adr[9][2][1]        ; 2       ;
+; memory:memo|memory_store_adr[11][2][1]       ; 2       ;
+; memory:memo|memory_store_adr[4][2][1]        ; 2       ;
+; memory:memo|memory_store_adr[7][2][1]        ; 2       ;
+; memory:memo|memory_store_adr[13][2][1]       ; 2       ;
+; memory:memo|memory_store_adr[15][2][1]       ; 2       ;
+; memory:memo|memory_store_adr[16][2][1]       ; 2       ;
+; memory:memo|memory_store_adr[18][2][1]       ; 2       ;
+; memory:memo|memory_store_adr[25][2][1]       ; 2       ;
+; memory:memo|memory_store_adr[27][2][1]       ; 2       ;
+; memory:memo|memory_store_adr[20][2][1]       ; 2       ;
+; memory:memo|memory_store_adr[28][2][1]       ; 2       ;
+; memory:memo|memory_store_adr[30][2][1]       ; 2       ;
+; memory:memo|memory_store_adr[11][0][0]       ; 1       ;
+; memory:memo|memory_store_adr[9][0][0]        ; 1       ;
+; Total number of inverted registers = 233*    ;         ;
++----------------------------------------------+---------+
+* Table truncated at 100 items. To change the number of inverted registers reported, set the "Number of Inverted Registers Reported" option under Assignments->Settings->Analysis and Synthesis Settings->More Settings
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
+; 130:1              ; 24 bits   ; 2064 LEs      ; 2040 LEs             ; 24 LEs                 ; Yes        ; |JFEGS|memory:memo|memory_data_out[28]                 ;
+; 641:1              ; 8 bits    ; 3416 LEs      ; 2728 LEs             ; 688 LEs                ; Yes        ; |JFEGS|memory:memo|memory_data_out[4]                  ;
+; 9:1                ; 16 bits   ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; Yes        ; |JFEGS|datapath:dp|ALU_output_with_carry[21]           ;
+; 12:1               ; 12 bits   ; 96 LEs        ; 60 LEs               ; 36 LEs                 ; Yes        ; |JFEGS|datapath:dp|ALU_output_with_carry[10]           ;
+; 15:1               ; 4 bits    ; 40 LEs        ; 32 LEs               ; 8 LEs                  ; Yes        ; |JFEGS|datapath:dp|ALU_output_with_carry[0]            ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |JFEGS|datapath:dp|ShiftRight0                         ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |JFEGS|datapath:dp|ShiftRight0                         ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |JFEGS|datapath:dp|ShiftRight0                         ;
+; 4:1                ; 25 bits   ; 50 LEs        ; 50 LEs               ; 0 LEs                  ; No         ; |JFEGS|datapath:dp|ShiftRight0                         ;
+; 3:1                ; 23 bits   ; 46 LEs        ; 0 LEs                ; 46 LEs                 ; Yes        ; |JFEGS|datapath:dp|BusC[26]                            ;
+; 4:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; Yes        ; |JFEGS|datapath:dp|BusC[7]                             ;
+; 19:1               ; 32 bits   ; 384 LEs       ; 320 LEs              ; 64 LEs                 ; Yes        ; |JFEGS|datapath:dp|registerfile:reg_file|BusA[31]      ;
+; 17:1               ; 32 bits   ; 352 LEs       ; 320 LEs              ; 32 LEs                 ; Yes        ; |JFEGS|datapath:dp|registerfile:reg_file|BusC[17]~reg0 ;
+; 3:1                ; 9 bits    ; 18 LEs        ; 0 LEs                ; 18 LEs                 ; Yes        ; |JFEGS|controller:cntr|address[8]                      ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |JFEGS|controller:cntr|SIMM10[4]                       ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |JFEGS|controller:cntr|MEM[2]                          ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |JFEGS|controller:cntr|rs[3]                           ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |JFEGS|controller:cntr|IO[1]                           ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; Yes        ; |JFEGS|controller:cntr|ALU[0]                          ;
+; 7:1                ; 9 bits    ; 36 LEs        ; 0 LEs                ; 36 LEs                 ; Yes        ; |JFEGS|controller:cntr|\decode:tempPCjump[6]           ;
+; 9:1                ; 29 bits   ; 174 LEs       ; 0 LEs                ; 174 LEs                ; Yes        ; |JFEGS|controller:cntr|\decode:tempPC[30]              ;
+; 9:1                ; 9 bits    ; 54 LEs        ; 0 LEs                ; 54 LEs                 ; Yes        ; |JFEGS|controller:cntr|PC[2]                           ;
+; 10:1               ; 4 bits    ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; Yes        ; |JFEGS|controller:cntr|rd[3]                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "datapath:dp|registerfile:reg_file"                                                  ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; ir   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 4918                        ;
+;     CLR               ; 2                           ;
+;     CLR SCLR          ; 32                          ;
+;     ENA               ; 56                          ;
+;     ENA CLR           ; 4641                        ;
+;     ENA CLR SCLR      ; 124                         ;
+;     ENA CLR SLD       ; 18                          ;
+;     ENA SCLR          ; 20                          ;
+;     ENA SCLR SLD      ; 23                          ;
+;     ENA SLD           ; 2                           ;
+; arriav_lcell_comb     ; 4406                        ;
+;     arith             ; 78                          ;
+;         1 data inputs ; 39                          ;
+;         2 data inputs ; 8                           ;
+;         4 data inputs ; 31                          ;
+;     extend            ; 1                           ;
+;         7 data inputs ; 1                           ;
+;     normal            ; 4327                        ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 232                         ;
+;         2 data inputs ; 58                          ;
+;         3 data inputs ; 125                         ;
+;         4 data inputs ; 174                         ;
+;         5 data inputs ; 715                         ;
+;         6 data inputs ; 3022                        ;
+; boundary_port         ; 66                          ;
+;                       ;                             ;
+; Max LUT depth         ; 10.00                       ;
+; Average LUT depth     ; 6.45                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:12     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+    Info: Processing started: Tue Nov 08 15:16:33 2022
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off jfegs -c jfegs
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file datapath.vhd
+    Info (12022): Found design unit 1: datapath-structure File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 43
+    Info (12023): Found entity 1: datapath File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 9
+Info (12021): Found 2 design units, including 1 entities, in source file controller.vhd
+    Info (12022): Found design unit 1: controller-bhv File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/controller.vhd Line: 28
+    Info (12023): Found entity 1: controller File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/controller.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file memory.vhd
+    Info (12022): Found design unit 1: memory-structure File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/memory.vhd Line: 21
+    Info (12023): Found entity 1: memory File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/memory.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file debugging.vhd
+    Info (12022): Found design unit 1: debugging-structure File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/debugging.vhd Line: 32
+    Info (12023): Found entity 1: debugging File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/debugging.vhd Line: 4
+Info (12021): Found 2 design units, including 0 entities, in source file utilities.vhd
+    Info (12022): Found design unit 1: utilities File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/utilities.vhd Line: 5
+    Info (12022): Found design unit 2: utilities-body File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/utilities.vhd Line: 23
+Info (12021): Found 2 design units, including 1 entities, in source file registerfile.vhd
+    Info (12022): Found design unit 1: registerfile-bhv File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/registerfile.vhd Line: 21
+    Info (12023): Found entity 1: registerfile File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/registerfile.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file jfegs.vhd
+    Info (12022): Found design unit 1: JFEGS-structure File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/JFEGS.vhd Line: 24
+    Info (12023): Found entity 1: JFEGS File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/JFEGS.vhd Line: 4
+Info (12021): Found 2 design units, including 0 entities, in source file io.vhd
+    Info (12022): Found design unit 1: io File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/io.vhd Line: 7
+    Info (12022): Found design unit 2: io-body File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/io.vhd Line: 27
+Info (12021): Found 2 design units, including 1 entities, in source file debugging_facilitators.vhd
+    Info (12022): Found design unit 1: debugging_facilitator-bhv File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/debugging_facilitators.vhd Line: 23
+    Info (12023): Found entity 1: debugging_facilitator File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/debugging_facilitators.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file debugging_display.vhd
+    Info (12022): Found design unit 1: debugging_display-bhv File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/debugging_display.vhd Line: 44
+    Info (12023): Found entity 1: debugging_display File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/debugging_display.vhd Line: 9
+Info (12127): Elaborating entity "jfegs" for the top level hierarchy
+Warning (10541): VHDL Signal Declaration warning at JFEGS.vhd(14): used implicit default value for signal "led" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/JFEGS.vhd Line: 14
+Warning (10541): VHDL Signal Declaration warning at JFEGS.vhd(114): used implicit default value for signal "DEBUG_NEXT" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/JFEGS.vhd Line: 114
+Info (12128): Elaborating entity "controller" for hierarchy "controller:cntr" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/JFEGS.vhd Line: 136
+Warning (10492): VHDL Process Statement warning at controller.vhd(53): signal "halt" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/controller.vhd Line: 53
+Warning (10492): VHDL Process Statement warning at controller.vhd(53): signal "ACK_data" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/controller.vhd Line: 53
+Warning (10492): VHDL Process Statement warning at controller.vhd(53): signal "sw" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/controller.vhd Line: 53
+Warning (10492): VHDL Process Statement warning at controller.vhd(53): signal "DEBUG_NEXT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/controller.vhd Line: 53
+Info (12128): Elaborating entity "memory" for hierarchy "memory:memo" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/JFEGS.vhd Line: 137
+Warning (10542): VHDL Variable Declaration warning at utilities.vhd(109): used initial value expression for variable "inp_align" because variable was never assigned a value File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/utilities.vhd Line: 109
+Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "memory_store_adr" into its bus
+Info (12128): Elaborating entity "datapath" for hierarchy "datapath:dp" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/JFEGS.vhd Line: 139
+Warning (10036): Verilog HDL or VHDL warning at datapath.vhd(62): object "IR" assigned a value but never read File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+Warning (10542): VHDL Variable Declaration warning at utilities.vhd(53): used initial value expression for variable "inp_align" because variable was never assigned a value File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/utilities.vhd Line: 53
+Warning (10542): VHDL Variable Declaration warning at io.vhd(72): used initial value expression for variable "inp_align" because variable was never assigned a value File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/io.vhd Line: 72
+Warning (10631): VHDL Process Statement warning at datapath.vhd(77): inferring latch(es) for signal or variable "BusA", which holds its previous value in one or more paths through the process File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[0]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[1]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[2]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[3]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[4]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[5]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[6]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[7]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[8]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[9]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[10]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[11]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[12]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[13]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[14]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[15]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[16]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[17]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[18]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[19]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[20]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[21]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[22]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[23]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[24]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[25]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[26]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[27]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[28]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[29]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[30]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (10041): Inferred latch for "BusA[31]" at datapath.vhd(77) File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+Info (12128): Elaborating entity "registerfile" for hierarchy "datapath:dp|registerfile:reg_file" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 74
+Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
+    Warning (13048): Converted tri-state node feeding "datapath:dp|BusC[0]" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 80
+Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
+    Warning (13048): Converted tri-state node feeding "datapath:dp|ALU_output_with_carry" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 66
+    Warning (13048): Converted tri-state node feeding "datapath:dp|ALU_output_with_carry" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 66
+    Warning (13048): Converted tri-state node feeding "datapath:dp|ALU_output_with_carry" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 66
+    Warning (13048): Converted tri-state node feeding "datapath:dp|ALU_output_with_carry" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 66
+    Warning (13048): Converted tri-state node feeding "datapath:dp|ALU_output_with_carry" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 66
+    Warning (13048): Converted tri-state node feeding "datapath:dp|ALU_output_with_carry" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 66
+    Warning (13048): Converted tri-state node feeding "datapath:dp|ALU_output_with_carry" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 66
+    Warning (13048): Converted tri-state node feeding "datapath:dp|ALU_output_with_carry" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 66
+    Warning (13048): Converted tri-state node feeding "datapath:dp|ALU_output_with_carry" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 66
+    Warning (13048): Converted tri-state node feeding "datapath:dp|ALU_output_with_carry" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 66
+    Warning (13048): Converted tri-state node feeding "datapath:dp|ALU_output_with_carry" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 66
+    Warning (13048): Converted tri-state node feeding "datapath:dp|ALU_output_with_carry" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 66
+    Warning (13048): Converted tri-state node feeding "datapath:dp|ALU_output_with_carry" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 66
+    Warning (13048): Converted tri-state node feeding "datapath:dp|ALU_output_with_carry" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 66
+    Warning (13048): Converted tri-state node feeding "datapath:dp|ALU_output_with_carry" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 66
+    Warning (13048): Converted tri-state node feeding "datapath:dp|ALU_output_with_carry" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 66
+    Warning (13048): Converted tri-state node feeding "datapath:dp|ALU_output_with_carry" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 66
+    Warning (13048): Converted tri-state node feeding "datapath:dp|ALU_output_with_carry" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 66
+    Warning (13048): Converted tri-state node feeding "datapath:dp|ALU_output_with_carry" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 66
+    Warning (13048): Converted tri-state node feeding "datapath:dp|ALU_output_with_carry" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 66
+    Warning (13048): Converted tri-state node feeding "datapath:dp|ALU_output_with_carry" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 66
+    Warning (13048): Converted tri-state node feeding "datapath:dp|ALU_output_with_carry" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 66
+    Warning (13048): Converted tri-state node feeding "datapath:dp|ALU_output_with_carry" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 66
+    Warning (13048): Converted tri-state node feeding "datapath:dp|ALU_output_with_carry" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 66
+    Warning (13048): Converted tri-state node feeding "datapath:dp|ALU_output_with_carry" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 66
+    Warning (13048): Converted tri-state node feeding "datapath:dp|ALU_output_with_carry" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 66
+    Warning (13048): Converted tri-state node feeding "datapath:dp|ALU_output_with_carry" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 66
+    Warning (13048): Converted tri-state node feeding "datapath:dp|ALU_output_with_carry" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 66
+    Warning (13048): Converted tri-state node feeding "datapath:dp|ALU_output_with_carry" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 66
+    Warning (13048): Converted tri-state node feeding "datapath:dp|ALU_output_with_carry" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 66
+    Warning (13048): Converted tri-state node feeding "datapath:dp|ALU_output_with_carry" into a selector File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 66
+Warning (13034): The following nodes have both tri-state and non-tri-state drivers
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[31]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[30]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[29]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[28]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[27]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[26]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[25]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[24]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[23]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[22]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[21]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[20]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[19]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[18]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[17]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[16]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[15]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[14]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[13]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[12]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[11]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[10]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[9]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[8]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[7]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[6]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[5]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[4]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[3]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[2]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[1]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13035): Inserted always-enabled tri-state buffer between "datapath:dp|BusA[0]" and its non-tri-state driver. File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+Warning (13027): Removed fan-outs from the following always-disabled I/O buffers
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[31]" to the node "datapath:dp|BusA[31]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[30]" to the node "datapath:dp|BusA[30]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[29]" to the node "datapath:dp|BusA[29]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[28]" to the node "datapath:dp|BusA[28]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[27]" to the node "datapath:dp|BusA[27]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[26]" to the node "datapath:dp|BusA[26]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[25]" to the node "datapath:dp|BusA[25]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[24]" to the node "datapath:dp|BusA[24]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[23]" to the node "datapath:dp|BusA[23]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[22]" to the node "datapath:dp|BusA[22]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[21]" to the node "datapath:dp|BusA[21]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[20]" to the node "datapath:dp|BusA[20]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[19]" to the node "datapath:dp|BusA[19]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[18]" to the node "datapath:dp|BusA[18]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[17]" to the node "datapath:dp|BusA[17]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[16]" to the node "datapath:dp|BusA[16]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[15]" to the node "datapath:dp|BusA[15]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[14]" to the node "datapath:dp|BusA[14]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[13]" to the node "datapath:dp|BusA[13]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[12]" to the node "datapath:dp|BusA[12]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[11]" to the node "datapath:dp|BusA[11]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[10]" to the node "datapath:dp|BusA[10]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[9]" to the node "datapath:dp|BusA[9]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[8]" to the node "datapath:dp|BusA[8]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[7]" to the node "datapath:dp|BusA[7]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[6]" to the node "datapath:dp|BusA[6]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[5]" to the node "datapath:dp|BusA[5]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[4]" to the node "datapath:dp|BusA[4]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[3]" to the node "datapath:dp|BusA[3]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[2]" to the node "datapath:dp|BusA[2]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[1]" to the node "datapath:dp|BusA[1]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "datapath:dp|BusA[0]" to the node "datapath:dp|BusA[0]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[31]" to the node "datapath:dp|BusA[31]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 77
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[30]" to the node "datapath:dp|BusA[30]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[29]" to the node "datapath:dp|BusA[29]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[28]" to the node "datapath:dp|BusA[28]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[27]" to the node "datapath:dp|BusA[27]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[26]" to the node "datapath:dp|BusA[26]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[25]" to the node "datapath:dp|BusA[25]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[24]" to the node "datapath:dp|BusA[24]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[23]" to the node "datapath:dp|BusA[23]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[22]" to the node "datapath:dp|BusA[22]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[21]" to the node "datapath:dp|BusA[21]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[20]" to the node "datapath:dp|BusA[20]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[19]" to the node "datapath:dp|BusA[19]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[18]" to the node "datapath:dp|BusA[18]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[17]" to the node "datapath:dp|BusA[17]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[16]" to the node "datapath:dp|BusA[16]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[15]" to the node "datapath:dp|BusA[15]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[14]" to the node "datapath:dp|BusA[14]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[13]" to the node "datapath:dp|BusA[13]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[12]" to the node "datapath:dp|BusA[12]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[11]" to the node "datapath:dp|BusA[11]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[10]" to the node "datapath:dp|BusA[10]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[9]" to the node "datapath:dp|BusA[9]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[8]" to the node "datapath:dp|BusA[8]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[7]" to the node "datapath:dp|BusA[7]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[6]" to the node "datapath:dp|BusA[6]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[5]" to the node "datapath:dp|BusA[5]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[4]" to the node "datapath:dp|BusA[4]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[3]" to the node "datapath:dp|BusA[3]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[2]" to the node "datapath:dp|BusA[2]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[1]" to the node "datapath:dp|BusA[1]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+    Warning (13047): Converted the fan-out from the tri-state buffer "datapath:dp|BusA[0]" to the node "datapath:dp|BusA[0]" into an OR gate File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/datapath.vhd Line: 62
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "led[0]" is stuck at GND File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/JFEGS.vhd Line: 14
+    Warning (13410): Pin "led[1]" is stuck at GND File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/JFEGS.vhd Line: 14
+    Warning (13410): Pin "led[2]" is stuck at GND File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/JFEGS.vhd Line: 14
+    Warning (13410): Pin "led[3]" is stuck at GND File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/JFEGS.vhd Line: 14
+    Warning (13410): Pin "led[4]" is stuck at GND File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/JFEGS.vhd Line: 14
+    Warning (13410): Pin "led[5]" is stuck at GND File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/JFEGS.vhd Line: 14
+    Warning (13410): Pin "led[6]" is stuck at GND File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/JFEGS.vhd Line: 14
+    Warning (13410): Pin "led[7]" is stuck at GND File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/JFEGS.vhd Line: 14
+    Warning (13410): Pin "led[8]" is stuck at GND File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/JFEGS.vhd Line: 14
+    Warning (13410): Pin "led[9]" is stuck at GND File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/JFEGS.vhd Line: 14
+Info (286030): Timing-Driven Synthesis is running
+Critical Warning (18061): Ignored Power-Up Level option on the following registers
+    Critical Warning (18010): Register datapath:dp|registerfile:reg_file|BusC[0]~en will power up to High File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/registerfile.vhd Line: 29
+Info (17049): 44 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 3 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "sw[9]" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/JFEGS.vhd Line: 11
+    Warning (15610): No output dependent on input pin "next_instruction_key" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/JFEGS.vhd Line: 9
+    Warning (15610): No output dependent on input pin "load_address_key" File: C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Joost/Quartus/jfegs/JFEGS.vhd Line: 10
+Info (21057): Implemented 8918 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 14 input pins
+    Info (21059): Implemented 52 output pins
+    Info (21061): Implemented 8852 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 162 warnings
+    Info: Peak virtual memory: 4946 megabytes
+    Info: Processing ended: Tue Nov 08 15:16:55 2022
+    Info: Elapsed time: 00:00:22
+    Info: Total CPU time (on all processors): 00:00:42
+
+

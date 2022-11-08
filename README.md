@@ -274,7 +274,9 @@ File n
 | Stach Redeker| Stach designed the controller (in collaboration with Guus), worked on the debugging/IO, and wrote the majority of the documentation. |
 
 ## Future improvements
-A nice-to-have extra instruction would be a delay function (or another way to directly access the clock using the instruction set).
+- [ ] Making debugging work (at the moment, debugging does not work in simulation).
+- [ ] Display the Fibonacci values in decimal instead of hexadecimal.
+- [ ] A nice-to-have extra instruction would be a delay function (or another way to directly access the clock using the instruction set).
 
 ## Conclusion
 During this project, we developed a virtual processor that can be synthesized on the DE1-SoC board. The virtual processor is designed using VHDL and ships with an application that is able to compute the Fibonacci sequence.
