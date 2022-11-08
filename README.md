@@ -1,5 +1,5 @@
 # JFEGS: a virtual processor for the DE1-SoC board
-> Yet another revolutionary product that computes the Fibonacci sequence, designed by **J**oost Buursink, **F**abian Widlund, **E**mil Imhagen, **G**uus Branderhorst, and **S**tach Redeker.
+> Yet another revolutionary product that computes the Fibonacci sequence, designed by **J**oost Buursink (s2790882), **F**abian Widlund (s3100235), **E**mil Imhagen (s3108139), **G**uus Branderhorst (s2795132), and **S**tach Redeker (s2758695).
 
 This documentation file is part of the final project of Digital Hardware in module 5 of Electrical Engineering, University of Twente.
 
@@ -143,6 +143,8 @@ C: 0                    			! how many times we should run the function
 H: 0                     			! H = 0, not halve; H = 1, halve 
 ```
 
+The program is preloaded in the main memory. It is possible to store multiple programs, when one places them after each other in the memory array.
+
 ## Parts of the processor
 This chapter gives a brief summary of different processor parts.
 
@@ -263,13 +265,14 @@ File n
 ## Contributions overview
 | Member | Work |
 | :-- | :-- |
-| Joost Buursink | |
-| Fabian Widlund | | 
-| Emil Imhagen | |
-| Guus Branderhorst | |
-| Stach Redeker| |
+| Joost Buursink | Joost was the lead developer of the memory. He also designed most of the datapath. |
+| Fabian Widlund | Fabian worked on the datapath, the global port map, and parts of the final presentation. | 
+| Emil Imhagen | Emil worked on debugging, IO, and the global port map. |
+| Guus Branderhorst | Guus designed the controller (in collaboration with Stach) and helped with the datapath. |
+| Stach Redeker| Stach designed the controller (in collaboration with Guus), worked on the debugging/IO, and wrote the majority of the documentation. |
 
 ## Future improvements
+A nice-to-have extra instruction would be a delay function (or another way to directly access the clock using the instruction set).
 
 ## Conclusion
 During this project, we developed a virtual processor that can be synthesized on the DE1-SoC board. The virtual processor is designed using VHDL and ships with an application that is able to compute the Fibonacci sequence.
