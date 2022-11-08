@@ -260,6 +260,9 @@ memory.vhd
 registerfile.vhd
 utilities.vhd
 ```
+
+Run `jfegs.do` to verify the result. The input of the switches is defined in the do file. In register `%r2`, at the end, the value `494` should be stores. The displays show `494` in hexadecimal, which is `1EE`.
+
 Use the following files for synthesis in Quartus:
 ```
 JFEGS.qsf
@@ -276,6 +279,8 @@ utilities.vhd
 ```
 
 ## Synthesis results
+
+If synthesized correctly, the code produces the following RTL view:
 
 ![synthesis](/JFEGS_RTL.png)
 
