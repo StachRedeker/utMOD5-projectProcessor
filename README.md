@@ -1,5 +1,5 @@
 # JFEGS: a virtual processor for the DE1-SoC board
-> Yet another revolutionary product that computes the Fibonacci sequence, designed by **J**oost Buursink, **F**abian Widlund, **E**mil Imhagen, **G**uus Branderhorst, and **S**tach Redeker.
+> Yet another revolutionary product that computes the Fibonacci sequence, designed by **J**oost Buursink (s2790882), **F**abian Widlund (s3100235), **E**mil Imhagen (s3108139), **G**uus Branderhorst (s2795132), and **S**tach Redeker (s2758695).
 
 This documentation file is part of the final project of Digital Hardware in module 5 of Electrical Engineering, University of Twente.
 
@@ -9,9 +9,11 @@ This documentation file is part of the final project of Digital Hardware in modu
   * [Example application](#example-application)
   * [Parts of the processor](#parts-of-the-processor)
   * [Installation and usage](#installation-and-usage)
+  * [Synthesis results](#synthesis-results)
   * [Contributions overview](#contributions-overview)
   * [Future improvements](#future-improvements)
   * [Conclusion](#conclusion)
+  * [References and acknowledgements](#references-and-acknowledgements)
     
 ## Introduction
 JFEGS is a virtual processor designed in VHDL for the Altera System-on-Chip (SoC) FPGA. The processor can be compiled using ModelSim and synthesized using Quartus. Various requirements were set. We discussed those in our [project plan](/ProjectPlan.pdf).
@@ -143,6 +145,8 @@ C: 0                    			! how many times we should run the function
 H: 0                     			! H = 0, not halve; H = 1, halve 
 ```
 
+The program is preloaded in the main memory. It is possible to store multiple programs, when one places them after each other in the memory array.
+
 ## Parts of the processor
 This chapter gives a brief summary of different processor parts.
 
@@ -184,8 +188,7 @@ The ALU receieves `F2F1F0` from the controller in order to communicate about the
 The ALU outputs the result, and sets the status bits (n/z/v/c) if required.
 
 #### `ACK_data` 
-
-[NEEDS SIGNAL DESCRIPTION]
+`ACK_data` is 1 if the datapath is not performing an operation. This signal is used to send to the controller that a new instruction can be fetched, decoded, and executed.
 
 ### Memory
 We designed the memory based on the von Neumann architecture. The memory is made up of a 2D array consisting of 128 blocks, where each block is made up of 4 bytes. This results in a word size of 32 bits. Hence, a complete instruction can reside in one memory block. The memory is synthesized on the FPGA. It will hence be built using flip-flops. 
@@ -271,6 +274,9 @@ File n
 | Stach Redeker| Stach designed the controller (in collaboration with Guus), worked on the debugging/IO, and wrote the majority of the documentation. |
 
 ## Future improvements
+- [ ] Making debugging work (at the moment, debugging does not work in simulation).
+- [ ] Display the Fibonacci values in decimal instead of hexadecimal.
+- [ ] A nice-to-have extra instruction would be a delay function (or another way to directly access the clock using the instruction set).
 
 ## Conclusion
 During this project, we developed a virtual processor that can be synthesized on the DE1-SoC board. The virtual processor is designed using VHDL and ships with an application that is able to compute the Fibonacci sequence.

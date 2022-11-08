@@ -163,7 +163,7 @@ BEGIN
 			BusC(31 DOWNTO 9) <= (OTHERS => '0'); 
 			BusC(8 DOWNTO 0) <= sw(8 downto 0);	
 		ELSIF io = "01" THEN
-			displaycontent(bin2hex(BusA(23 DOWNTO 0)), dig0, dig1, dig2, dig3, dig4, dig5); 
+			displaycontent(integer'image(bin2dec(BusA(23 DOWNTO 0))), dig0, dig1, dig2, dig3, dig4, dig5); 
 		END IF;
 
 		IF (to_integer(unsigned(ALU)) > 3) AND (ALU /= "111") THEN -- set CC active since ANDCC and ORCC are Operations changing the CC

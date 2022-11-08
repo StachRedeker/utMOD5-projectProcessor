@@ -22,9 +22,9 @@ V[L=HYGfQY=[]a9Bk9A8K[0
 !s100 dE<ACF4S6SU3ddX295zPL2
 Z7 OV;C;10.5b;63
 32
-Z8 !s110 1667912229
+Z8 !s110 1667915275
 !i10b 1
-Z9 !s108 1667912229.000000
+Z9 !s108 1667915275.000000
 Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/controller.vhd|
 Z11 !s107 C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/controller.vhd|
 !i113 1
@@ -50,7 +50,7 @@ R11
 R12
 R13
 Edatapath
-Z14 w1667912225
+Z14 w1667915271
 Z15 DPx4 work 2 io 0 22 YcO3Yf21EBNbAX05zBhDd0
 Z16 DPx4 work 9 utilities 0 22 5=25mh`4OL^iNG4;GQ`5^0
 R1
@@ -82,8 +82,8 @@ R3
 DEx4 work 8 datapath 0 22 SDfU[EP?[IZlj3DZ:eUB;0
 l72
 L43
-VHCJFTzRgf=^C`o[X5BF9Y3
-!s100 3Y7P9fbeHjA7DUHLZO=O11
+V=Gn[`<FSdkIE8<YNELY5I1
+!s100 k70D7aj@8G=n?3`PBWRmO3
 R7
 32
 R8
@@ -279,11 +279,11 @@ VXlzBi4Y[n8_NDeiO8jLz;1
 !s100 XB0=OQ<mCa6==A8CZg4=l3
 R7
 32
-R8
+Z43 !s110 1667915276
 !i10b 1
-R9
-Z43 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/JFEGS.vhd|
-Z44 !s107 C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/JFEGS.vhd|
+Z44 !s108 1667915276.000000
+Z45 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/JFEGS.vhd|
+Z46 !s107 C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/JFEGS.vhd|
 !i113 1
 R12
 R13
@@ -298,11 +298,11 @@ V`^LHKNG`kabLJYg=JMBYY2
 !s100 BA`eMWz34lUo[JcnC=Enk0
 R7
 32
-R8
-!i10b 1
-R9
 R43
+!i10b 1
 R44
+R45
+R46
 !i113 1
 R12
 R13
@@ -313,17 +313,17 @@ R1
 R2
 R3
 R4
-Z45 8C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/memory.vhd
-Z46 FC:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/memory.vhd
+Z47 8C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/memory.vhd
+Z48 FC:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/memory.vhd
 l0
 L8
 VOn?`3M=1TC]NCC^57N6]=3
 !s100 A4R@X1?bieNR0<Dbg@j`90
 R7
 32
-Z47 !s110 1667912230
+R43
 !i10b 1
-Z48 !s108 1667912230.000000
+R44
 Z49 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/memory.vhd|
 Z50 !s107 C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/memory.vhd|
 !i113 1
@@ -341,9 +341,9 @@ VWMgL3TAH>[1l_N?[H3U@82
 !s100 Qj[@]6^H;MYWmkgf[52781
 R7
 32
-R47
+R43
 !i10b 1
-R48
+R44
 R49
 R50
 !i113 1
@@ -363,9 +363,9 @@ V[j9GWQ6WjkkdJ;bGa81z52
 !s100 VSzBamkYZhV1EaU<4>h761
 R7
 32
-R47
+R43
 !i10b 1
-R48
+R44
 Z53 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/registerfile.vhd|
 Z54 !s107 C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/registerfile.vhd|
 !i113 1
@@ -382,9 +382,9 @@ Z56 V]Jj;ge6iTRX0miL4lWgc<0
 Z57 !s100 5gRNnIR[ITW_oM95lkO:o2
 R7
 32
-R47
+R43
 !i10b 1
-R48
+R44
 R53
 R54
 !i113 1
@@ -405,11 +405,11 @@ V5=25mh`4OL^iNG4;GQ`5^0
 R7
 32
 b1
-Z60 !s110 1667912228
+R8
 !i10b 1
-Z61 !s108 1667912228.000000
-Z62 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/utilities.vhd|
-Z63 !s107 C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/utilities.vhd|
+Z60 !s108 1667915274.000000
+Z61 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/utilities.vhd|
+Z62 !s107 C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/Fabian/JFEGS/utilities.vhd|
 !i113 1
 R12
 R13
@@ -424,11 +424,11 @@ V45IgDj_WRj0^PM`>AmQoV3
 !s100 ;A8;9Wol<f<Vz@ngIM?Hi2
 R7
 32
-R60
+R8
 !i10b 1
+R60
 R61
 R62
-R63
 !i113 1
 R12
 R13
