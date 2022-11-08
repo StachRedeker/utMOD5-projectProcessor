@@ -262,11 +262,11 @@ File n
 ## Contributions overview
 | Member | Work |
 | :-- | :-- |
-| Joost Buursink | |
-| Fabian Widlund | | 
-| Emil Imhagen | |
-| Guus Branderhorst | |
-| Stach Redeker| |
+| Joost Buursink | Joost was the lead developer of the memory. He also designed most of the datapath. |
+| Fabian Widlund | Fabian worked on the datapath, the global port map, and parts of the final presentation. | 
+| Emil Imhagen | Emil worked on debugging, IO, and the global port map. |
+| Guus Branderhorst | Guus designed the controller (in collaboration with Stach) and helped with the datapath. |
+| Stach Redeker| Stach designed the controller (in collaboration with Guus), worked on the debugging/IO, and wrote the majority of the documentation. |
 
 ## Future improvements
 
