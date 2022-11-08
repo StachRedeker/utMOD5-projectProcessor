@@ -1,0 +1,81 @@
+set_global_assignment -name VHDL_FILE controller.vhd
+set_global_assignment -name VHDL_FILE memory.vhd
+set_global_assignment -name VHDL_FILE dataphath.vhd
+set_global_assignment -name VHDL_FILE debugging.vhd
+
+set_location_assignment PIN_AF14 -to clk
+set_location_assignment PIN_AA14 -to reset -comment KEY[0]
+set_location_assignment PIN_AA15 -to next_instruction_key
+set_location_assignment PIN_W15 -to load_address_key
+
+set_location_assignment PIN_AE26 -to dig0[0] -comment HEX0[0]
+set_location_assignment PIN_AE27 -to dig0[1]
+set_location_assignment PIN_AE28 -to dig0[2]
+set_location_assignment PIN_AG27 -to dig0[3]
+set_location_assignment PIN_AF28 -to dig0[4]
+set_location_assignment PIN_AG28 -to dig0[5]
+set_location_assignment PIN_AH28 -to dig0[6]
+
+set_location_assignment PIN_AJ29 -to dig1[0]
+set_location_assignment PIN_AH29 -to dig1[1]
+set_location_assignment PIN_AH30 -to dig1[2]
+set_location_assignment PIN_AG30 -to dig1[3]
+set_location_assignment PIN_AF29 -to dig1[4]
+set_location_assignment PIN_AF30 -to dig1[5]
+set_location_assignment PIN_AD27 -to dig1[6]
+
+set_location_assignment PIN_AB23 -to dig2[0]
+set_location_assignment PIN_AE29 -to dig2[1]
+set_location_assignment PIN_AD29 -to dig2[2]
+set_location_assignment PIN_AC28 -to dig2[3]
+set_location_assignment PIN_AD30 -to dig2[4]
+set_location_assignment PIN_AC29 -to dig2[5]
+set_location_assignment PIN_AC30 -to dig2[6]
+
+set_location_assignment PIN_AD26 -to dig3[0]
+set_location_assignment PIN_AC27 -to dig3[1]
+set_location_assignment PIN_AD25 -to dig3[2]
+set_location_assignment PIN_AC25 -to dig3[3]
+set_location_assignment PIN_AB28 -to dig3[4]
+set_location_assignment PIN_AB25 -to dig3[5]
+set_location_assignment PIN_AB22 -to dig3[6]
+
+set_location_assignment PIN_AA24 -to dig4[0]
+set_location_assignment PIN_Y23 -to dig4[1]
+set_location_assignment PIN_Y24 -to dig4[2]
+set_location_assignment PIN_W22 -to dig4[3]
+set_location_assignment PIN_W24 -to dig4[4]
+set_location_assignment PIN_V23 -to dig4[5]
+set_location_assignment PIN_W25 -to dig4[6]
+
+set_location_assignment PIN_V25 -to dig5[0]
+set_location_assignment PIN_AA28 -to dig5[1]
+set_location_assignment PIN_Y27 -to dig5[2]
+set_location_assignment PIN_AB27 -to dig5[3]
+set_location_assignment PIN_AB26 -to dig5[4]
+set_location_assignment PIN_AA26 -to dig5[5]
+set_location_assignment PIN_AA25 -to dig5[6]
+
+set_location_assignment PIN_AB12 -to sw[0]
+set_location_assignment PIN_AC12 -to sw[1]
+set_location_assignment PIN_AF9 -to sw[2]
+set_location_assignment PIN_AF10 -to sw[3]
+set_location_assignment PIN_AD11 -to sw[4]
+set_location_assignment PIN_AD12 -to sw[5]
+set_location_assignment PIN_AE11 -to sw[6]
+set_location_assignment PIN_AC9 -to sw[7]
+set_location_assignment PIN_AD10 -to sw[8]
+set_location_assignment PIN_AE12 -to sw[9]
+
+set_location_assignment PIN_V16 -to led[0]
+set_location_assignment PIN_W16 -to led[1]
+set_location_assignment PIN_V17 -to led[2]
+set_location_assignment PIN_V18 -to led[3]
+set_location_assignment PIN_W17 -to led[4]
+set_location_assignment PIN_W19 -to led[5]
+set_location_assignment PIN_Y19 -to led[6]
+set_location_assignment PIN_W20 -to led[7]
+set_location_assignment PIN_W21 -to led[8]
+set_location_assignment PIN_Y21 -to led[9]
+
+
