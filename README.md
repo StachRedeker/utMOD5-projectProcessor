@@ -167,7 +167,6 @@ The global datapath schematic is shown in the following diagram.
 | Register 14 | program counter |
 | Register 15 | instruction register | 
 
-At the start of our application, an instruction is fetched from main memory at address zero. This instruction is stored in the instruction register. Next, the controller decodes the instruction and supplies the datapath with the correct signals for the desired instruction. The datapath executes the instruction, which corresponds to the output signals from the controller. At the end of an instruction, the program counter is incremented with four, such that the datapath loads the next instruction into the instruction register. 
 #### ALU and status bits
 
 The ALU receieves `F2F1F0` from the controller in order to communicate about the wanted operation.
