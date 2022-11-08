@@ -1,5 +1,5 @@
 # JFEGS: a virtual processor for the DE1-SoC board
-> Yet another revolutionary product that computes the Fibonacci sequence, designed by **J**oost Buursink, **F**abian Widlund, **E**mil Imhagen, **G**uus Branderhorst, and **S**tach Redeker.
+> Yet another revolutionary product that computes the Fibonacci sequence, designed by **J**oost Buursink (s2790882), **F**abian Widlund (s3100235), **E**mil Imhagen (s3108139), **G**uus Branderhorst (s2795132), and **S**tach Redeker (s2758695).
 
 This documentation file is part of the final project of Digital Hardware in module 5 of Electrical Engineering, University of Twente.
 
