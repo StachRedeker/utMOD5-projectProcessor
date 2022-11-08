@@ -277,6 +277,8 @@ utilities.vhd
 
 ## Synthesis results
 
+If synthesized correctly, the code produces the following RTL view:
+
 ![synthesis](/JFEGS_RTL.png)
 
 ## Contributions overview
