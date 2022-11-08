@@ -9,9 +9,11 @@ This documentation file is part of the final project of Digital Hardware in modu
   * [Example application](#example-application)
   * [Parts of the processor](#parts-of-the-processor)
   * [Installation and usage](#installation-and-usage)
+  * [Synthesis results](#synthesis-results)
   * [Contributions overview](#contributions-overview)
   * [Future improvements](#future-improvements)
   * [Conclusion](#conclusion)
+  * [References and acknowledgements](#references-and-acknowledgements)
     
 ## Introduction
 JFEGS is a virtual processor designed in VHDL for the Altera System-on-Chip (SoC) FPGA. The processor can be compiled using ModelSim and synthesized using Quartus. Various requirements were set. We discussed those in our [project plan](/ProjectPlan.pdf).
