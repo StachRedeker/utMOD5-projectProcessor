@@ -247,7 +247,7 @@ One might wonder how we set `DEBUG_NEXT` to 1 for exactly 1 clock cycle when the
 `debugging_display` sends the required signals to the displays and LEDs.
 
 ## Installation and usage
-Use the following files for compilation in ModelSim. These files can be compiled using the Auto Generate function in compile order:
+Use the following files for compilation in ModelSim. These files can be compiled using the Auto Generate compile order function in ModelSim:
 ```
 controller.vhd
 datapath.vhd
@@ -295,3 +295,4 @@ utilities.vhd
 During this project, we developed a virtual processor that can be synthesized on the DE1-SoC board. The virtual processor is designed using VHDL and ships with an application that is able to compute the Fibonacci sequence.
 
 ## References and acknowledgements
+Bert van Molenkamp has released a VHDL description of the ARC processor. Although this is a three address machine, the overall code structuring was proven to be quite helpful during our project.
