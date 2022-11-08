@@ -247,22 +247,37 @@ One might wonder how we set `DEBUG_NEXT` to 1 for exactly 1 clock cycle when the
 `debugging_display` sends the required signals to the displays and LEDs.
 
 ## Installation and usage
-Use the following files for compilation in ModelSim:
+Use the following files for compilation in ModelSim. These files can be compiled using the Auto Generate compile order function in ModelSim:
 ```
-File 1
-File 2
-...
-File n
+controller.vhd
+datapath.vhd
+debugging.vhd
+debugging_display.vhd
+debugging_facilitators..vhd
+io.vhd
+JFEGS.vhd
+memory.vhd
+registerfile.vhd
+utilities.vhd
 ```
 Use the following files for synthesis in Quartus:
 ```
-File 1
-File 2
-...
-File n
+JFEGS.qsf
+controller.vhd
+datapath.vhd
+debugging.vhd
+debugging_display.vhd
+debugging_facilitators..vhd
+io.vhd
+JFEGS.vhd
+memory.vhd
+registerfile.vhd
+utilities.vhd
 ```
 
 ## Synthesis results
+
+![synthesis](/JFEGS_RTL.png)
 
 ## Contributions overview
 | Member | Work |
@@ -274,9 +289,12 @@ File n
 | Stach Redeker| Stach designed the controller (in collaboration with Guus), worked on the debugging/IO, and wrote the majority of the documentation. |
 
 ## Future improvements
-A nice-to-have extra instruction would be a delay function (or another way to directly access the clock using the instruction set).
+- [ ] Making debugging work (at the moment, debugging does not work in simulation).
+- [ ] Display the Fibonacci values in decimal instead of hexadecimal.
+- [ ] A nice-to-have extra instruction would be a delay function (or another way to directly access the clock using the instruction set).
 
 ## Conclusion
 During this project, we developed a virtual processor that can be synthesized on the DE1-SoC board. The virtual processor is designed using VHDL and ships with an application that is able to compute the Fibonacci sequence.
 
 ## References and acknowledgements
+Bert van Molenkamp has released a [VHDL description of the ARC processor](http://iiusatech.com/murdocca/CAO/VHDL.html). Although the ARC processor is a three address machine, the overall code structuring was proven to be quite helpful during our project. Bert made his code open source and freely available. We will do the same, such that both systems can work as a base for new research and development.
