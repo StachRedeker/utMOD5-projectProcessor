@@ -22,9 +22,9 @@ V[L=HYGfQY=[]a9Bk9A8K[0
 !s100 dE<ACF4S6SU3ddX295zPL2
 Z7 OV;C;10.5b;63
 32
-Z8 !s110 1667918937
+Z8 !s110 1667919926
 !i10b 1
-Z9 !s108 1667918937.000000
+Z9 !s108 1667919926.000000
 Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/controller.vhd|
 Z11 !s107 C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/controller.vhd|
 !i113 1
@@ -65,9 +65,9 @@ VSDfU[EP?[IZlj3DZ:eUB;0
 !s100 <>i@m_R@zMz9`K0mRed@21
 R7
 32
-Z19 !s110 1667918938
+Z19 !s110 1667919927
 !i10b 1
-Z20 !s108 1667918938.000000
+Z20 !s108 1667919927.000000
 Z21 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/datapath.vhd|
 Z22 !s107 C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/datapath.vhd|
 !i113 1
@@ -108,9 +108,9 @@ V[<QNUac7@@a3JBVj<bEjT2
 !s100 f<k`2h;BBch[R]ogZnXUd2
 R7
 32
-R8
+R19
 !i10b 1
-R9
+R20
 Z26 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/debugging.vhd|
 Z27 !s107 C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/debugging.vhd|
 !i113 1
@@ -127,9 +127,9 @@ VH:PlCYf<LkPIYQQPeffeG3
 !s100 Qei285RQT>h2:ce[jL:OM3
 R7
 32
-R8
+R19
 !i10b 1
-R9
+R20
 R26
 R27
 !i113 1
@@ -165,11 +165,11 @@ R16
 R1
 R2
 R3
-DEx4 work 17 debugging_display 0 22 <`KCWSfbk<9QfBNZZoc2f0
+Z33 DEx4 work 17 debugging_display 0 22 <`KCWSfbk<9QfBNZZoc2f0
 l45
 L44
-V:EB1kQQo7T7T_W:4mCW9=1
-!s100 Dj9z?QiYFAeW_M<z>V>D41
+Z34 V:EB1kQQo7T7T_W:4mCW9=1
+Z35 !s100 Dj9z?QiYFAeW_M<z>V>D41
 R7
 32
 R19
@@ -186,19 +186,19 @@ R1
 R2
 R3
 R4
-Z33 8C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/debugging_facilitators.vhd
-Z34 FC:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/debugging_facilitators.vhd
+Z36 8C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/debugging_facilitators.vhd
+Z37 FC:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/debugging_facilitators.vhd
 l0
 L5
 VUU2IQPYb3N6LScHk4FVFG3
 !s100 2cW5mSAMd=f@b;n2ZdI5_1
 R7
 32
-R8
+Z38 !s110 1667919925
 !i10b 1
-R9
-Z35 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/debugging_facilitators.vhd|
-Z36 !s107 C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/debugging_facilitators.vhd|
+Z39 !s108 1667919925.000000
+Z40 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/debugging_facilitators.vhd|
+Z41 !s107 C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/debugging_facilitators.vhd|
 !i113 1
 R12
 R13
@@ -213,11 +213,11 @@ V`n1?:BaSN36PIcC^<bKU70
 !s100 fcl=l[cCHJVLYF=C>eood2
 R7
 32
-R8
+R38
 !i10b 1
-R9
-R35
-R36
+R39
+R40
+R41
 !i113 1
 R12
 R13
@@ -226,10 +226,10 @@ R16
 R1
 R2
 R3
-Z37 w1667820731
+Z42 w1667820731
 R4
-Z38 8C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/io.vhd
-Z39 FC:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/io.vhd
+Z43 8C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/io.vhd
+Z44 FC:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/io.vhd
 l0
 L7
 VYcO3Yf21EBNbAX05zBhDd0
@@ -240,8 +240,8 @@ b1
 R8
 !i10b 1
 R9
-Z40 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/io.vhd|
-Z41 !s107 C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/io.vhd|
+Z45 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/io.vhd|
+Z46 !s107 C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/io.vhd|
 !i113 1
 R12
 R13
@@ -260,19 +260,19 @@ R7
 R8
 !i10b 1
 R9
-R40
-R41
+R45
+R46
 !i113 1
 R12
 R13
 Ejfegs
-Z42 w1667899821
+Z47 w1667899821
 R1
 R2
 R3
 R4
-Z43 8C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/JFEGS.vhd
-Z44 FC:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/JFEGS.vhd
+Z48 8C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/JFEGS.vhd
+Z49 FC:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/JFEGS.vhd
 l0
 L4
 VXlzBi4Y[n8_NDeiO8jLz;1
@@ -282,8 +282,8 @@ R7
 R8
 !i10b 1
 R9
-Z45 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/JFEGS.vhd|
-Z46 !s107 C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/JFEGS.vhd|
+Z50 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/JFEGS.vhd|
+Z51 !s107 C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/JFEGS.vhd|
 !i113 1
 R12
 R13
@@ -301,8 +301,8 @@ R7
 R8
 !i10b 1
 R9
-R45
-R46
+R50
+R51
 !i113 1
 R12
 R13
@@ -313,19 +313,19 @@ R1
 R2
 R3
 R4
-Z47 8C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/memory.vhd
-Z48 FC:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/memory.vhd
+Z52 8C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/memory.vhd
+Z53 FC:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/memory.vhd
 l0
 L8
 VOn?`3M=1TC]NCC^57N6]=3
 !s100 A4R@X1?bieNR0<Dbg@j`90
 R7
 32
-R19
+R8
 !i10b 1
-R20
-Z49 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/memory.vhd|
-Z50 !s107 C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/memory.vhd|
+R9
+Z54 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/memory.vhd|
+Z55 !s107 C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/memory.vhd|
 !i113 1
 R12
 R13
@@ -341,11 +341,11 @@ VWMgL3TAH>[1l_N?[H3U@82
 !s100 Qj[@]6^H;MYWmkgf[52781
 R7
 32
-R19
+R8
 !i10b 1
-R20
-R49
-R50
+R9
+R54
+R55
 !i113 1
 R12
 R13
@@ -355,8 +355,8 @@ R1
 R2
 R3
 R4
-Z51 8C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/registerfile.vhd
-Z52 FC:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/registerfile.vhd
+Z56 8C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/registerfile.vhd
+Z57 FC:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/registerfile.vhd
 l0
 L4
 V[j9GWQ6WjkkdJ;bGa81z52
@@ -366,8 +366,8 @@ R7
 R8
 !i10b 1
 R9
-Z53 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/registerfile.vhd|
-Z54 !s107 C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/registerfile.vhd|
+Z58 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/registerfile.vhd|
+Z59 !s107 C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/registerfile.vhd|
 !i113 1
 R12
 R13
@@ -385,8 +385,8 @@ R7
 R8
 !i10b 1
 R9
-R53
-R54
+R58
+R59
 !i113 1
 R12
 R13
@@ -394,10 +394,10 @@ Putilities
 R1
 R2
 R3
-R37
+R42
 R4
-Z55 8C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/utilities.vhd
-Z56 FC:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/utilities.vhd
+Z60 8C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/utilities.vhd
+Z61 FC:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/utilities.vhd
 l0
 L5
 V5=25mh`4OL^iNG4;GQ`5^0
@@ -408,8 +408,8 @@ b1
 R8
 !i10b 1
 R9
-Z57 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/utilities.vhd|
-Z58 !s107 C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/utilities.vhd|
+Z62 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/utilities.vhd|
+Z63 !s107 C:/Users/joost/OneDrive - University of Twente/Documenten/GitHub/utMOD5-projectProcessor/v1/Code files/utilities.vhd|
 !i113 1
 R12
 R13
@@ -427,8 +427,8 @@ R7
 R8
 !i10b 1
 R9
-R57
-R58
+R62
+R63
 !i113 1
 R12
 R13
